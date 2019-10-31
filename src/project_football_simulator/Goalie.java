@@ -11,9 +11,10 @@ package project_football_simulator;
  */
 public class Goalie extends OnField implements Fatigue{
     int skill;
+    int number;
     
-    public Goalie(boolean field,int stamina,String name,String surname, int age, String nationality,int skill){
-       
+    public Goalie(boolean field,int number,int stamina,String name,String surname, int age, String nationality,int skill){
+       this.number=number;
        this.skill=skill;
        super.stamina=stamina;
        super.name=name;

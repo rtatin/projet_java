@@ -6,6 +6,7 @@
 package project_football_simulator;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -33,6 +34,6 @@ public class Player extends OnField implements Fatigue{
     public float fatigue(float stamina){
         return stamina-10;
     }
-    
+    	
 }
 

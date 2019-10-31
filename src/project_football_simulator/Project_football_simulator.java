@@ -19,7 +19,7 @@ public class Project_football_simulator {
     public static void main(String[] args) {
         Team teamm = new Team();
         teamm.createFullTeam();
-        System.out.println(teamm.FullTeam);
+        teamm.printFullTeam();
     }
     
 }
