@@ -23,10 +23,9 @@ public class Goalie extends OnField implements Fatigue{
        super.nationality=nationality;
     
     }
-    
-   
+
     @Override
-    public float fatigue(float stamina){
-        return stamina-5;
+    public void fatigue(){
+        this.stamina=this.stamina-(2*super.age/20);
     }
 }

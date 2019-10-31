@@ -31,8 +31,8 @@ public class Player extends OnField implements Fatigue{
    }
 
     @Override
-    public float fatigue(float stamina){
-        return stamina-10;
+    public void fatigue(){
+        this.stamina=this.stamina-(10*super.age/20);
     }
     	
 }

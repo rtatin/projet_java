@@ -10,5 +10,5 @@ package project_football_simulator;
  * @author rtwam
  */
 public interface Fatigue {
-    public float fatigue(float stamina);
+    public void fatigue();
 }
