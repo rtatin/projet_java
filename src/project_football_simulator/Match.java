@@ -65,6 +65,11 @@ public class Match {
         float defTeam0=DefTeam(0);
         float defTeam1=DefTeam(1);
         increaseScore(atkTeam0, atkTeam1, defTeam0, defTeam1);
+        for (int i=0;i<2;i++){
+            for (int j=0;j<10;j++){
+                ref.YellowCard(teams[i].players.get(j));
+            }
+        }
         
     }
 }
