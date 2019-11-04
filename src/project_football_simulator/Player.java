@@ -29,7 +29,15 @@ public class Player extends OnField implements Fatigue{
         this.favPos=favPos;
         this.card=card;
     }
-    
+        public void printPlayer(){
+    System.out.println("nom: "+this.name+" "+this.surname);
+    System.out.println("age: "+this.age);
+    System.out.println("position: "+this.favPos);
+    System.out.println("stat: ");
+    System.out.println("attack: "+this.attack);
+    System.out.println("defence: "+this.defense);
+    }
+        
     @Override
     public void fatigue(){
         this.stamina=this.stamina-(10*super.age/20);
