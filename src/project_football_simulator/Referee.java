@@ -31,8 +31,9 @@ public class Referee extends OnField implements Fatigue {
     
     public void YellowCard(Player player){
         if( new Random().nextDouble() <= (1-(this.severity/100)) ) {  
-            if(player.card==true){
-            RedCard(player);
+            if(player.card==1){
+                player.card=2;
+                RedCard(player);
             }  
             else{
             player.card=1;
