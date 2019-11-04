@@ -35,7 +35,7 @@ public class Referee extends OnField implements Fatigue {
             RedCard(player);
             }  
             else{
-            player.card=true;
+            player.card=1;
             }
         }      
     }
