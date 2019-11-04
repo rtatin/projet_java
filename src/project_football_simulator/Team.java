@@ -22,15 +22,15 @@ public class Team {
     public void createFullTeam(){
         ArrayList <Player> newTeam= new <Player>ArrayList();
         for(int i=1;i<6;i++){
-            Player newPlayer=new Player(i,(100 + (int)Math.random()* (100 - 60)),(40 + (int)Math.random()* (40 - 0)),"atk","no",false,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang");
+            Player newPlayer=new Player(i,(100 + (int)Math.random()* (100 - 60)),(40 + (int)Math.random()* (40 - 0)),"atk",false,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang");
             newTeam.add(newPlayer);
         }
         for(int i=6;i<11;i++){
-            Player newPlayer=new Player(i,(80 + (int)Math.random()* (80 - 60)),(80 + (int)Math.random()* (80 - 40)),"mid","no",false,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang");
+            Player newPlayer=new Player(i,(80 + (int)Math.random()* (80 - 60)),(80 + (int)Math.random()* (80 - 40)),"mid",false,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang");
             newTeam.add(newPlayer);
         }
         for(int i=11;i<16;i++){
-            Player newPlayer=new Player(i,(60 + (int)Math.random()* (40 - 0)),(100 + (int)Math.random()* (100 - 60)),"def","no",false,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang");
+            Player newPlayer=new Player(i,(60 + (int)Math.random()* (40 - 0)),(100 + (int)Math.random()* (100 - 60)),"def",false,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang");
             newTeam.add(newPlayer);
         }
         this.FullTeam=newTeam;

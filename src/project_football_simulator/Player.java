@@ -17,8 +17,8 @@ public class Player extends OnField implements Fatigue{
     float attack;
     float defense;
     String favPos;
-    String card;
-    public Player(int number,int attack,int defense,String favPos,String card,boolean field,String name,String surname, int age, String nationality){        
+    boolean card;
+    public Player(int number,int attack,int defense,String favPos,boolean field,String name,String surname, int age, String nationality){        
         super.name=name;
         super.surname=surname;
         super.age=age;
@@ -27,7 +27,7 @@ public class Player extends OnField implements Fatigue{
         this.attack=attack;
         this.defense=defense;
         this.favPos=favPos;
-        this.card=card;
+
     }
         public void printPlayer(){
     System.out.println("nom: "+this.name+" "+this.surname);
