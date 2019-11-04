@@ -17,7 +17,7 @@ public class Player extends OnField implements Fatigue{
     float attack;
     float defense;
     String favPos;
-    boolean card;
+    int card;
     public Player(int number,int attack,int defense,String favPos,boolean field,String name,String surname, int age, String nationality){        
         super.name=name;
         super.surname=surname;

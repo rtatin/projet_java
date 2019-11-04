@@ -32,11 +32,12 @@ public class Referee extends OnField implements Fatigue {
     public void cartonJaune(Player player){
         
         if( new Random().nextDouble() <= (1-(this.severity/100)) ) {  //you might want to cache the Random instance
-            if(player.card==true){
-            cartonRouge(player);
+            if(player.card==1){
+                player.card=2;
+                cartonRouge(player);
             }  
             else{
-            player.card=true;
+            player.card=1;
             }
         }      
     }
