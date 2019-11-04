@@ -23,7 +23,7 @@ public class Match {
     }
     
     
-    public float atkTeam(int numberTeam){
+    public float AtkTeam(int numberTeam){
         float totalAtk=0;
         for(int i=0; i<10;i++){
             Player play=teams[numberTeam].players.get(i);
@@ -34,7 +34,7 @@ public class Match {
         return totalAtk;
     }
     
-    public float defTeam(int numberTeam){
+    public float DefTeam(int numberTeam){
         float totalDef=0;
         for(int i=0; i<10;i++){
             Player play=teams[numberTeam].players.get(i);
@@ -44,10 +44,27 @@ public class Match {
         }
         return totalDef;
     }
+    public void increaseScore(float atkTeam0, float atkTeam1, float defTeam0, float defTeam1){
+        float ratioAtkDef0=atkTeam0/defTeam1;
+        float ratioAtkDef1=atkTeam1/defTeam0;
+        float scoreTeam0=(float)((float)Math.random()* (0.5 - 0.25)*ratioAtkDef0);
+        float scoreTeam1=(float)((float)Math.random()* (0.5 - 0.25)*ratioAtkDef1);
+        float rand=(float) ((float)Math.random()* (0.5 - 0.25));
+        if (scoreTeam0>rand){
+            score[0]++;
+        }
+        if (scoreTeam1>rand){
+            score[1]++;
+        }
+    }
     
-    public void playingMatch(){
+    public void PlayingMatch(){
         this.time+=15;
-        float atkTeam1=atkTeam(0);
-        float atkTeam2=atkTeam(1);
+        float atkTeam0=AtkTeam(0);
+        float atkTeam1=AtkTeam(1);
+        float defTeam0=DefTeam(0);
+        float defTeam1=DefTeam(1);
+        increaseScore(atkTeam0, atkTeam1, defTeam0, defTeam1);
+        
     }
 }
