@@ -28,8 +28,8 @@ public class Player extends OnField implements Fatigue{
         this.defense=defense;
         this.favPos=favPos;
         this.card=card;
-   }
-
+    }
+    
     @Override
     public void fatigue(){
         this.stamina=this.stamina-(10*super.age/20);

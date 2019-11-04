@@ -14,4 +14,23 @@ public class Match {
     int time;
     int[] score;
     Referee ref;
+    
+    public Match(Team[] teams, int time, int[] score, Referee ref){
+        this.teams=teams;
+        this.time=time;
+        this.score=score;
+        this.ref=ref;
+    }
+    
+    public int playersOnField(Team team){
+    }
+    public float atkTeam(int numberTeam){
+        for(int i=0; i<10;i++){
+            if (super.teams[numberTeam].players
+        }
+    }
+    public void playingMatch(){
+        this.time+=15;
+        float atkTeam1=0;
+    }
 }

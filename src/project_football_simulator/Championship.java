@@ -11,7 +11,9 @@ import java.util.ArrayList;
  * @author rtwam
  */
 public class Championship {
-    ArrayList<Team> teams= new ArrayList<Team>();
+    ArrayList<Team> teams;
+    ArrayList<Team> teamsInCompetition;
+    ArrayList<Team> teamsEliminated;
     Match[] matchs;
     int[] results;
     
@@ -20,8 +22,7 @@ public class Championship {
             Team team = new Team();
             team.createFullTeam();
             teams.add(team);
-            
         }
-
     }
+    
 }
