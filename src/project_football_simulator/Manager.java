@@ -5,6 +5,8 @@
  */
 package project_football_simulator;
 
+import java.util.Scanner;
+
 /**
  *
  * @author rtwam
@@ -18,5 +20,12 @@ public class Manager extends Character {
         super.age=age;
         super.nationality=nationality;
         super.equipe=equipe;
+    }
+    public int teamManagement(){
+        System.out.println("select the boost: \n enter 1 to boost attack\n enter 2 to boost middle\n enter 3 to boost defense");
+        Scanner choice=new Scanner(System.in);
+        String obj = choice.nextLine();
+        int choosenboost=(Integer.parseInt(obj));
+        return (choosenboost);  
     }
 }
