@@ -13,7 +13,7 @@ public class Goalie extends OnField implements Fatigue{
     int skill;
     int number;
     
-    public Goalie(boolean field,int number,int stamina,String name,String surname, int age, String nationality,int skill){
+    public Goalie(boolean field,int number,int stamina,String name,String surname, int age, String nationality,int skill,String equipe){
        this.number=number;
        this.skill=skill;
        super.stamina=stamina;
@@ -21,6 +21,7 @@ public class Goalie extends OnField implements Fatigue{
        super.surname=surname;
        super.age=age;
        super.nationality=nationality;
+       super.equipe=equipe;
     
     }
 

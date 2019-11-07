@@ -17,6 +17,7 @@ public abstract class Character {
     protected String surname;
     protected int age;
     protected String nationality;
+    protected String equipe;
     
     public static String getRandomName() {
 		 ArrayList<String> nameArray=new ArrayList<String>(){{
