@@ -25,7 +25,13 @@ public class Manager extends Character {
         System.out.println("select the boost: \n enter 1 to boost attack\n enter 2 to boost middle\n enter 3 to boost defense");
         Scanner choice=new Scanner(System.in);
         String obj = choice.nextLine();
-        int choosenboost=(Integer.parseInt(obj));
-        return (choosenboost);  
+        int choosenBoost=(Integer.parseInt(obj));
+        while ((choosenBoost>3)||(choosenBoost<1)){
+            System.out.println("select the boost: \n enter 1 to boost attack\n enter 2 to boost middle\n enter 3 to boost defense");
+             obj = choice.nextLine();  
+        }
+        return (choosenBoost); 
+        }
+         
     }
-}
+
