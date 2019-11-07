@@ -5,7 +5,6 @@
  */
 package project_football_simulator;
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  *
@@ -59,9 +58,37 @@ public class Team {
             System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number );
             }
         }
-        System.out.println("defence :");
+        System.out.println("defense :");
         for (int g=0;g<15;g++){
             if(this.FullTeam.get(g).favPos=="def"){
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number );
+            }
+        }
+    }
+    public void printTeamOnField(){
+        System.out.println("Players on field:");
+        System.out.println("goalie:"+this.goalie.name+" "+this.goalie.surname);  
+        System.out.println("attack:");
+        for (int g=0;g<11;g++){
+            if((this.players.get(g).favPos=="atk") && (this.players.get(g).card!=2)){
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number );
+            }
+        }
+        System.out.println("middle:");
+        for (int g=0;g<11;g++){
+            if((this.FullTeam.get(g).favPos=="mid") && (this.players.get(g).card!=2)){
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number );
+            }
+        }
+        System.out.println("defense:");
+        for (int g=0;g<11;g++){
+            if((this.FullTeam.get(g).favPos=="def") && (this.players.get(g).card!=2)){
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number );
+            }
+        }
+        System.out.println("Players not playing");
+        for (int g=0;g<15;g++){
+            if(this.FullTeam.get(g).field==false){
             System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number );
             }
         }
