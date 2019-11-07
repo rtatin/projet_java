@@ -17,7 +17,7 @@ public class Player extends OnField implements Fatigue{
     float attack;
     float defense;
     float boostAttack;
-    float boostDefence;
+    float boostDefense;
     String favPos;
     int card;
     
@@ -69,10 +69,10 @@ public class Player extends OnField implements Fatigue{
                 break;
             case "mid":
                 this.boostAttack=this.attack+this.attack*(cont/20);
-                this.boostDefence=this.defense+this.defense*(cont/20);
+                this.boostDefense=this.defense+this.defense*(cont/20);
                 break;
             case "def":
-                this.boostDefence=this.defense+this.defense*(cont/10);
+                this.boostDefense=this.defense+this.defense*(cont/10);
                 break;
             default:
                 break;

@@ -28,7 +28,7 @@ public class Match {
         for(int i=0; i<10;i++){
             Player play=teams[numberTeam].players.get(i);
             if (play.field==true){
-                totalAtk+=play.attack;
+                totalAtk+=play.boostAttack;
             }
         }
         return totalAtk;
@@ -39,7 +39,7 @@ public class Match {
         for(int i=0; i<10;i++){
             Player play=teams[numberTeam].players.get(i);
             if (play.field==true){
-                totalDef+=play.defense;
+                totalDef+=play.boostDefense;
             }
         }
         return totalDef;

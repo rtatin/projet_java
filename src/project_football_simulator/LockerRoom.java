@@ -24,7 +24,7 @@ public class LockerRoom extends Match{
         System.out.println("What players would you like to change?");
         System.out.println("Write stop if you don't want or you're done");
         
-        while (numberPlayer!="stop");
+        while (numberPlayer!="stop"){
             System.out.println("Player to get off the field:");
             Scanner myObj = new Scanner(System.in);
             numberPlayer = myObj.nextLine(); 
@@ -33,10 +33,11 @@ public class LockerRoom extends Match{
                 if(teams[0].players.get(i).number==Integer.parseInt(numberPlayer)){
                     teams[0].players.remove(teams[0].players.get(i));
                 }
-            }
             System.out.println("Player to get on the field:");
             myObj = new Scanner(System.in);
             numberPlayer = myObj.nextLine(); 
             teams[0].players.add(teams[0].FullTeam.get(Integer.parseInt(numberPlayer)));
+            }
+        }
     }
 }
