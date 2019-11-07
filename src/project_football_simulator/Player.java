@@ -78,7 +78,19 @@ public class Player extends OnField implements Fatigue{
                 break;
             }  
         }
+        switch(Tampon.manager.teamManagement()) {
+            case 1:
+                this.boostAttack=this.boostAttack+this.attack*(Tampon.manager.boost/10);
+                break;
+            case 2:
+                this.boostAttack=this.boostAttack+this.attack*(Tampon.manager.boost/20);
+                this.boostDefense=this.boostDefense+this.defense*(Tampon.manager.boost/20);
+                break;
+            case 3:
+                this.boostDefense=this.boostDefense+this.defense*(Tampon.manager.boost/10);
+                break;
+            default:
+                break;
+        }  
     }
-    	
 }
-
