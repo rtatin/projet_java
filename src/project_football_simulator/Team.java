@@ -76,48 +76,49 @@ public class Team {
             default:
                 break;
         }
+        
         printFullTeam();
         System.out.println("Choose your "+defCount+" players in defense:");
-        while (defCount>0){
-            myObj = new Scanner(System.in);
-            String numberPlayer = myObj.nextLine(); 
-            int numPlayer = Integer.parseInt(numberPlayer);
-            boolean alreadyInPlayer=false;
-            for(int i=0;i<players.size();i++){
-                if(players.get(i).number==numPlayer){
-                    alreadyInPlayer=true;
+        int count=0;
+        String pos="";
+        
+        for (int j=0;j<3;j++){
+            switch (j) {
+                case 0:
+                    {
+                        count=defCount;
+                        pos="def";
+                        break;
+                    }
+                case 1:
+                    {
+                        count=midCount;
+                        pos="mid";
+                        break;
+                    }
+                case 2:
+                    {
+                        count=atkCount;
+                        pos="atk";
+                        break;
+                    }
+                default:
+                    break;
+            }
+            
+            while (count>0){
+                myObj = new Scanner(System.in);
+                String numberPlayer = myObj.nextLine(); 
+                int numPlayer = Integer.parseInt(numberPlayer);
+                boolean alreadyInPlayer=false;
+                for(int i=0;i<players.size();i++){
+                    if(players.get(i).number==numPlayer){
+                        alreadyInPlayer=true;
+                    }
                 }
-            }
-            if((alreadyInPlayer==false) && (this.players.get(numPlayer-1).favPos=="def")){
-                players.add(FullTeam.get(Integer.parseInt(numberPlayer)));
-            }
-        }
-        while (midCount>0){
-            myObj = new Scanner(System.in);
-            String numberPlayer = myObj.nextLine(); 
-            int numPlayer = Integer.parseInt(numberPlayer);
-            boolean alreadyInPlayer=false;
-            for(int i=0;i<players.size();i++){
-                if(players.get(i).number==numPlayer){
-                    alreadyInPlayer=true;
+                if((alreadyInPlayer==false) && (this.players.get(numPlayer-1).favPos==pos)){
+                    players.add(FullTeam.get(Integer.parseInt(numberPlayer)));
                 }
-            }
-            if((alreadyInPlayer==false) && (this.players.get(numPlayer-1).favPos=="mid")){
-                players.add(FullTeam.get(Integer.parseInt(numberPlayer)));
-            }
-        }
-        while (atkCount>0){
-            myObj = new Scanner(System.in);
-            String numberPlayer = myObj.nextLine(); 
-            int numPlayer = Integer.parseInt(numberPlayer);
-            boolean alreadyInPlayer=false;
-            for(int i=0;i<players.size();i++){
-                if(players.get(i).number==numPlayer){
-                    alreadyInPlayer=true;
-                }
-            }
-            if((alreadyInPlayer==false) && (this.players.get(numPlayer-1).favPos=="atk")){
-                players.add(FullTeam.get(Integer.parseInt(numberPlayer)));
             }
         }
     }
