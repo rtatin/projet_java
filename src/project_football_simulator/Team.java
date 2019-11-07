@@ -5,6 +5,7 @@
  */
 package project_football_simulator;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -40,6 +41,85 @@ public class Team {
         Goalie goal=new Goalie(true,0,100,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang",(60 + (int)Math.random()* (40 - 0)),this.name);
         this.goalie=goal;
         
+    }
+    
+    public void createPlayingTeam(){
+        System.out.println("Choose the disposition:\n -> 1 for 4-4-2\n -> 2 for 4-3-3\n -> 3 for 5-3-2");
+        Scanner myObj = new Scanner(System.in);
+        String num = myObj.nextLine();
+        int numberChoice=Integer.parseInt(num);
+        int defCount=4;
+        int midCount=4;
+        int atkCount=2;
+        switch (numberChoice) {
+            case 1:
+                {
+                    defCount=4;
+                    midCount=4;
+                    atkCount=2;
+                    break;
+                }
+            case 2:
+                {
+                    defCount=4;
+                    midCount=3;
+                    atkCount=3;
+                    break;
+                }
+            case 3:
+                {
+                    defCount=5;
+                    midCount=3;
+                    atkCount=2;
+                    break;
+                }
+            default:
+                break;
+        }
+        printFullTeam();
+        System.out.println("Choose your "+defCount+" players in defense:");
+        while (defCount>0){
+            myObj = new Scanner(System.in);
+            String numberPlayer = myObj.nextLine(); 
+            int numPlayer = Integer.parseInt(numberPlayer);
+            boolean alreadyInPlayer=false;
+            for(int i=0;i<players.size();i++){
+                if(players.get(i).number==numPlayer){
+                    alreadyInPlayer=true;
+                }
+            }
+            if((alreadyInPlayer==false) && (this.players.get(numPlayer-1).favPos=="def")){
+                players.add(FullTeam.get(Integer.parseInt(numberPlayer)));
+            }
+        }
+        while (midCount>0){
+            myObj = new Scanner(System.in);
+            String numberPlayer = myObj.nextLine(); 
+            int numPlayer = Integer.parseInt(numberPlayer);
+            boolean alreadyInPlayer=false;
+            for(int i=0;i<players.size();i++){
+                if(players.get(i).number==numPlayer){
+                    alreadyInPlayer=true;
+                }
+            }
+            if((alreadyInPlayer==false) && (this.players.get(numPlayer-1).favPos=="mid")){
+                players.add(FullTeam.get(Integer.parseInt(numberPlayer)));
+            }
+        }
+        while (atkCount>0){
+            myObj = new Scanner(System.in);
+            String numberPlayer = myObj.nextLine(); 
+            int numPlayer = Integer.parseInt(numberPlayer);
+            boolean alreadyInPlayer=false;
+            for(int i=0;i<players.size();i++){
+                if(players.get(i).number==numPlayer){
+                    alreadyInPlayer=true;
+                }
+            }
+            if((alreadyInPlayer==false) && (this.players.get(numPlayer-1).favPos=="atk")){
+                players.add(FullTeam.get(Integer.parseInt(numberPlayer)));
+            }
+        }
     }
     public void printFullTeam(){
         System.out.println("teamname :"+this.name);
