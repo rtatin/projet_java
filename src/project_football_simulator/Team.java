@@ -20,25 +20,25 @@ public class Team {
 
     
     public void createFullTeam(){
+        String[] teamNames={"DFC","cftgh","losc"};
+        this.name=teamNames[0];
         ArrayList <Player> newTeam= new <Player>ArrayList();
         for(int i=1;i<6;i++){
-            Player newPlayer=new Player(i,(100 + (int)Math.random()* (100 - 60)),(40 + (int)Math.random()* (40 - 0)),"atk",false,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang");
+            Player newPlayer=new Player(i,(100 + (int)Math.random()* (100 - 60)),(40 + (int)Math.random()* (40 - 0)),"atk",false,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang",this.name);
             newTeam.add(newPlayer);
         }
         for(int i=6;i<11;i++){
-            Player newPlayer=new Player(i,(80 + (int)Math.random()* (80 - 60)),(80 + (int)Math.random()* (80 - 40)),"mid",false,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang");
+            Player newPlayer=new Player(i,(80 + (int)Math.random()* (80 - 60)),(80 + (int)Math.random()* (80 - 40)),"mid",false,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang",this.name);
             newTeam.add(newPlayer);
         }
         for(int i=11;i<16;i++){
-            Player newPlayer=new Player(i,(60 + (int)Math.random()* (40 - 0)),(100 + (int)Math.random()* (100 - 60)),"def",false,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang");
+            Player newPlayer=new Player(i,(60 + (int)Math.random()* (40 - 0)),(100 + (int)Math.random()* (100 - 60)),"def",false,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang",this.name);
             newTeam.add(newPlayer);
         }
         this.FullTeam=newTeam;
-        String[] teamNames={"DFC","cftgh","losc"};
-        this.name=teamNames[0];
-        Manager man=new Manager(5,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (60 - 40),"polonais");
+        Manager man=new Manager(5,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (60 - 40),"polonais",this.name);
         this.manager=man;
-        Goalie goal=new Goalie(true,0,100,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang",(60 + (int)Math.random()* (40 - 0)));
+        Goalie goal=new Goalie(true,0,100,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang",(60 + (int)Math.random()* (40 - 0)),this.name);
         this.goalie=goal;
         
     }

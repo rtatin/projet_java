@@ -16,17 +16,22 @@ public class Player extends OnField implements Fatigue{
     int number;
     float attack;
     float defense;
+    float boostAttack;
+    float boostDefence;
     String favPos;
     int card;
-    public Player(int number,int attack,int defense,String favPos,boolean field,String name,String surname, int age, String nationality){        
+    
+    public Player(int number,int attack,int defense,String favPos,boolean field,String name,String surname, int age, String nationality,String equipe){        
         super.name=name;
         super.surname=surname;
         super.age=age;
         super.nationality=nationality;
+        super.equipe=equipe;
         this.number=number;
         this.attack=attack;
         this.defense=defense;
         this.favPos=favPos;
+        
 
     }
         public void printPlayer(){
@@ -41,6 +46,38 @@ public class Player extends OnField implements Fatigue{
     @Override
     public void fatigue(){
         this.stamina=this.stamina-(10*super.age/20);
+    }
+    
+    
+    public void nationality(Championship championat){
+        Team Tampon = new Team();
+        int cont=0;
+        for(Team var : championat.teams){
+            if(this.equipe==var.name){
+                Tampon=var;
+            }
+        }
+        for (Player var : Tampon.players){
+            if((this.nationality==var.nationality)&&(this.number!=var.number)){
+                cont=cont+1;
+            }
+        }
+        if(cont>1){
+            switch(this.favPos) {
+            case "atk":
+                this.boostAttack=this.attack+this.attack*(cont/10);
+                break;
+            case "mid":
+                this.boostAttack=this.attack+this.attack*(cont/20);
+                this.boostDefence=this.defense+this.defense*(cont/20);
+                break;
+            case "def":
+                this.boostDefence=this.defense+this.defense*(cont/10);
+                break;
+            default:
+                break;
+            }  
+        }
     }
     	
 }
