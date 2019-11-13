@@ -21,6 +21,7 @@ public class Project_football_simulator {
         teamm.createFullTeam();
         
         teamm.createPlayingTeam();
+        teamm.printTeamOnField();
     }
     
 }

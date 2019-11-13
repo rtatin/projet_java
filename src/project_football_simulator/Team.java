@@ -164,6 +164,7 @@ public class Team {
                 }
                 if((alreadyInPlayer==false)&&(this.FullTeam.get(numPlayer-1).favPos==pos)){
                     newPlayer.add(FullTeam.get(numPlayer-1));
+                    FullTeam.get(numPlayer-1).field=true;
                     count--;
                     
                 }
@@ -182,45 +183,46 @@ public class Team {
         System.out.println("attack :");
         for (int g=0;g<15;g++){
             if(this.FullTeam.get(g).favPos=="atk"){
-            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number );
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos );
             }
         }
         System.out.println("middle :");
         for (int g=0;g<15;g++){
             if(this.FullTeam.get(g).favPos=="mid"){
-            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number );
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos );
             }
         }
         System.out.println("defense :");
         for (int g=0;g<15;g++){
             if(this.FullTeam.get(g).favPos=="def"){
-            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number );
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos );
             }
         }
     }
+    
     public void printTeamOnField(){
         System.out.println("Players on field:");
         System.out.println("goalie:"+this.goalie.name+" "+this.goalie.surname);  
         System.out.println("attack:");
-        for (int g=0;g<11;g++){
+        for (int g=0;g<players.size();g++){
             if((this.players.get(g).favPos=="atk") && (this.players.get(g).card!=2)){
-            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number );
+            System.out.println(this.players.get(g).name+" "+this.players.get(g).surname+" "+this.players.get(g).number );
             }
         }
         System.out.println("middle:");
-        for (int g=0;g<11;g++){
-            if((this.FullTeam.get(g).favPos=="mid") && (this.players.get(g).card!=2)){
-            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number );
+        for (int g=0;g<players.size();g++){
+            if((this.players.get(g).favPos=="mid") && (this.players.get(g).card!=2)){
+            System.out.println(this.players.get(g).name+" "+this.players.get(g).surname+" "+this.players.get(g).number );
             }
         }
         System.out.println("defense:");
-        for (int g=0;g<11;g++){
-            if((this.FullTeam.get(g).favPos=="def") && (this.players.get(g).card!=2)){
-            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number );
+        for (int g=0;g<players.size();g++){
+            if((this.players.get(g).favPos=="def") && (this.players.get(g).card!=2)){
+            System.out.println(this.players.get(g).name+" "+this.players.get(g).surname+" "+this.players.get(g).number );
             }
         }
         System.out.println("Players not playing");
-        for (int g=0;g<15;g++){
+        for (int g=0;g<FullTeam.size();g++){
             if(this.FullTeam.get(g).field==false){
             System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number );
             }
