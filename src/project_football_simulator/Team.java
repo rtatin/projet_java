@@ -43,6 +43,7 @@ public class Team {
     }
     
     public void createPlayingTeamBot(){
+        ArrayList <Player> newPlayer=new <Player>ArrayList();
         int numberChoice=(int)Math.random()* (2 - 0);
         int defCount=4;
         int midCount=4;
@@ -73,15 +74,21 @@ public class Team {
                 break;
         }
         
-        for (int j=0;j<defCount;j++){
-            players.add(FullTeam.get(j));
+        for (int j=0;j<atkCount;j++){
+            newPlayer.add(FullTeam.get(j));
+            FullTeam.get(j).field=true;
         }
         for (int j=5;j<midCount+5;j++){
-            players.add(FullTeam.get(j));
+            newPlayer.add(FullTeam.get(j));
+            FullTeam.get(j).field=true;
+
         }
-        for (int j=10;j<atkCount+10;j++){
-            players.add(FullTeam.get(j));
+        for (int j=10;j<defCount+10;j++){
+            newPlayer.add(FullTeam.get(j));
+            FullTeam.get(j).field=true;
+
         }
+        this.players=newPlayer;
     }
     
     public void createPlayingTeam(){

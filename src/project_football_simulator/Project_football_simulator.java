@@ -18,10 +18,10 @@ public class Project_football_simulator {
      */
     public static void main(String[] args) {
         Team teamm = new Team();
-        teamm.createFullTeam();
-        
-        teamm.createPlayingTeam();
-        teamm.printTeamOnField();
+        Team teammm = new Team();
+        teammm.createFullTeam();
+        teammm.createPlayingTeamBot();
+        teammm.printTeamOnField();
     }
     
 }
