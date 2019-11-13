@@ -69,7 +69,6 @@ public class Match {
             for (int j=0;j<10;j++){
                 ref.YellowCard(teams[i].players.get(j));
             }
-        }
-        
+        }    
     }
 }

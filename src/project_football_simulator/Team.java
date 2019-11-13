@@ -40,7 +40,48 @@ public class Team {
         this.manager=man;
         Goalie goal=new Goalie(true,0,100,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang",(60 + (int)Math.random()* (40 - 0)),this.name);
         this.goalie=goal;
+    }
+    
+    public void createPlayingTeamBot(){
+        int numberChoice=(int)Math.random()* (2 - 0);
+        int defCount=4;
+        int midCount=4;
+        int atkCount=2;
+        switch (numberChoice) {
+            case 0:
+                {
+                    defCount=4;
+                    midCount=4;
+                    atkCount=2;
+                    break;
+                }
+            case 1:
+                {
+                    defCount=4;
+                    midCount=3;
+                    atkCount=3;
+                    break;
+                }
+            case 2:
+                {
+                    defCount=5;
+                    midCount=3;
+                    atkCount=2;
+                    break;
+                }
+            default:
+                break;
+        }
         
+        for (int j=0;j<defCount;j++){
+            players.add(FullTeam.get(j));
+        }
+        for (int j=5;j<midCount+5;j++){
+            players.add(FullTeam.get(j));
+        }
+        for (int j=10;j<atkCount+10;j++){
+            players.add(FullTeam.get(j));
+        }
     }
     
     public void createPlayingTeam(){

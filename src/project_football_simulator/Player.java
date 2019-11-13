@@ -34,13 +34,13 @@ public class Player extends OnField implements Fatigue{
         
 
     }
-        public void printPlayer(){
-    System.out.println("nom: "+this.name+" "+this.surname);
-    System.out.println("age: "+this.age);
-    System.out.println("position: "+this.favPos);
-    System.out.println("stat: ");
-    System.out.println("attack: "+this.attack);
-    System.out.println("defence: "+this.defense);
+    public void printPlayer(){
+        System.out.println("nom: "+this.name+" "+this.surname);
+        System.out.println("age: "+this.age);
+        System.out.println("position: "+this.favPos);
+        System.out.println("stat: ");
+        System.out.println("attack: "+this.attack);
+        System.out.println("defence: "+this.defense);
     }
         
     @Override
