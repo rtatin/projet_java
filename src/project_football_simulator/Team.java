@@ -85,6 +85,7 @@ public class Team {
     }
     
     public void createPlayingTeam(){
+        ArrayList <Player> newPlayer=new <Player>ArrayList();
         System.out.println("Choose the disposition:\n -> 1 for 4-4-2\n -> 2 for 4-3-3\n -> 3 for 5-3-2");
         Scanner myObj = new Scanner(System.in);
         String num = myObj.nextLine();
@@ -119,7 +120,7 @@ public class Team {
         }
         
         printFullTeam();
-        System.out.println("Choose your "+defCount+" players in defense:");
+        
         int count=0;
         String pos="";
         
@@ -127,18 +128,22 @@ public class Team {
             switch (j) {
                 case 0:
                     {
+                        System.out.println("Choose your "+defCount+" players in defense:");
                         count=defCount;
                         pos="def";
+                        
                         break;
                     }
                 case 1:
                     {
+                        System.out.println("Choose your "+midCount+" players in mid:");
                         count=midCount;
                         pos="mid";
                         break;
                     }
                 case 2:
                     {
+                        System.out.println("Choose your "+atkCount+" players in atk:");
                         count=atkCount;
                         pos="atk";
                         break;
@@ -152,16 +157,22 @@ public class Team {
                 String numberPlayer = myObj.nextLine(); 
                 int numPlayer = Integer.parseInt(numberPlayer);
                 boolean alreadyInPlayer=false;
-                for(int i=0;i<players.size();i++){
-                    if(players.get(i).number==numPlayer){
+                for(int i=0;i<newPlayer.size();i++){
+                    if(newPlayer.get(i).number==numPlayer){
                         alreadyInPlayer=true;
                     }
                 }
-                if((alreadyInPlayer==false) && (this.players.get(numPlayer-1).favPos==pos)){
-                    players.add(FullTeam.get(Integer.parseInt(numberPlayer)));
+                if((alreadyInPlayer==false)&&(this.FullTeam.get(numPlayer-1).favPos==pos)){
+                    newPlayer.add(FullTeam.get(numPlayer-1));
+                    count--;
+                    
                 }
+                System.out.println(newPlayer);
+                
             }
+            
         }
+        this.players=newPlayer;
     }
     public void printFullTeam(){
         System.out.println("teamname :"+this.name);
