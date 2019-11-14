@@ -18,24 +18,24 @@ public class LockerRoom extends Match{
         this.halfTime=halfTime;
     }
     
-    public static void changePlayers(Team[] teams){
-        teams[0].printTeamOnField();
+    public static void changePlayers(Team[] teams){ //fonction qui permet a l'utilisateur de modifier la composition de son equipe pendant la mi temps
+        teams[0].printTeamOnField(); //l'utilisateur a toujours la premiere equipe
         String numberPlayer="";
         System.out.println("What players would you like to change?");
         System.out.println("Write stop if you don't want or you're done");
         
-        while (numberPlayer!="stop"){
+        while (numberPlayer!="stop"){ //tant que le joueur n'ecrit pas stop
             System.out.println("Player to get off the field:");
             Scanner myObj = new Scanner(System.in);
             numberPlayer = myObj.nextLine(); 
             
             for(int i=0;i<11;i++){
                 if(teams[0].players.get(i).number==Integer.parseInt(numberPlayer)){
-                    teams[0].players.remove(teams[0].players.get(i));
+                    teams[0].players.remove(teams[0].players.get(i)); //si le joueur est dans players on l'enleve
                 }
             System.out.println("Player to get on the field:");
             myObj = new Scanner(System.in);
-            numberPlayer = myObj.nextLine(); 
+            numberPlayer = myObj.nextLine(); //on rajoute un nouveau joueur
             teams[0].players.add(teams[0].FullTeam.get(Integer.parseInt(numberPlayer)));
             }
         }

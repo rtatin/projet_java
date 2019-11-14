@@ -34,7 +34,7 @@ public class Player extends OnField implements Fatigue{
         
 
     }
-    public void printPlayer(){
+    public void printPlayer(){ //permet d'afficher toutes les caractéristiques propres à un joueur
         System.out.println("nom: "+this.name+" "+this.surname);
         System.out.println("age: "+this.age);
         System.out.println("position: "+this.favPos);
@@ -49,10 +49,10 @@ public class Player extends OnField implements Fatigue{
     }
     
     
-    public void nationality(Championship championat){
+    public void nationality(Championship championnat){
         Team Tampon = new Team();
         int cont=0;
-        for(Team var : championat.teams){
+        for(Team var : championnat.teams){
             if(this.equipe==var.name){
                 Tampon=var;
             }
