@@ -79,4 +79,20 @@ public class Match {
         }
         System.out.println(this.score[0]+" "+this.score[1]);
     }
+    
+    public void FullMatch(){
+        for (int i=0;i<2;i++){
+        if(this.teams.get(i).isPlayer==true){
+            this.teams.get(i).manager.teamManagement();
+            }
+        }
+        while(this.time!=45){
+            PlayingMatch();
+            }
+            LockerRoom mitemps=new LockerRoom(this.teams,this.time,this.ref,true);
+
+        while(this.time!=90){
+            PlayingMatch();
+            }
+    }
 }
