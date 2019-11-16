@@ -14,14 +14,23 @@ import java.util.ArrayList;
 public class Project_football_simulator {
 
     /**
-     * @param args the command line arguments
+     * @param args the command line argumentss
      */
     public static void main(String[] args) {
         Team teamm = new Team();
         Team teammm = new Team();
         teammm.createFullTeam();
         teammm.createPlayingTeamBot();
-        teammm.printTeamOnField();
+        teammm.printFullTeam();
+        
+        Referee arbitredemerde=new Referee (2,true,100,"j","p", 40, "français");
+        
+        ArrayList <Team> equipes=new <Team> ArrayList();
+        equipes.add(teamm);
+        equipes.add(teammm);
+        int scoredebut[]={0,0};
+        Match match1 = new Match(equipes,90,scoredebut,arbitredemerde) ;
+        match1.PlayingMatch();
     }
     
 }

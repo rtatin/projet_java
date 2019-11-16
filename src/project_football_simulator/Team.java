@@ -24,21 +24,21 @@ public class Team {
         this.name=teamNames[0];
         ArrayList <Player> newTeam= new <Player>ArrayList(); //on créé une arraylist de joueurs 
         for(int i=1;i<6;i++){ //dans chaque equipe, on cree 5 joueurs en attaques, avec des stats aléatoires qu'on place dans l'arraylist
-            Player newPlayer=new Player(i,(100 + (int)Math.random()* (100 - 60)),(40 + (int)Math.random()* (40 - 0)),"atk",false,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang",this.name);
+            Player newPlayer=new Player(i, (int) (60 + Math.random() * (100 - 60)), (int) (20 + Math.random() * (40 - 0)),"atk",false,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (40 - 16)),Character.getRandomNationality(),this.name);
             newTeam.add(newPlayer);
         }
         for(int i=6;i<11;i++){ //puis 5 milieux de terrain
-            Player newPlayer=new Player(i,(80 + (int)Math.random()* (80 - 60)),(80 + (int)Math.random()* (80 - 40)),"mid",false,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang",this.name);
+            Player newPlayer=new Player(i, (int) (40 + Math.random() * (80 - 40)), (int) (40 + Math.random() * (80 - 40)),"mid",false,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (40 - 16)),Character.getRandomNationality(),this.name);
             newTeam.add(newPlayer);
         }
         for(int i=11;i<16;i++){ //et enfin 5 defenseurs 
-            Player newPlayer=new Player(i,(60 + (int)Math.random()* (40 - 0)),(100 + (int)Math.random()* (100 - 60)),"def",false,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang",this.name);
+            Player newPlayer=new Player(i, (int) (20 + Math.random() * (40 - 0)), (int) (60 + Math.random() * (100 - 60)),"def",false,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (40 - 16)),Character.getRandomNationality(),this.name);
             newTeam.add(newPlayer);
         }
         this.FullTeam=newTeam; //on place le newTeam dans l'array correspondant a l'equipe complete de joueurs
-        Manager man=new Manager(5,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (60 - 40),"polonais",this.name);
+        Manager man=new Manager(5,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (60 - 40)),Character.getRandomNationality(),this.name);
         this.manager=man;
-        Goalie goal=new Goalie(true,0,100,Character.getRandomName(),Character.getRandomSurname(),(int)Math.random()* (40 - 16),"ang",(60 + (int)Math.random()* (40 - 0)),this.name);
+        Goalie goal=new Goalie(true,0,100,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (40 - 16)),Character.getRandomNationality(), (int) (60 + Math.random() * (40 - 0)),this.name);
         this.goalie=goal;
     }
     
@@ -190,19 +190,19 @@ public class Team {
         System.out.println("attack :");
         for (int g=0;g<15;g++){
             if(this.FullTeam.get(g).favPos=="atk"){
-            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos );
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos+" attack stat: "+this.FullTeam.get(g).attack+" defense stat: "+this.FullTeam.get(g).defense );
             }
         }
         System.out.println("middle :");
         for (int g=0;g<15;g++){
             if(this.FullTeam.get(g).favPos=="mid"){
-            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos );
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos+" attack stat: "+this.FullTeam.get(g).attack+" defense stat: "+this.FullTeam.get(g).defense );
             }
         }
         System.out.println("defense :");
         for (int g=0;g<15;g++){
             if(this.FullTeam.get(g).favPos=="def"){
-            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos );
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos+" attack stat: "+this.FullTeam.get(g).attack+" defense stat: "+this.FullTeam.get(g).defense );
             }
         }
     }

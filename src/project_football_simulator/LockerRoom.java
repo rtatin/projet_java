@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package project_football_simulator;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -13,13 +14,13 @@ import java.util.Scanner;
 public class LockerRoom extends Match{
     boolean halfTime;
 
-    public LockerRoom(Team[] teams, int time, int[] score, Referee ref, boolean halfTime) {
-        super(teams, time, score, ref);
+    public LockerRoom(ArrayList <Team> teams, int time, int[] score, Referee ref, boolean halfTime) {
+        super( teams, time, score, ref);
         this.halfTime=halfTime;
     }
     
-    public static void changePlayers(Team[] teams){ //fonction qui permet a l'utilisateur de modifier la composition de son equipe pendant la mi temps
-        teams[0].printTeamOnField(); //l'utilisateur a toujours la premiere equipe
+    public static void changePlayers(ArrayList <Team> teams){ //fonction qui permet a l'utilisateur de modifier la composition de son equipe pendant la mi temps
+        teams.get(0).printTeamOnField(); //l'utilisateur a toujours la premiere equipe
         String numberPlayer="";
         System.out.println("What players would you like to change?");
         System.out.println("Write stop if you don't want or you're done");
@@ -30,13 +31,13 @@ public class LockerRoom extends Match{
             numberPlayer = myObj.nextLine(); 
             
             for(int i=0;i<11;i++){
-                if(teams[0].players.get(i).number==Integer.parseInt(numberPlayer)){
-                    teams[0].players.remove(teams[0].players.get(i)); //si le joueur est dans players on l'enleve
+                if(teams.get(0).players.get(i).number==Integer.parseInt(numberPlayer)){
+                    teams.get(0).players.remove(teams.get(0).players.get(i)); //si le joueur est dans players on l'enleve
                 }
             System.out.println("Player to get on the field:");
             myObj = new Scanner(System.in);
             numberPlayer = myObj.nextLine(); //on rajoute un nouveau joueur
-            teams[0].players.add(teams[0].FullTeam.get(Integer.parseInt(numberPlayer)));
+            teams.get(0).players.add(teams.get(0).FullTeam.get(Integer.parseInt(numberPlayer)));
             }
         }
     }

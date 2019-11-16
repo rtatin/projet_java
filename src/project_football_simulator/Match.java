@@ -5,17 +5,19 @@
  */
 package project_football_simulator;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author rtwam
  */
 public class Match {
-    Team[] teams;
+    ArrayList <Team> teams;
     int time;
     int[] score;
     Referee ref;
     
-    public Match(Team[] teams, int time, int[] score, Referee ref){
+    public Match(ArrayList <Team> teams, int time, int[] score, Referee ref){
         this.teams=teams;
         this.time=time;
         this.score=score;
@@ -25,8 +27,8 @@ public class Match {
     
     public float AtkTeam(int numberTeam){ //retourne l'attaque de l'équipe au complet
         float totalAtk=0;
-        for(int i=0; i<10;i++){
-            Player play=teams[numberTeam].players.get(i);
+        for(int i=0; i<teams.get(numberTeam).players.size();i++){
+            Player play=teams.get(numberTeam).players.get(i);
             if (play.field==true){ //pour tous les joueurs, additionne leur attaque entre eux s'ils sont sur le terrain
                 totalAtk+=play.boostAttack;
             }
@@ -37,7 +39,7 @@ public class Match {
     public float DefTeam(int numberTeam){ //meme fonction mais pour determiner la defense totale
         float totalDef=0;
         for(int i=0; i<10;i++){
-            Player play=teams[numberTeam].players.get(i);
+            Player play=teams.get(numberTeam).players.get(i);
             if (play.field==true){
                 totalDef+=play.boostDefense;
             }
@@ -67,7 +69,7 @@ public class Match {
         increaseScore(atkTeam0, atkTeam1, defTeam0, defTeam1); //on appelle la fonction de changement de score
         for (int i=0;i<2;i++){
             for (int j=0;j<10;j++){
-                ref.YellowCard(teams[i].players.get(j));
+                ref.YellowCard(teams.get(i).players.get(j));
             }
         }    
     }
