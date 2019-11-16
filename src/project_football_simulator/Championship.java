@@ -16,7 +16,6 @@ public class Championship {
     ArrayList<Team> teamsInCompetition;
     ArrayList<Team> teamsEliminated;
     Match[] matchs;
-    int[] results;
     int userTeamChoice;
     
     public void createChampionship(){ 
@@ -27,6 +26,7 @@ public class Championship {
         for(int i=0;i<numberTeams;i++){
             Team team = new Team();
             team.createFullTeam();
+            this.teams.get(i).idTeam=i;
             teams.add(team);
         }
         System.out.println("Type the number of the team you want to play with:\n");

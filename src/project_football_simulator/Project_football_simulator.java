@@ -36,8 +36,8 @@ public class Project_football_simulator {
         equipes.add(teamm);
         equipes.add(teammm);
         
-        Match match1 = new Match(equipes,90,arbitredemerde) ;
-        match1.PlayingMatch();
+        Match match1 = new Match(equipes,0,arbitredemerde) ;
+        match1.FullMatch();
     }
     
 }

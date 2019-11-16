@@ -18,6 +18,7 @@ public class Team {
     ArrayList <Player> players; //correspond aux joueurs qui sont sur le terrain 
     Goalie goalie;
     boolean isPlayer=false;
+    int idTeam;
 
     
     public void createFullTeam(){ //permet de generer une equipe complete de joueurs

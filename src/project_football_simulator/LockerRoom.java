@@ -42,6 +42,7 @@ public class LockerRoom extends Match{
                 teams.get(0).players.add(teams.get(0).FullTeam.get(Integer.parseInt(numberPlayer)));
                     }
                 }
+            teams.get(j).manager.teamManagement();
             }
         }
     }
