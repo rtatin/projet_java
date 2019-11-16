@@ -14,8 +14,8 @@ import java.util.Scanner;
 public class LockerRoom extends Match{
     boolean halfTime;
 
-    public LockerRoom(ArrayList <Team> teams, int time, int[] score, Referee ref, boolean halfTime) {
-        super( teams, time, score, ref);
+    public LockerRoom(ArrayList <Team> teams, int time, Referee ref, boolean halfTime) {
+        super( teams, time, ref);
         this.halfTime=halfTime;
     }
     

@@ -16,8 +16,8 @@ public class Player extends OnField implements Fatigue{
     int number;
     float attack;
     float defense;
-    float boostAttack;
-    float boostDefense;
+    float boostAttack=0;
+    float boostDefense=0;
     String favPos;
     int card;
     
@@ -49,14 +49,11 @@ public class Player extends OnField implements Fatigue{
     }
     
     
-    public void nationality(Championship championnat){
+    public void nationality(Team team){
         Team Tampon = new Team();
         int cont=0;
-        for(Team var : championnat.teams){
-            if(this.equipe==var.name){
-                Tampon=var;
-            }
-        }
+
+        
         for (Player var : Tampon.players){
             if((this.nationality==var.nationality)&&(this.number!=var.number)){
                 cont=cont+1;

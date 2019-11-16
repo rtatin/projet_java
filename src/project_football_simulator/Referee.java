@@ -11,15 +11,8 @@ import java.util.Random;
  */
 public class Referee extends OnField implements Fatigue {
     int severity;
-    public Referee (int severity,boolean field,int stamina,String name,String surname, int age, String nationality){
-        this.severity=severity;
-        super.field=field;
-        super.stamina=stamina;
-        super.name=name;
-        super.surname=surname;
-        super.age=age;
-        super.nationality=nationality;
-    }
+    
+    
     @Override
     public void fatigue(){
         this.stamina=this.stamina-(8*super.age/20);
@@ -30,13 +23,13 @@ public class Referee extends OnField implements Fatigue {
     }
     
     public void generateReferee(){
-        this.severity=(int)Math.random()* (100 - 0);
+        this.severity=(int) (Math.random() * (100 - 0));
         this.field=true;
-        this.stamina=100;
-        this.name=Character.getRandomName();
-        this.surname=Character.getRandomSurname();
-        this.age=(int)Math.random()* (50 - 20);
-        this.nationality=Character.getRandomNationality();
+        super.stamina=100;
+        super.name=Character.getRandomName();
+        super.surname=Character.getRandomSurname();
+        super.age=(int) (20 + Math.random() * 30);
+        super.nationality=Character.getRandomNationality();
     }
     public void YellowCard(Player player){
         if( new Random().nextDouble() <= (1-(this.severity/100)) ) {  

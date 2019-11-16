@@ -14,25 +14,27 @@ import java.util.ArrayList;
 public class Match {
     ArrayList <Team> teams;
     int time;
-    int[] score;
+    int[] score={0,0};
     Referee ref;
     
-    public Match(ArrayList <Team> teams, int time, int[] score, Referee ref){
+    public Match(ArrayList <Team> teams, int time, Referee ref){
         this.teams=teams;
         this.time=time;
-        this.score=score;
         this.ref=ref;
     }
     
     
     public float AtkTeam(int numberTeam){ //retourne l'attaque de l'équipe au complet
         float totalAtk=0;
+        
         for(int i=0; i<teams.get(numberTeam).players.size();i++){
             Player play=teams.get(numberTeam).players.get(i);
             if (play.field==true){ //pour tous les joueurs, additionne leur attaque entre eux s'ils sont sur le terrain
-                totalAtk+=play.boostAttack;
+                totalAtk+=play.attack;
+                 
             }
         }
+        System.out.println(totalAtk);
         return totalAtk;
     }
     
@@ -41,16 +43,18 @@ public class Match {
         for(int i=0; i<10;i++){
             Player play=teams.get(numberTeam).players.get(i);
             if (play.field==true){
-                totalDef+=play.boostDefense;
+                totalDef+=play.defense;
             }
         }
         return totalDef;
     }
+    
     public void increaseScore(float atkTeam0, float atkTeam1, float defTeam0, float defTeam1){ //fonction qui permet de modifier le score
         float ratioAtkDef0=atkTeam0/defTeam1; //on fait un rapport attaque/defense entre les 2 equipes
         float ratioAtkDef1=atkTeam1/defTeam0;
         float scoreTeam0=(float)((float)Math.random()* (0.5 - 0.25)*ratioAtkDef0);
         float scoreTeam1=(float)((float)Math.random()* (0.5 - 0.25)*ratioAtkDef1);
+        
         float rand=(float) ((float)Math.random()* (0.5 - 0.25)); //on cree un random
         if (scoreTeam0>rand){ //si le ratio est superieur, on incremente le score de la premiere equipe
             score[0]++;
@@ -71,6 +75,7 @@ public class Match {
             for (int j=0;j<10;j++){
                 ref.YellowCard(teams.get(i).players.get(j));
             }
-        }    
+        }
+        System.out.println(this.score[0]+" "+this.score[1]);
     }
 }

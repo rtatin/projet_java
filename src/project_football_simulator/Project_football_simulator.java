@@ -19,17 +19,22 @@ public class Project_football_simulator {
     public static void main(String[] args) {
         Team teamm = new Team();
         Team teammm = new Team();
+        teamm.createFullTeam();
+        teamm.createPlayingTeamBot();
+        teamm.printFullTeam();
+        
         teammm.createFullTeam();
         teammm.createPlayingTeamBot();
         teammm.printFullTeam();
         
-        Referee arbitredemerde=new Referee (2,true,100,"j","p", 40, "français");
-        
+        Referee arbitredemerde=new Referee();
+        arbitredemerde.generateReferee();
+       
         ArrayList <Team> equipes=new <Team> ArrayList();
         equipes.add(teamm);
         equipes.add(teammm);
-        int scoredebut[]={0,0};
-        Match match1 = new Match(equipes,90,scoredebut,arbitredemerde) ;
+        
+        Match match1 = new Match(equipes,90,arbitredemerde) ;
         match1.PlayingMatch();
     }
     
