@@ -5,6 +5,7 @@
  */
 package project_football_simulator;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -16,13 +17,26 @@ public class Championship {
     ArrayList<Team> teamsEliminated;
     Match[] matchs;
     int[] results;
+    int userTeamChoice;
     
     public void createChampionship(){ 
-        for(int i=0;i<4;i++){
+        Scanner obj = new Scanner(System.in);
+        String numT = obj.nextLine();
+        int numberTeams=Integer.parseInt(numT);
+        System.out.println("Number of teams in competition? Type 4,8 or 16\n");
+        for(int i=0;i<numberTeams;i++){
             Team team = new Team();
             team.createFullTeam();
             teams.add(team);
         }
+        System.out.println("Type the number of the team you want to play with:\n");
+        for(int i=0;i<teams.size();i++){
+            System.out.println("Number "+i+":"+teams.get(i).name+"\n");
+        }
+        Scanner myObj = new Scanner(System.in);
+        String num = myObj.nextLine();
+        int numberChoice=Integer.parseInt(num);
+        
     }
     
 }
