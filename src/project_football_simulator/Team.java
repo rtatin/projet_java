@@ -235,6 +235,35 @@ public class Team {
             }
         }
     }
-       
-    
-}
+    public void nationality(){
+        int cont=0;
+
+        
+        for (int i=0;i<this.players.size();i++){
+            Player play=this.players.get(i);
+            for (int g=0;g<this.players.size();g++){
+            
+            if((play.nationality==this.players.get(g).nationality)&&(play.number!=this.players.get(g).number)&&(play.field==true)){
+                cont=cont+1;
+            }
+            if(cont>1){
+            switch(play.favPos) {
+            case "atk":
+                play.boostAttack=play.attack+play.attack*(cont/10);
+                break;
+            case "mid":
+                play.boostAttack=play.attack+play.attack*(cont/20);
+                play.boostDefense=play.defense+play.defense*(cont/20);
+                break;
+            case "def":
+                play.boostDefense=play.defense+play.defense*(cont/10);
+                break;
+            default:
+                break;
+            }  
+        }
+       }
+      }  
+    }
+  }
+

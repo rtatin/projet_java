@@ -22,10 +22,12 @@ public class Project_football_simulator {
         teamm.createFullTeam();
         teamm.createPlayingTeamBot();
         teamm.printFullTeam();
+        teamm.nationality();
         
         teammm.createFullTeam();
         teammm.createPlayingTeamBot();
         teammm.printFullTeam();
+        teammm.nationality();
         
         Referee arbitredemerde=new Referee();
         arbitredemerde.generateReferee();

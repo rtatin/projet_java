@@ -30,9 +30,10 @@ public class Match {
         for(int i=0; i<teams.get(numberTeam).players.size();i++){
             Player play=teams.get(numberTeam).players.get(i);
             if (play.field==true){ //pour tous les joueurs, additionne leur attaque entre eux s'ils sont sur le terrain
-                totalAtk+=play.attack;
+                totalAtk+=play.boostAttack;
                  
             }
+            
         }
         System.out.println(totalAtk);
         return totalAtk;
@@ -43,7 +44,7 @@ public class Match {
         for(int i=0; i<10;i++){
             Player play=teams.get(numberTeam).players.get(i);
             if (play.field==true){
-                totalDef+=play.defense;
+                totalDef+=play.boostDefense;
             }
         }
         return totalDef;

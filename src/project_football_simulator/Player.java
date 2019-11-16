@@ -49,45 +49,4 @@ public class Player extends OnField implements Fatigue{
     }
     
     
-    public void nationality(Team team){
-        Team Tampon = new Team();
-        int cont=0;
-
-        
-        for (Player var : Tampon.players){
-            if((this.nationality==var.nationality)&&(this.number!=var.number)){
-                cont=cont+1;
-            }
-        }
-        if(cont>1){
-            switch(this.favPos) {
-            case "atk":
-                this.boostAttack=this.attack+this.attack*(cont/10);
-                break;
-            case "mid":
-                this.boostAttack=this.attack+this.attack*(cont/20);
-                this.boostDefense=this.defense+this.defense*(cont/20);
-                break;
-            case "def":
-                this.boostDefense=this.defense+this.defense*(cont/10);
-                break;
-            default:
-                break;
-            }  
-        }
-        switch(Tampon.manager.teamManagement()) {
-            case 1:
-                this.boostAttack=this.boostAttack+this.attack*(Tampon.manager.boost/10);
-                break;
-            case 2:
-                this.boostAttack=this.boostAttack+this.attack*(Tampon.manager.boost/20);
-                this.boostDefense=this.boostDefense+this.defense*(Tampon.manager.boost/20);
-                break;
-            case 3:
-                this.boostDefense=this.boostDefense+this.defense*(Tampon.manager.boost/10);
-                break;
-            default:
-                break;
-        }  
-    }
 }
