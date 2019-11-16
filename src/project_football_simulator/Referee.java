@@ -29,6 +29,15 @@ public class Referee extends OnField implements Fatigue {
         this.severity=this.severity+((100-this.stamina)/100);
     }
     
+    public void generateReferee(){
+        this.severity=(int)Math.random()* (100 - 0);
+        this.field=true;
+        this.stamina=100;
+        this.name=Character.getRandomName();
+        this.surname=Character.getRandomSurname();
+        this.age=(int)Math.random()* (50 - 20);
+        this.nationality=Character.getRandomNationality();
+    }
     public void YellowCard(Player player){
         if( new Random().nextDouble() <= (1-(this.severity/100)) ) {  
             if(player.card==1){

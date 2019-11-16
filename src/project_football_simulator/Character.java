@@ -75,5 +75,21 @@ public abstract class Character {
 		String surname = surnameArray.get(new Random().nextInt(surnameArray.size()));
 		return surname;
 	}
-    
+        public static String getRandomNationality() {
+        ArrayList<String> nationalityArray=new ArrayList<String>(){{
+        add("fra");
+        add("eng");
+        add("irl");
+        add("ita");
+        add("esp");
+        add("por");
+        add("sui");
+        add("all");
+        add("pol");
+        }}; 
+ 
+        // Get Random Company Name from Arraylist using Random().nextInt()
+        String nat = nationalityArray.get(new Random().nextInt(nationalityArray.size()));
+        return nat;
+	}
 }
