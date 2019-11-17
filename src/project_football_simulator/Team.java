@@ -270,7 +270,14 @@ public class Team {
         }  
     }
     public void boostTeam(){
-        int choice = this.manager.teamManagement();
+        int choice=0;
+        if(this.isPlayer==true){
+            choice = this.manager.teamManagement();
+        }
+        else{
+            choice= (int) (1 + Math.random() * 2);
+        }
+        
         for (int i=0;i<this.players.size();i++){            
             switch(choice) {
                 case 1:

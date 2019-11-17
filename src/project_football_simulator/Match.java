@@ -181,8 +181,8 @@ public class Match {
         float deff2;
         int i=this.teams.get(0).players.size()-1;
         while((this.scorePenalties[0]<5 && this.scorePenalties[1]<5)){
-                atck1=this.teams.get(0).players.get(i).attack;
-                atck2=this.teams.get(1).players.get(i).attack;
+                atck1=this.teams.get(0).players.get(i).boostAttack;
+                atck2=this.teams.get(1).players.get(i).boostAttack;
                 deff1=this.teams.get(0).goalie.skill;
                 deff2=this.teams.get(1).goalie.skill;
                 float scoreTeam0=(float)((float)Math.random()* (0.75)*(atck1/deff2));
