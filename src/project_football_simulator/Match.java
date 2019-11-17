@@ -88,6 +88,7 @@ public class Match {
         for (int i=0;i<2;i++){
         if(this.teams.get(i).isPlayer==true){
             this.teams.get(i).manager.teamManagement();
+            System.out.println("ghvfgesvd");
             }
         }
         while(this.time!=45){
@@ -109,8 +110,12 @@ public class Match {
             System.out.println(this.time+"min de match");
             }
         System.out.println("End of first half-time between "+this.teams.get(0).name+" and "+this.teams.get(1).name);
-        LockerRoom halfTime=new LockerRoom(this.teams,this.time,this.ref,true);
-        halfTime.choiceUser();
+        for (int i=0;i<2;i++){
+            if(teams.get(i).isPlayer==true ){
+            LockerRoom halfTime=new LockerRoom(this.teams,this.time,this.ref,true);
+            halfTime.choiceUser();
+            }
+        }
         System.out.println("End of half-time between "+this.teams.get(0).name+" and "+this.teams.get(1).name);
         while(this.time!=90){
             for (int i=0;i<2;i++){

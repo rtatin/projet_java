@@ -24,8 +24,8 @@ public class Team {
 
     
     public void createFullTeam(){ //permet de generer une equipe complete de joueurs
-        String[] teamNames={"DFC","cftgh","losc"};
-        this.name=teamNames[0];
+        
+        this.name=this.getRandomNameTeam();
         ArrayList <Player> newTeam= new <Player>ArrayList(); //on créé une arraylist de joueurs 
         for(int i=1;i<6;i++){ //dans chaque equipe, on cree 5 joueurs en attaques, avec des stats aléatoires qu'on place dans l'arraylist
             Player newPlayer=new Player(i, (int) (60 + Math.random() * (100 - 60)), (int) (20 + Math.random() * (40 - 0)),"atk",false,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (40 - 16)),Character.getRandomNationality(),this.name);
@@ -288,8 +288,6 @@ public class Team {
             }
         }
        }
-      }  
-    }
     
     public static String getRandomNameTeam() {
 		 ArrayList<String> nameArray=new ArrayList<String>(){{

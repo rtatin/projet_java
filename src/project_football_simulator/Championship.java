@@ -47,17 +47,32 @@ public class Championship {
     }
     
     public void playChampionship(){
+        
         int g=0;
         for(int i=0;i<this.teams.size();i++){
             this.teamsInCompetition.add(this.teams.get(i));
+            if(this.teams.get(i).isPlayer==false){
+            this.teams.get(i).createPlayingTeamBot();
+            }
         }
-        while(this.teamsInCompetition.size()==1){
-            while(g>this.teamsInCompetition.size()){
+        while(this.teamsInCompetition.size()!=1){
+            System.out.println("equipe encore en competition");
+            for(int i=0;i<this.teamsInCompetition.size();i++){
+            System.out.println(teamsInCompetition.get(i).name);
+            }
+            while(g<this.teamsInCompetition.size()){
             ArrayList <Team> equipes=new <Team> ArrayList();
             equipes.add(this.teamsInCompetition.get(g));
             equipes.add(this.teamsInCompetition.get(g+1));
             Referee arbitre=new Referee();
             Match match1 = new Match(equipes,arbitre);
+                for (int i=0;i<2;i++){
+                if(match1.teams.get(i).isPlayer==true ){
+                match1.teams.get(i).createPlayingTeam();
+                
+                }
+            }
+            match1.FullMatch();
             g++;
             g++;
             }
