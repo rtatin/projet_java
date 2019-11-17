@@ -88,7 +88,6 @@ public class Match {
         for (int i=0;i<2;i++){
         if(this.teams.get(i).isPlayer==true){
             this.teams.get(i).manager.teamManagement();
-            System.out.println("ghvfgesvd");
             }
         }
         while(this.time!=45){
@@ -183,7 +182,7 @@ public class Match {
         int i=this.teams.get(0).players.size()-1;
         while((this.scorePenalties[0]<5 && this.scorePenalties[1]<5)){
                 atck1=this.teams.get(0).players.get(i).attack;
-                atck2=this.teams.get(1).players.get(i).boostAttack;
+                atck2=this.teams.get(1).players.get(i).attack;
                 deff1=this.teams.get(0).goalie.skill;
                 deff2=this.teams.get(1).goalie.skill;
                 float scoreTeam0=(float)((float)Math.random()* (0.75)*(atck1/deff2));

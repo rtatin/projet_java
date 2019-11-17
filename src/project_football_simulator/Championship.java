@@ -55,12 +55,15 @@ public class Championship {
             this.teams.get(i).createPlayingTeamBot();
             }
         }
-        while(this.teamsInCompetition.size()!=1){
-            System.out.println("equipe encore en competition");
-            for(int i=0;i<this.teamsInCompetition.size();i++){
-            System.out.println(teamsInCompetition.get(i).name);
-            }
+        while(this.teamsInCompetition.size()>1){
+            
             while(g<this.teamsInCompetition.size()){
+//                    System.out.println("equipe encore en competition");
+//                    for(int j=0;j<this.teamsInCompetition.size();j++){
+//                    System.out.println(teamsInCompetition.get(j).name);
+//                    System.out.println(teamsInCompetition.get(j).loose);
+//                    //System.out.println("j="+j);
+//                    }
             ArrayList <Team> equipes=new <Team> ArrayList();
             equipes.add(this.teamsInCompetition.get(g));
             equipes.add(this.teamsInCompetition.get(g+1));
@@ -76,15 +79,33 @@ public class Championship {
             g++;
             g++;
             }
-            for(int i=0;i<this.teamsInCompetition.size();i++){
-                if(this.teams.get(i).loose==true){
-                this.teamsEliminated.add(this.teams.get(i));
-                this.teamsInCompetition.remove(this.teams.get(i));
-                System.out.println(this.teamsInCompetition.size());
+            int tampon=this.teamsInCompetition.size();
+//            for (Team var : teamsInCompetition){
+//                System.out.println("azertyu");
+//                if(var.loose==true){
+//                    this.teamsEliminated.add(var);
+//                    System.out.println("gxrg");
+//                    this.teamsInCompetition.remove(var);
+//                    System.out.println("gxrgghg");
+//                    System.out.println(this.teamsInCompetition.size());
+//                }
+//                System.out.println("gxrg");
+//            } 
+            
+            for(int i=0;i<tampon;i++)//probleme la
+            {
+                System.out.println("i="+i);
+                if(this.teamsInCompetition.get(i).loose==true){
+                    System.out.println("remove "+teamsInCompetition.get(i).players.get(0).boostAttack);
+                    this.teamsEliminated.add(this.teamsInCompetition.get(i));
+                    this.teamsInCompetition.remove(this.teamsInCompetition.get(i));
+                    i=0;
+                    tampon=this.teamsInCompetition.size();
+                    System.out.println(this.teamsInCompetition.size()+"\n");
                 }
-        }
+            }
+        
         g=0;
-    
         } 
         System.out.println("victoire de "+ this.teamsInCompetition.get(0).name);
     }
