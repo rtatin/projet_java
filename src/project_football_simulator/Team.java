@@ -5,6 +5,7 @@
  */
 package project_football_simulator;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -18,6 +19,7 @@ public class Team {
     ArrayList <Player> players; //correspond aux joueurs qui sont sur le terrain 
     Goalie goalie;
     boolean isPlayer=false;
+    boolean loose=false;
     int idTeam;
 
     
@@ -192,19 +194,19 @@ public class Team {
         System.out.println("attack :");
         for (int g=0;g<15;g++){
             if(this.FullTeam.get(g).favPos=="atk"){
-            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos+" attack stat: "+this.FullTeam.get(g).attack+" defense stat: "+this.FullTeam.get(g).defense );
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos+"nationality :"+this.FullTeam.get(g).nationality+"\n attack stat: "+this.FullTeam.get(g).attack+" defense stat: "+this.FullTeam.get(g).defense+" stamina :"+this.FullTeam.get(g).stamina+"\n" );
             }
         }
         System.out.println("middle :");
         for (int g=0;g<15;g++){
             if(this.FullTeam.get(g).favPos=="mid"){
-            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos+" attack stat: "+this.FullTeam.get(g).attack+" defense stat: "+this.FullTeam.get(g).defense );
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos+"nationality :"+this.FullTeam.get(g).nationality+"\n attack stat: "+this.FullTeam.get(g).attack+" defense stat: "+this.FullTeam.get(g).defense+" stamina :"+this.FullTeam.get(g).stamina+"\n"  );
             }
         }
         System.out.println("defense :");
         for (int g=0;g<15;g++){
             if(this.FullTeam.get(g).favPos=="def"){
-            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos+" attack stat: "+this.FullTeam.get(g).attack+" defense stat: "+this.FullTeam.get(g).defense );
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos+"nationality :"+this.FullTeam.get(g).nationality+"\n attack stat: "+this.FullTeam.get(g).attack+" defense stat: "+this.FullTeam.get(g).defense+" stamina :"+this.FullTeam.get(g).stamina+"\n"  );
             }
         }
     }
@@ -215,19 +217,19 @@ public class Team {
         System.out.println("attack:");
         for (int g=0;g<players.size();g++){
             if((this.players.get(g).favPos=="atk") && (this.players.get(g).card!=2)){ //affiche le joueur seulement si la position est la bonne et qu'il n'a pas de carton rouge
-            System.out.println(this.players.get(g).name+" "+this.players.get(g).surname+" "+this.players.get(g).number );
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos+"nationality :"+this.FullTeam.get(g).nationality+"\n attack stat: "+this.FullTeam.get(g).boostAttack+" defense stat: "+this.FullTeam.get(g).boostDefense+" stamina :"+this.FullTeam.get(g).stamina+"\n"  );
             }
         }
         System.out.println("middle:");
         for (int g=0;g<players.size();g++){
             if((this.players.get(g).favPos=="mid") && (this.players.get(g).card!=2)){
-            System.out.println(this.players.get(g).name+" "+this.players.get(g).surname+" "+this.players.get(g).number );
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos+"nationality :"+this.FullTeam.get(g).nationality+"\n attack stat: "+this.FullTeam.get(g).boostAttack+" defense stat: "+this.FullTeam.get(g).boostDefense+" stamina :"+this.FullTeam.get(g).stamina+"\n"  );
             }
         }
         System.out.println("defense:");
         for (int g=0;g<players.size();g++){
             if((this.players.get(g).favPos=="def") && (this.players.get(g).card!=2)){
-            System.out.println(this.players.get(g).name+" "+this.players.get(g).surname+" "+this.players.get(g).number );
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos+"nationality :"+this.FullTeam.get(g).nationality+"\n attack stat: "+this.FullTeam.get(g).boostAttack+" defense stat: "+this.FullTeam.get(g).boostDefense+" stamina :"+this.FullTeam.get(g).stamina+"\n"  );
             }
         }
         System.out.println("Players not playing");
@@ -285,6 +287,37 @@ public class Team {
                     break;
             }
         }
-    } 
-}
+       }
+      }  
+    }
+    
+    public static String getRandomNameTeam() {
+		 ArrayList<String> nameArray=new ArrayList<String>(){{
+        add("Amiens");
+        add("Angers");
+        add("Bordeaux");
+        add("Brest");
+        add("Lille");
+        add("Lyon");
+        add("Marseille");
+        add("Metz");
+        add("Monaco");
+        add("Montpellier");
+        add("Nantes");
+        add("Nice");
+        add("Paris-SG");
+        add("Nîmes");
+        add("Reims");
+        add("Rennes");
+        add("Bertrand");
+        add("Saint-Étienne");
+        add("Strasbourg");
+        add("Toulouse");
+        }}; 
+                 	// Get Random Company Name from Arraylist using Random().nextInt()
+		String name = nameArray.get(new Random().nextInt(nameArray.size()));
+		return name;
+	}
+ }
+
 

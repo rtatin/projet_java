@@ -18,6 +18,8 @@ public class Player extends OnField implements Fatigue{
     float defense;
     float boostAttack=0;
     float boostDefense=0;
+     float boostAttackCoach=0;
+    float boostDefenseCoach=0;
     String favPos;
     int card;
     

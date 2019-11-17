@@ -17,27 +17,15 @@ public class Project_football_simulator {
      * @param args the command line argumentss
      */
     public static void main(String[] args) {
-        Team teamm = new Team();
-        Team teammm = new Team();
-        teamm.createFullTeam();
-        teamm.createPlayingTeamBot();
-        teamm.printFullTeam();
-        teamm.nationality();
+
         
-        teammm.createFullTeam();
-        teammm.createPlayingTeamBot();
-        teammm.printFullTeam();
-        teammm.nationality();
+        ArrayList<Team> teams= new <Team>ArrayList();
+        ArrayList<Team> teamsInCompetition= new <Team>ArrayList();
+        ArrayList<Team> teamsEliminated= new <Team>ArrayList();
         
-        Referee arbitredemerde=new Referee();
-        arbitredemerde.generateReferee();
-       
-        ArrayList <Team> equipes=new <Team> ArrayList();
-        equipes.add(teamm);
-        equipes.add(teammm);
-        
-        Match match1 = new Match(equipes,0,arbitredemerde) ;
-        match1.FullMatch();
+        Championship coupe=new Championship(teams,teamsInCompetition,teamsEliminated);
+        coupe.createChampionship();
+        coupe.playChampionship();
     }
     
 }

@@ -15,7 +15,7 @@ public class LockerRoom extends Match{
     boolean halfTime;
 
     public LockerRoom(ArrayList <Team> teams, int time, Referee ref, boolean halfTime) {
-        super( teams, time, ref);
+        super( teams, ref);
         this.halfTime=halfTime;
     }
     

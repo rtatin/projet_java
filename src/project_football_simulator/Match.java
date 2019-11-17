@@ -15,14 +15,13 @@ import java.util.Scanner;
  */
 public class Match {
     ArrayList <Team> teams;
-    int time;
+    int time=0;
     int[] score={0,0};
     int[] scorePenalties={0,0};
     Referee ref;
     
-    public Match(ArrayList <Team> teams, int time, Referee ref){
+    public Match(ArrayList <Team> teams, Referee ref){
         this.teams=teams;
-        this.time=time;
         this.ref=ref;
     }
     
@@ -78,6 +77,7 @@ public class Match {
         for (int i=0;i<2;i++){
             for (int j=0;j<10;j++){
                 ref.YellowCard(teams.get(i).players.get(j));
+                teams.get(i).players.get(j).fatigue();
             }
         }
         System.out.println(this.score[0]+" "+this.score[1]);
@@ -149,17 +149,21 @@ public class Match {
             }
             if(this.score[0]>this.score[1]) {
                 System.out.println("victoire de "+this.teams.get(0).name+"score"+this.score[0]+":"+this.score[1] );
+                this.teams.get(1).loose=true;
             return (this.teams.get(0).idTeam);}
             if(this.score[1]>this.score[0]){
                 System.out.println("victoire de "+this.teams.get(1).name+"score"+this.score[0]+":"+this.score[1] );
+                this.teams.get(0).loose=true;
             return (this.teams.get(1).idTeam);}
             if(this.score[0]==this.score[1]) {
                 penalties();
                 if(this.scorePenalties[0]>this.scorePenalties[1]) {
                 System.out.println("victoire de "+this.teams.get(0).name+"score penalty"+this.scorePenalties[0]+":"+this.scorePenalties[1] );
+                this.teams.get(1).loose=true;
                 return (this.teams.get(0).idTeam);}
                 if(this.scorePenalties[1]>this.scorePenalties[0]){
                     System.out.println("victoire de "+this.teams.get(1).name+"score penalty"+this.scorePenalties[0]+":"+this.scorePenalties[1] );
+                    this.teams.get(0).loose=true;
                 return (this.teams.get(1).idTeam);}
             }
         }
