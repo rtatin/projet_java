@@ -18,11 +18,12 @@ public class Championship {
     Match[] matchs;
     int userTeamChoice;
     
+    
     public void createChampionship(){ 
+        System.out.println("Number of teams in competition? Type 4,8 or 16\n");
         Scanner obj = new Scanner(System.in);
         String numT = obj.nextLine();
         int numberTeams=Integer.parseInt(numT);
-        System.out.println("Number of teams in competition? Type 4,8 or 16\n");
         for(int i=0;i<numberTeams;i++){
             Team team = new Team();
             team.createFullTeam();
@@ -36,6 +37,7 @@ public class Championship {
         Scanner myObj = new Scanner(System.in);
         String num = myObj.nextLine();
         int numberChoice=Integer.parseInt(num);
+        teams.get(numberTeams).isPlayer=true;
         
     }
     

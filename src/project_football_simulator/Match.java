@@ -5,7 +5,9 @@
  */
 package project_football_simulator;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -89,6 +91,20 @@ public class Match {
             }
         }
         while(this.time!=45){
+            for (int i=0;i<2;i++){
+                if(this.teams.get(i).isPlayer==true){
+                    System.out.println("Click enter to continue");
+                    char c;
+                    try{
+                        c = (char)System.in.read();
+                    }
+                     catch(IOException ioe){
+                       System.out.println("Error, click on enter to continue");
+                       return;
+                    }
+                }      
+            }
+          
             PlayingMatch();
             System.out.println(this.time+"min de match");
             }
@@ -96,6 +112,19 @@ public class Match {
             LockerRoom mitemps=new LockerRoom(this.teams,this.time,this.ref,true);
         System.out.println("debut de la deuxieme mi-temps entre "+this.teams.get(0).name+" et "+this.teams.get(1).name);
         while(this.time!=90){
+            for (int i=0;i<2;i++){
+                if(this.teams.get(i).isPlayer==true){
+                    System.out.println("Click enter to continue");
+                    char c;
+                    try{
+                        c = (char)System.in.read();
+                    }
+                     catch(IOException ioe){
+                       System.out.println("Error, click on enter to continue");
+                       return;
+                    }
+                }      
+            }
             PlayingMatch();
             System.out.println(this.time+"min de match");
             }
