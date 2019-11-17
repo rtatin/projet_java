@@ -108,9 +108,10 @@ public class Match {
             PlayingMatch();
             System.out.println(this.time+"min de match");
             }
-        System.out.println("fin de la premiere mi-temps entre "+this.teams.get(0).name+" et "+this.teams.get(1).name);
-            LockerRoom mitemps=new LockerRoom(this.teams,this.time,this.ref,true);
-        System.out.println("debut de la deuxieme mi-temps entre "+this.teams.get(0).name+" et "+this.teams.get(1).name);
+        System.out.println("End of first half-time between "+this.teams.get(0).name+" and "+this.teams.get(1).name);
+        LockerRoom halfTime=new LockerRoom(this.teams,this.time,this.ref,true);
+        halfTime.choiceUser();
+        System.out.println("End of half-time between "+this.teams.get(0).name+" and "+this.teams.get(1).name);
         while(this.time!=90){
             for (int i=0;i<2;i++){
                 if(this.teams.get(i).isPlayer==true){

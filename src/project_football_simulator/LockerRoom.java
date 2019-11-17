@@ -19,30 +19,53 @@ public class LockerRoom extends Match{
         this.halfTime=halfTime;
     }
     
-    public static void changePlayers(ArrayList <Team> teams){ //fonction qui permet a l'utilisateur de modifier la composition de son equipe pendant la mi temps
-        for (int j=0;j<2;j++){
-            if(teams.get(j).isPlayer==true){
-            teams.get(j).printTeamOnField(); //l'utilisateur a toujours la premiere equipe
-            String numberPlayer="";
-            System.out.println("What players would you like to change?");
-            System.out.println("Write stop if you don't want or you're done");
+    public void choiceUser(){
+        boolean half=true;
+        while (half==true){
+            System.out.println("What do you want to do?\n-> Type 1 to change your players\n-> Type 2 to change the boost of the coach\n-> Type 3 to get back on field");
+            Scanner obj = new Scanner(System.in);
+            String num = obj.nextLine();
+            int choice=Integer.parseInt(num);
+            switch (choice) {
+                case 1:
+                    for(int i=0;i<2;i++){
+                        if(teams.get(i).isPlayer==true){
+                            changePlayers(teams.get(i));
+                        }
+                    }   break;
+                case 2:
+                    for(int i=0;i<2;i++){
+                        if(teams.get(i).isPlayer==false){
+                            teams.get(i).boostTeam();
+                        }
+                    }   break;
+                case 3:
+                    half=false;
+                    break;
+            }
+        }
+    }
+    
+    public static void changePlayers(Team team){ //fonction qui permet a l'utilisateur de modifier la composition de son equipe pendant la mi temps
 
-            while (numberPlayer!="stop"){ //tant que le joueur n'ecrit pas stop
-                System.out.println("Player to get off the field:");
-                Scanner myObj = new Scanner(System.in);
-                numberPlayer = myObj.nextLine(); 
+        team.printTeamOnField(); //l'utilisateur a toujours la premiere equipe
+        String numberPlayer="";
+        System.out.println("What players would you like to change?");
+        System.out.println("Write stop if you don't want or you're done");
 
-                for(int i=0;i<11;i++){
-                    if(teams.get(0).players.get(i).number==Integer.parseInt(numberPlayer)){
-                        teams.get(0).players.remove(teams.get(0).players.get(i)); //si le joueur est dans players on l'enleve
-                    }
-                System.out.println("Player to get on the field:");
-                myObj = new Scanner(System.in);
-                numberPlayer = myObj.nextLine(); //on rajoute un nouveau joueur
-                teams.get(0).players.add(teams.get(0).FullTeam.get(Integer.parseInt(numberPlayer)));
-                    }
+        while (numberPlayer!="stop"){ //tant que le joueur n'ecrit pas stop
+            System.out.println("Player to get off the field:");
+            Scanner myObj = new Scanner(System.in);
+            numberPlayer = myObj.nextLine(); 
+
+            for(int i=0;i<11;i++){
+                if(team.players.get(i).number==Integer.parseInt(numberPlayer)){
+                    team.players.remove(team.players.get(i)); //si le joueur est dans players on l'enleve
                 }
-            teams.get(j).manager.teamManagement();
+            System.out.println("Player to get on the field:");
+            myObj = new Scanner(System.in);
+            numberPlayer = myObj.nextLine(); //on rajoute un nouveau joueur
+            team.players.add(team.FullTeam.get(Integer.parseInt(numberPlayer)));
             }
         }
     }

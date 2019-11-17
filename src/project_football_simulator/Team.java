@@ -245,27 +245,46 @@ public class Team {
             Player play=this.players.get(i);
             for (int g=0;g<this.players.size();g++){
             
-            if((play.nationality==this.players.get(g).nationality)&&(play.number!=this.players.get(g).number)&&(play.field==true)){
-                cont=cont+1;
+                if((play.nationality==this.players.get(g).nationality)&&(play.number!=this.players.get(g).number)&&(play.field==true)){
+                    cont=cont+1;
+                }
+                if(cont>1){
+                    switch(play.favPos) {
+                    case "atk":
+                        play.boostAttack=play.attack+play.attack*(cont/10);
+                        break;
+                    case "mid":
+                        play.boostAttack=play.attack+play.attack*(cont/20);
+                        play.boostDefense=play.defense+play.defense*(cont/20);
+                        break;
+                    case "def":
+                        play.boostDefense=play.defense+play.defense*(cont/10);
+                        break;
+                    default:
+                        break;
+                    }  
+                }
             }
-            if(cont>1){
-            switch(play.favPos) {
-            case "atk":
-                play.boostAttack=play.attack+play.attack*(cont/10);
-                break;
-            case "mid":
-                play.boostAttack=play.attack+play.attack*(cont/20);
-                play.boostDefense=play.defense+play.defense*(cont/20);
-                break;
-            case "def":
-                play.boostDefense=play.defense+play.defense*(cont/10);
-                break;
-            default:
-                break;
-            }  
-        }
-       }
-      }  
+        }  
     }
-  }
+    public void boostTeam(){
+        int choice = this.manager.teamManagement();
+        for (int i=0;i<this.players.size();i++){            
+            switch(choice) {
+                case 1:
+                    this.players.get(i).boostAttack=this.players.get(i).boostAttack+this.players.get(i).attack*(this.manager.boost/10);
+                    break;
+                case 2:
+                    this.players.get(i).boostAttack=this.players.get(i).boostAttack+this.players.get(i).attack*(this.manager.boost/20);
+                    this.players.get(i).boostDefense=this.players.get(i).boostDefense+this.players.get(i).defense*(this.manager.boost/20);
+                    break;
+                case 3:
+                    this.players.get(i).boostDefense=this.players.get(i).boostDefense+this.players.get(i).defense*(this.manager.boost/10);
+                    break;
+                default:
+                    break;
+            }
+        }
+    } 
+}
 

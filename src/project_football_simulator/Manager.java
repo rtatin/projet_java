@@ -30,6 +30,7 @@ public class Manager extends Character {
             System.out.println("select the boost: \n enter 1 to boost attack\n enter 2 to boost middle\n enter 3 to boost defense");
              obj = choice.nextLine();  
         }
+        choosenBoost=(Integer.parseInt(obj));
         return (choosenBoost); 
         }
          
