@@ -63,7 +63,7 @@ public class Match {
     }
     
     public void PlayingMatch(){ //fonction qui permet de faire avancer le match
-        this.time+=15; //on incremente le temps 
+        this.time+=15; //on incremente le temps
         float atkTeam0=AtkTeam(0);
         float atkTeam1=AtkTeam(1);
         float defTeam0=DefTeam(0);
@@ -79,8 +79,8 @@ public class Match {
     }
     
     public void FullMatch(){
-        this.teams.get(0).printFullTeam();
-        this.teams.get(0).printFullTeam();
+        //this.teams.get(0).printFullTeam();
+        //this.teams.get(0).printFullTeam();
         System.out.println("debut du match entre "+this.teams.get(0).name+" et "+this.teams.get(1).name);
         this.teams.get(0).boostTeam();
         this.teams.get(1).boostTeam();
@@ -157,11 +157,11 @@ public class Match {
             if(this.score[0]==this.score[1]) {
                 penalties();
                 if(this.scorePenalties[0]>this.scorePenalties[1]) {
-                System.out.println("victoire de "+this.teams.get(0).name+"score penalty"+this.scorePenalties[0]+":"+this.scorePenalties[1] );
+                System.out.println("victoire de "+this.teams.get(0).name+" score penalty"+this.scorePenalties[0]+":"+this.scorePenalties[1] );
                 this.teams.get(1).loose=true;
                 return (this.teams.get(0).idTeam);}
                 if(this.scorePenalties[1]>this.scorePenalties[0]){
-                    System.out.println("victoire de "+this.teams.get(1).name+"score penalty"+this.scorePenalties[0]+":"+this.scorePenalties[1] );
+                    System.out.println("victoire de "+this.teams.get(1).name+" score penalty"+this.scorePenalties[0]+":"+this.scorePenalties[1] );
                     this.teams.get(0).loose=true;
                 return (this.teams.get(1).idTeam);}
             }
@@ -175,7 +175,7 @@ public class Match {
         float deff1;
         float deff2;
         int i=this.teams.get(0).players.size()-1;
-        while((this.scorePenalties[0]<5 && this.scorePenalties[1]<5)){
+        while((this.scorePenalties[0]<5 && this.scorePenalties[1]<5)||(this.scorePenalties[0]==this.scorePenalties[1])){
                 atck1=this.teams.get(0).players.get(i).boostAttack;
                 atck2=this.teams.get(1).players.get(i).boostAttack;
                 deff1=this.teams.get(0).goalie.skill;
@@ -184,11 +184,11 @@ public class Match {
                 float scoreTeam1=(float)((float)Math.random()* (0.75)*(atck2/deff1));
                 float rand=(float) ((float)Math.random()* (0.1)); //on cree un random
                 if (scoreTeam0>rand){ //si le ratio est superieur, on incremente le score de la premiere equipe
-                    scorePenalties[0]++;
+                    this.scorePenalties[0]++;
                     
                 }
                 if (scoreTeam1>rand){ //si le ratio est superieur, on incremente le score de la premiere equipe
-                    scorePenalties[1]++;
+                    this.scorePenalties[1]++;
                     
                 }
             i--;

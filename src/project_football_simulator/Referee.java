@@ -32,7 +32,7 @@ public class Referee extends OnField implements Fatigue {
         super.nationality=Character.getRandomNationality();
     }
     public void YellowCard(Player player){
-        float rand=(float) (Math.random() * (1 - 0.1));
+        float rand=(float) (Math.random() * (1 - 0.5));
         if( rand > (1-(this.severity/100)) ) {  
             if(player.card==1){
             RedCard(player);

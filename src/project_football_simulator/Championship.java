@@ -42,7 +42,7 @@ public class Championship {
         Scanner myObj = new Scanner(System.in);
         String num = myObj.nextLine();
         int numberChoice=Integer.parseInt(num);
-        this.teams.get(numberChoice-1).isPlayer=true;
+        this.teams.get(numberChoice-1).isPlayer=false;
         
     }
     
@@ -79,32 +79,24 @@ public class Championship {
             g++;
             g++;
             }
-            int tampon=this.teamsInCompetition.size();
-//            for (Team var : teamsInCompetition){
-//                System.out.println("azertyu");
-//                if(var.loose==true){
-//                    this.teamsEliminated.add(var);
-//                    System.out.println("gxrg");
-//                    this.teamsInCompetition.remove(var);
-//                    System.out.println("gxrgghg");
-//                    System.out.println(this.teamsInCompetition.size());
-//                }
-//                System.out.println("gxrg");
-//            } 
             
-            for(int i=0;i<tampon;i++)//probleme la
+            int tampon=this.teamsInCompetition.size();
+            int id;
+            for(int i=0;i<tampon;i++)
             {
-                System.out.println("i="+i);
                 if(this.teamsInCompetition.get(i).loose==true){
-                    System.out.println("remove "+teamsInCompetition.get(i).players.get(0).boostAttack);
                     this.teamsEliminated.add(this.teamsInCompetition.get(i));
-                    this.teamsInCompetition.remove(this.teamsInCompetition.get(i));
-                    i=0;
-                    tampon=this.teamsInCompetition.size();
-                    System.out.println(this.teamsInCompetition.size()+"\n");
                 }
             }
-        
+            for(int k=0;k<this.teamsEliminated.size();k++){
+                id=this.teamsEliminated.get(k).idTeam;
+                for(int p=0;p<this.teamsInCompetition.size();p++)
+                    {
+                        if(this.teamsInCompetition.get(p).idTeam==id){
+                            this.teamsInCompetition.remove(p);
+                        }
+                    }
+            }
         g=0;
         } 
         System.out.println("victoire de "+ this.teamsInCompetition.get(0).name);
