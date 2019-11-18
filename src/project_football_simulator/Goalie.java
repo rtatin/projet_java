@@ -6,7 +6,7 @@
 package project_football_simulator;
 
 /**
- *
+ * Classe goalie
  * @author rtwam
  */
 public class Goalie extends OnField implements Fatigue{

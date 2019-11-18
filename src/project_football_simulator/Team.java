@@ -13,65 +13,80 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- *
+ * Classe qui correspond a l'equipe complete de football
+ * Elle est compose d'un nom, d'un coach, d'une equipe au complet, de joueurs 
+ * qui seront sur le terrain, d'un booleen qui permettra de determiner si l'utilisateur 
+ * a choisi cette équipe et d'un autre qui permettra de savoir si l'equipe est eliminee
+ * de la competition
  * @author rtwam
  */
 public class Team {
     String name;
     Manager manager;
-    ArrayList <Player> FullTeam; //correspond à l'equipe complete
-    ArrayList <Player> players; //correspond aux joueurs qui sont sur le terrain 
+    ArrayList <Player> FullTeam; 
+    ArrayList <Player> players;
     Goalie goalie;
     boolean isPlayer=false;
     boolean loose=false;
     int idTeam;
 
-    
-    public void createFullTeam(){ //permet de generer une equipe complete de joueurs
+    /**
+     * Permet de generer une equipe complete de joueurs
+     * Dans chaque equipe, on cree 5 joueurs en attaque, avec des stats 
+     * aléatoires qu'on place dans l'arraylist.
+     * On fait de meme pour les milieux de terrain et la defense
+     * On genere aussi un manager et un goalie 
+     */
+    public void createFullTeam(){ 
         
         this.name=this.getRandomNameTeam(getNameTeam());
-        ArrayList <Player> newTeam= new <Player>ArrayList(); //on créé une arraylist de joueurs 
-        for(int i=1;i<6;i++){ //dans chaque equipe, on cree 5 joueurs en attaques, avec des stats aléatoires qu'on place dans l'arraylist
+        ArrayList <Player> newTeam= new <Player>ArrayList();  
+        for(int i=1;i<6;i++){ 
             Player newPlayer=new Player(i, (int) (60 + Math.random() * (100 - 60)), (int) (20 + Math.random() * (40 - 0)),"atk",false,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (40 - 16)),Character.getRandomNationality(),this.name);
             newTeam.add(newPlayer);
         }
-        for(int i=6;i<11;i++){ //puis 5 milieux de terrain
+        for(int i=6;i<11;i++){ 
             Player newPlayer=new Player(i, (int) (40 + Math.random() * (80 - 40)), (int) (40 + Math.random() * (80 - 40)),"mid",false,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (40 - 16)),Character.getRandomNationality(),this.name);
             newTeam.add(newPlayer);
         }
-        for(int i=11;i<16;i++){ //et enfin 5 defenseurs 
+        for(int i=11;i<16;i++){ 
             Player newPlayer=new Player(i, (int) (20 + Math.random() * (40 - 0)), (int) (60 + Math.random() * (100 - 60)),"def",false,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (40 - 16)),Character.getRandomNationality(),this.name);
             newTeam.add(newPlayer);
         }
-        this.FullTeam=newTeam; //on place le newTeam dans l'array correspondant a l'equipe complete de joueurs
+        this.FullTeam=newTeam; 
         Manager man=new Manager((int) ((int) 1+ (Math.random() * 4)),Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (60 - 40)),Character.getRandomNationality(),this.name);
         this.manager=man;
         Goalie goal=new Goalie(true,0,100,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (40 - 16)),Character.getRandomNationality(), (int) (60 + Math.random() * (40 - 0)),this.name);
         this.goalie=goal;
     }
     
+    /**
+     * Permet de generer automatiquement une equipe de joueurs qui sera sur le 
+     * terrain
+     * Elle aura une 3 dispositions différentes et sera donnee par un random
+     */
     public void createPlayingTeamBot(){
         ArrayList <Player> newPlayer=new <Player>ArrayList();
         int numberChoice=(int)Math.random()* (2 - 0);
         int defCount=4;
         int midCount=4;
         int atkCount=2;
-        switch (numberChoice) { //3 cas differents
-            case 0: //si le random donne 0 on prend une disposition 4-4-2
+        switch (numberChoice) { 
+            case 0: 
                 {
                     defCount=4;
                     midCount=4;
                     atkCount=2;
                     break;
                 }
-            case 1: //si 1 4-3-3
+            case 1: 
                 {
                     defCount=4;
                     midCount=3;
                     atkCount=3;
                     break;
                 }
-            case 2: //si 2 5-3-2
+            case 2: 
                 {
                     defCount=5;
                     midCount=3;
@@ -99,8 +114,15 @@ public class Team {
         this.players=newPlayer;
     }
     
-    public void createPlayingTeam(){ //permet a l'utilisateur de choisir les joueurs qui seront sur le terrain
-        ArrayList <Player> newPlayer=new <Player>ArrayList(); //on cree une arraylist pour les joueurs
+    /**
+     * Permet a l'utilisateur de composee lui-meme son equipe sur le terrain
+     * Il choisit entre 3 dispositions differentes
+     * L'utilisateur peut ensuite selectionner chacun des joueurs qu'il veut 
+     * faire rentrer sur le terrain, en suivant la disposition choisie
+     * precedemment
+     */
+    public void createPlayingTeam(){ 
+        ArrayList <Player> newPlayer=new <Player>ArrayList(); 
         System.out.println("Choose the disposition:\n -> 1 for 4-4-2\n -> 2 for 4-3-3\n -> 3 for 5-3-2");
         Scanner myObj = new Scanner(System.in);
         String num = myObj.nextLine();
@@ -108,7 +130,7 @@ public class Team {
         int defCount=4;
         int midCount=4;
         int atkCount=2;
-        switch (numberChoice) { //comme la fonction precedente, mais l'utilisateur choisit lui-meme sa disposition
+        switch (numberChoice) { 
             case 1:
                 {
                     defCount=4;
@@ -139,9 +161,9 @@ public class Team {
         int count=0;
         String pos="";
         
-        for (int j=0;j<3;j++){ //la boucle permet d'abord de selectionner les defenseurs, puis les milieux et enfin les attaquants
+        for (int j=0;j<3;j++){ 
             switch (j) {
-                case 0: //on recupere le nb de defenseurs
+                case 0: 
                     {
                         System.out.println("Choose your "+defCount+" players in defense:");
                         count=defCount;
@@ -149,14 +171,14 @@ public class Team {
                         
                         break;
                     }
-                case 1: //de milieux de terrain
+                case 1: 
                     {
                         System.out.println("Choose your "+midCount+" players in mid:");
                         count=midCount;
                         pos="mid";
                         break;
                     }
-                case 2: //d'attaquants
+                case 2: 
                     {
                         System.out.println("Choose your "+atkCount+" players in atk:");
                         count=atkCount;
@@ -167,13 +189,13 @@ public class Team {
                     break;
             }
             
-            while (count>0){ //pour chaque position
-                myObj = new Scanner(System.in); //on demande a l'utilisateur de ren
+            while (count>0){ 
+                myObj = new Scanner(System.in); 
                 String numberPlayer = myObj.nextLine(); 
-                int numPlayer = Integer.parseInt(numberPlayer); //convertit le numero du joueur rentre en int
-                boolean alreadyInPlayer=false; //creation d'un bool si le joueur est deja sur le terrain
+                int numPlayer = Integer.parseInt(numberPlayer); 
+                boolean alreadyInPlayer=false; 
                 for(int i=0;i<newPlayer.size();i++){
-                    if(newPlayer.get(i).number==numPlayer){//si on le trouve dans players, passe le bool en true
+                    if(newPlayer.get(i).number==numPlayer){
                         alreadyInPlayer=true;
                     }
                 }
@@ -190,6 +212,11 @@ public class Team {
         }
         this.players=newPlayer;
     }
+
+    /**
+     * Fonction explicite d'elle-meme, elle affiche toutes les donnees d'une equipe
+     * a savoir son nom, ses joueurs et son manageur
+     */
     public void printFullTeam(){ //permet d'afficher l'équipe au complet
         System.out.println("teamname :"+this.name);
         System.out.println("manager :"+this.manager.name+" "+this.manager.surname);
@@ -215,6 +242,9 @@ public class Team {
         }
     }
     
+    /**
+     * Fonction qui affiche seulement les joueurs presents sur le terrain
+     */
     public void printTeamOnField(){ //permet d'afficher seulement les joueurs sur le terrain
         System.out.println("Players on field:");
         System.out.println("goalie:"+this.goalie.name+" "+this.goalie.surname);  
@@ -243,10 +273,15 @@ public class Team {
             }
         }
     }
-    public void nationality(){
-        int cont=0;
 
-        
+    /**
+     * nationality permet de booster les statistiques des joueurs s'ils ont la 
+     * meme nationalite
+     * Pour chaque joueur, on recupere le nombre de coequipiers ayants la meme
+     * nationalite, et on incremente son attaque qu'on place dans boostAttack
+     */
+    public void nationality(){
+        int cont=0; 
         for (int i=0;i<this.players.size();i++){
             Player play=this.players.get(i);
             for (int g=0;g<this.players.size();g++){
@@ -277,8 +312,14 @@ public class Team {
             }
         }  
     }
+
+    /**
+     * A chaque boostTeam, on rappelle nationalite pour mettre a jour les boosts d'attaque
+     * D'un autre cote, fonction applique le type de boost choisi par l'utilisateur pendant
+     * le debut de match ou bien pendant la pause
+     */
     public void boostTeam(){
-        this.nationality(); //RAPPELLE NATIONALITY
+        this.nationality(); 
         int choice=0;
         if(this.isPlayer==true){
             choice = this.manager.teamManagement();
@@ -306,7 +347,10 @@ public class Team {
         }
     }
     
-    
+    /**
+     * Recupere l'arraylist des joueurs depuis un fichier txt
+     * @return
+     */
     public static ArrayList<String> getNameTeam() {
         ArrayList<String> nameArray=new ArrayList<String>();
      
@@ -331,6 +375,11 @@ public class Team {
                 return nameArray;
     }
     
+    /**
+     * Meme fonction mais pour les noms des joueurs
+     * @param nameArray
+     * @return
+     */
     public static String getRandomNameTeam(ArrayList<String> nameArray) {
         
         String name = nameArray.get(new Random().nextInt(nameArray.size()));

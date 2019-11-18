@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
+ * Fonction qui cree un championnat et le deroule
+ * Nous avons des equipes en general, celles qui sont encore en competition et
+ * celles qui sont eliminees
  * @author rtwam
  */
 public class Championship {
@@ -17,13 +19,24 @@ public class Championship {
     ArrayList<Team> teamsEliminated;
     Match[] matchs;
     
+    /**
+     *
+     * @param teams
+     * @param teamsInCompetition
+     * @param teamsEliminated
+     */
     public Championship(ArrayList<Team> teams,ArrayList<Team> teamsInCompetition, ArrayList<Team> teamsEliminated ){ 
     this.teams=teams;
     this.teamsEliminated=teamsEliminated;
     this.teamsInCompetition=teamsInCompetition;
     }       
         
-    
+    /**
+     * Premiere fonction appelee lors du debut du jeu
+     * L'utilisateur selectionne le nombre de joueurs qu'il veut voir dans son 
+     * championnat (qui lui est a elimination directe)
+     * Il peut aussi selectionner l'equipe avec laquelle il veut jouer
+     */
     public void createChampionship(){ 
         System.out.println("Number of teams in competition? Type 4,8 or 16\n");
         Scanner obj = new Scanner(System.in);
@@ -42,10 +55,17 @@ public class Championship {
         Scanner myObj = new Scanner(System.in);
         String num = myObj.nextLine();
         int numberChoice=Integer.parseInt(num);
-        this.teams.get(numberChoice-1).isPlayer=true;//a changer en true ou false;
+        this.teams.get(numberChoice-1).isPlayer=false;//a changer en true ou false;
         
     }
     
+    /**
+     * Fonction du deroulement du championnat
+     * Joue chacun des matchs jusqu'a ce qu'il n'y ai plus qu'une seule equipe
+     * en liste
+     * Les equipes perdantes son supprimees de teamsInCompetition pour etre placees
+     * dans teamsEliminated
+     */
     public void playChampionship(){
         
         int g=0;

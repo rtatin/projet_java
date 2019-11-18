@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- *
+ * Classe du joueur
+ * Possede son numeros, les statistiques, les differents boost et son positionnement
+ * favori 
  * @author rtwam
  */
 public class Player extends OnField implements Fatigue{
@@ -23,6 +25,19 @@ public class Player extends OnField implements Fatigue{
     String favPos;
     int card;
     
+    /**
+     *
+     * @param number
+     * @param attack
+     * @param defense
+     * @param favPos
+     * @param field
+     * @param name
+     * @param surname
+     * @param age
+     * @param nationality
+     * @param equipe
+     */
     public Player(int number,int attack,int defense,String favPos,boolean field,String name,String surname, int age, String nationality,String equipe){        
         super.name=name;
         super.surname=surname;
@@ -36,7 +51,11 @@ public class Player extends OnField implements Fatigue{
         
 
     }
-    public void printPlayer(){ //permet d'afficher toutes les caractéristiques propres à un joueur
+
+    /**
+     * Affiche les stats d'un joueur
+     */
+    public void printPlayer(){ 
         System.out.println("nom: "+this.name+" "+this.surname);
         System.out.println("age: "+this.age);
         System.out.println("position: "+this.favPos);
@@ -45,6 +64,9 @@ public class Player extends OnField implements Fatigue{
         System.out.println("defence: "+this.defense);
     }
         
+    /**
+     * Grace a l'interface, gere la fatigue en fonction de l'age du joueur
+     */
     @Override
     public void fatigue(){
         this.stamina=this.stamina-(10*super.age/20);

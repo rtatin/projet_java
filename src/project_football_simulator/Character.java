@@ -43,7 +43,6 @@ public abstract class Character {
         add("Girard");
         }}; 
  
-		// Get Random Company Name from Arraylist using Random().nextInt()
 		String name = nameArray.get(new Random().nextInt(nameArray.size()));
 		return name;
 	}
@@ -71,7 +70,6 @@ public abstract class Character {
         add("tom");
         }}; 
  
-		// Get Random Company Name from Arraylist using Random().nextInt()
 		String surname = surnameArray.get(new Random().nextInt(surnameArray.size()));
 		return surname;
 	}
@@ -88,7 +86,7 @@ public abstract class Character {
         add("pol");
         }}; 
  
-        // Get Random Company Name from Arraylist using Random().nextInt()
+
         String nat = nationalityArray.get(new Random().nextInt(nationalityArray.size()));
         return nat;
 	}
