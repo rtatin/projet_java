@@ -53,7 +53,7 @@ public class Match {
         float scoreTeam0=(float)((float)Math.random()* (0.5 - 0.25)*ratioAtkDef0);
         float scoreTeam1=(float)((float)Math.random()* (0.5 - 0.25)*ratioAtkDef1);
         
-        float rand=(float) ((float)0.1 + Math.random()* (0.5 - 0.25)); //on cree un random
+        float rand=(float) ((float) Math.random()* (0.5 - 0.25)); //on cree un random
         if (scoreTeam0>rand){ //si le ratio est superieur, on incremente le score de la premiere equipe
             score[0]++;
         }
