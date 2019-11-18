@@ -178,10 +178,12 @@ public class Match {
     public int checkWin(){
         if(this.score[0]>this.score[1]) {
             System.out.println("victoire de "+this.teams.get(0).name+"score"+this.score[0]+":"+this.score[1] );
+            this.teams.get(1).loose=true;
             return (this.teams.get(0).idTeam);
         }
         else if(this.score[0]<this.score[1]) {
             System.out.println("victoire de "+this.teams.get(1).name+"score"+this.score[0]+":"+this.score[1] );
+            this.teams.get(0).loose=true;
             return (this.teams.get(1).idTeam);
         }
         else if(this.score[0]==this.score[1]) {System.out.println("draw "+"score"+this.score[0]+":"+this.score[1] );
@@ -191,11 +193,11 @@ public class Match {
                 System.out.println(this.time+"min de match");
             }
             if(this.score[0]>this.score[1]) {
-                System.out.println("victoire de "+this.teams.get(0).name+"score"+this.score[0]+":"+this.score[1] );
+                System.out.println("victoire de "+this.teams.get(0).name+" score "+this.score[0]+":"+this.score[1] );
                 this.teams.get(1).loose=true;
             return (this.teams.get(0).idTeam);}
             if(this.score[1]>this.score[0]){
-                System.out.println("victoire de "+this.teams.get(1).name+"score"+this.score[0]+":"+this.score[1] );
+                System.out.println("victoire de "+this.teams.get(1).name+" score "+this.score[0]+":"+this.score[1] );
                 this.teams.get(0).loose=true;
             return (this.teams.get(1).idTeam);}
             if(this.score[0]==this.score[1]) {

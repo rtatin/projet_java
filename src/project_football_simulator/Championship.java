@@ -136,6 +136,7 @@ public void createChampionship(){
                     {
                         if(this.teamsInCompetition.get(p).idTeam==id){
                             this.teamsInCompetition.remove(p);
+                       
                         }
                     }
             }
