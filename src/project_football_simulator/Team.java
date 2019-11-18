@@ -40,7 +40,7 @@ public class Team {
             newTeam.add(newPlayer);
         }
         this.FullTeam=newTeam; //on place le newTeam dans l'array correspondant a l'equipe complete de joueurs
-        Manager man=new Manager(5,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (60 - 40)),Character.getRandomNationality(),this.name);
+        Manager man=new Manager((int) ((int) 1+ (Math.random() * 4)),Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (60 - 40)),Character.getRandomNationality(),this.name);
         this.manager=man;
         Goalie goal=new Goalie(true,0,100,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (40 - 16)),Character.getRandomNationality(), (int) (60 + Math.random() * (40 - 0)),this.name);
         this.goalie=goal;
@@ -266,35 +266,41 @@ public class Team {
                         break;
                     }  
                 }
+                else{
+                    play.boostAttack=play.attack;
+                    play.boostDefense=play.defense;
+                }
             }
         }  
     }
     public void boostTeam(){
+        this.nationality();
         int choice=0;
         if(this.isPlayer==true){
             choice = this.manager.teamManagement();
         }
         else{
-            choice= (int) (1 + Math.random() * 2);
+            choice= (int) (1 + Math.random() * 3);
         }
-        
         for (int i=0;i<this.players.size();i++){            
             switch(choice) {
                 case 1:
-                    this.players.get(i).boostAttack=this.players.get(i).boostAttack+this.players.get(i).attack*(this.manager.boost/10);
+                    this.players.get(i).boostAttackCoach=this.players.get(i).boostAttack+this.players.get(i).attack*(this.manager.boost/20);
+                    this.players.get(i).boostDefenseCoach=this.players.get(i).boostDefense;
                     break;
                 case 2:
-                    this.players.get(i).boostAttack=this.players.get(i).boostAttack+this.players.get(i).attack*(this.manager.boost/20);
-                    this.players.get(i).boostDefense=this.players.get(i).boostDefense+this.players.get(i).defense*(this.manager.boost/20);
+                    this.players.get(i).boostAttackCoach=this.players.get(i).boostAttack+this.players.get(i).attack*(this.manager.boost/40);
+                    this.players.get(i).boostDefenseCoach=this.players.get(i).boostDefense+this.players.get(i).defense*(this.manager.boost/40);
                     break;
                 case 3:
-                    this.players.get(i).boostDefense=this.players.get(i).boostDefense+this.players.get(i).defense*(this.manager.boost/10);
+                    this.players.get(i).boostAttackCoach=this.players.get(i).boostAttack;
+                    this.players.get(i).boostDefenseCoach=this.players.get(i).boostDefense+this.players.get(i).defense*(this.manager.boost/20);
                     break;
                 default:
                     break;
             }
         }
-       }
+    }
     
     public static String getRandomNameTeam() {
 		 ArrayList<String> nameArray=new ArrayList<String>(){{

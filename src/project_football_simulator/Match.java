@@ -27,15 +27,10 @@ public class Match {
     
     
     public float AtkTeam(int numberTeam){ //retourne l'attaque de l'équipe au complet
-        float totalAtk=0;
-        
+        float totalAtk=0;   
         for(int i=0; i<teams.get(numberTeam).players.size();i++){
-            Player play=teams.get(numberTeam).players.get(i);
-            if (play.field==true){ //pour tous les joueurs, additionne leur attaque entre eux s'ils sont sur le terrain
-                totalAtk+=play.boostAttack;
-                 
-            }
-            
+            Player play=teams.get(numberTeam).players.get(i);       
+                totalAtk+=play.boostAttackCoach;        
         }
         //System.out.println(totalAtk);
         return totalAtk;
@@ -46,7 +41,7 @@ public class Match {
         for(int i=0; i<10;i++){
             Player play=teams.get(numberTeam).players.get(i);
             if (play.field==true){
-                totalDef+=play.boostDefense;
+                totalDef+=play.boostDefenseCoach;
             }
         }
         return totalDef;
@@ -58,7 +53,7 @@ public class Match {
         float scoreTeam0=(float)((float)Math.random()* (0.5 - 0.25)*ratioAtkDef0);
         float scoreTeam1=(float)((float)Math.random()* (0.5 - 0.25)*ratioAtkDef1);
         
-        float rand=(float) ((float)Math.random()* (0.5 - 0.25)); //on cree un random
+        float rand=(float) ((float)0.1 + Math.random()* (0.5 - 0.25)); //on cree un random
         if (scoreTeam0>rand){ //si le ratio est superieur, on incremente le score de la premiere equipe
             score[0]++;
         }
@@ -84,12 +79,12 @@ public class Match {
     }
     
     public void FullMatch(){
+        this.teams.get(0).printFullTeam();
+        this.teams.get(0).printFullTeam();
         System.out.println("debut du match entre "+this.teams.get(0).name+" et "+this.teams.get(1).name);
-        for (int i=0;i<2;i++){
-        if(this.teams.get(i).isPlayer==true){
-            this.teams.get(i).manager.teamManagement();
-            }
-        }
+        this.teams.get(0).boostTeam();
+        this.teams.get(1).boostTeam();
+        
         while(this.time!=45){
             for (int i=0;i<2;i++){
                 if(this.teams.get(i).isPlayer==true){
@@ -187,7 +182,7 @@ public class Match {
                 deff2=this.teams.get(1).goalie.skill;
                 float scoreTeam0=(float)((float)Math.random()* (0.75)*(atck1/deff2));
                 float scoreTeam1=(float)((float)Math.random()* (0.75)*(atck2/deff1));
-                float rand=(float) (0.1+ (float)Math.random()* (0.2)); //on cree un random
+                float rand=(float) ((float)Math.random()* (0.1)); //on cree un random
                 if (scoreTeam0>rand){ //si le ratio est superieur, on incremente le score de la premiere equipe
                     scorePenalties[0]++;
                     
