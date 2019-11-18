@@ -274,7 +274,7 @@ public class Team {
         }  
     }
     public void boostTeam(){
-        this.nationality();
+        this.nationality(); //RAPPELLE NATIONALITY
         int choice=0;
         if(this.isPlayer==true){
             choice = this.manager.teamManagement();
