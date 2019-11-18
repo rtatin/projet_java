@@ -42,7 +42,7 @@ public class Championship {
         Scanner myObj = new Scanner(System.in);
         String num = myObj.nextLine();
         int numberChoice=Integer.parseInt(num);
-        this.teams.get(numberChoice-1).isPlayer=false;
+        this.teams.get(numberChoice-1).isPlayer=true;//a changer en true ou false;
         
     }
     
@@ -57,7 +57,7 @@ public class Championship {
         }
         while(this.teamsInCompetition.size()>1){
             
-            while(g<this.teamsInCompetition.size()){
+            while(g<this.teamsInCompetition.size()-1){
 //                    System.out.println("equipe encore en competition");
 //                    for(int j=0;j<this.teamsInCompetition.size();j++){
 //                    System.out.println(teamsInCompetition.get(j).name);
@@ -66,7 +66,9 @@ public class Championship {
 //                    }
             ArrayList <Team> equipes=new <Team> ArrayList();
             equipes.add(this.teamsInCompetition.get(g));
-            equipes.add(this.teamsInCompetition.get(g+1));
+            g++;
+            equipes.add(this.teamsInCompetition.get(g));
+            g++;
             Referee arbitre=new Referee();
             Match match1 = new Match(equipes,arbitre);
                 for (int i=0;i<2;i++){
@@ -76,10 +78,8 @@ public class Championship {
                 }
             }
             match1.FullMatch();
-            g++;
-            g++;
             }
-            
+            g=0;
             int tampon=this.teamsInCompetition.size();
             int id;
             for(int i=0;i<tampon;i++)
@@ -97,7 +97,7 @@ public class Championship {
                         }
                     }
             }
-        g=0;
+        
         } 
         System.out.println("victoire de "+ this.teamsInCompetition.get(0).name);
     }

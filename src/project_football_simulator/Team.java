@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package project_football_simulator;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -25,7 +29,7 @@ public class Team {
     
     public void createFullTeam(){ //permet de generer une equipe complete de joueurs
         
-        this.name=this.getRandomNameTeam();
+        this.name=this.getRandomNameTeam(getNameTeam());
         ArrayList <Player> newTeam= new <Player>ArrayList(); //on créé une arraylist de joueurs 
         for(int i=1;i<6;i++){ //dans chaque equipe, on cree 5 joueurs en attaques, avec des stats aléatoires qu'on place dans l'arraylist
             Player newPlayer=new Player(i, (int) (60 + Math.random() * (100 - 60)), (int) (20 + Math.random() * (40 - 0)),"atk",false,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (40 - 16)),Character.getRandomNationality(),this.name);
@@ -302,33 +306,34 @@ public class Team {
         }
     }
     
-    public static String getRandomNameTeam() {
-		 ArrayList<String> nameArray=new ArrayList<String>(){{
-        add("Amiens");
-        add("Angers");
-        add("Bordeaux");
-        add("Brest");
-        add("Lille");
-        add("Lyon");
-        add("Marseille");
-        add("Metz");
-        add("Monaco");
-        add("Montpellier");
-        add("Nantes");
-        add("Nice");
-        add("Paris-SG");
-        add("Nîmes");
-        add("Reims");
-        add("Rennes");
-        add("Bertrand");
-        add("Saint-Étienne");
-        add("Strasbourg");
-        add("Toulouse");
-        }}; 
-                 	// Get Random Company Name from Arraylist using Random().nextInt()
-		String name = nameArray.get(new Random().nextInt(nameArray.size()));
+    
+    public static ArrayList<String> getNameTeam() {
+        ArrayList<String> nameArray=new ArrayList<String>();
+     
+		try {
+			BufferedReader fluxEntree= new BufferedReader(new FileReader("noms_equipes.txt"));
+			String ligne = "";
+			
+		while (!(ligne==null)) {
+		ligne = fluxEntree.readLine( );  
+	
+		if (!(ligne==null)) {
+			nameArray.add(ligne);
+		}
+		}
+                
+		}
+		catch(FileNotFoundException e)
+		{ System.out.println(" Fichier noms_equipes nexiste pas");
+		System.out.println("ou erreur ouverture");} 
+		catch(IOException e)
+		{ System.out.println("Erreur lecture noms_equipes.txt.");}
+                return nameArray;
+    }
+    
+    public static String getRandomNameTeam(ArrayList<String> nameArray) {
+        
+        String name = nameArray.get(new Random().nextInt(nameArray.size()));
 		return name;
-	}
- }
-
-
+    }
+}
