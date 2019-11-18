@@ -101,6 +101,7 @@ public class LockerRoom extends Match{
                         for(int t=0;t<this.teams.get(tampon).FullTeam.size();t++){
                             System.out.println(this.teams.get(tampon).FullTeam.get(t).number +" "+ this.teams.get(tampon).FullTeam.get(t).field);
                             this.teams.get(tampon).printTeamOnField();
+                            this.teams.get(tampon).FullTeam=this.teams.get(tampon).FullTeam;
                         }
                     add=1;
                     }
