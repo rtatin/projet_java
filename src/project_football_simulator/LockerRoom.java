@@ -69,16 +69,6 @@ public class LockerRoom extends Match{
                 tampon=j;
             }
         }
-    /**
-     * Ici, nous avons la fonction qui permet de changer ses joueurs
-     * on demande a l'utilisateur de rentrer un numero de joueur qu'il veut 
-     * faire sortir du terrain puis un autre numero du joueur qu'il veut faire 
-     * rentrer
-     * @param team
-     */
-    public static void changePlayers(Team team){ //fonction qui permet a l'utilisateur de modifier la composition de son equipe pendant la mi temps
-
-        team.printTeamOnField(); //l'utilisateur a toujours la premiere equipe
         String numberPlayer="";
         System.out.println("What player would you like to change?");
         System.out.println("Write stop if you don't want or you're done");
@@ -104,12 +94,17 @@ public class LockerRoom extends Match{
                     if((this.teams.get(tampon).FullTeam.get(number-1).favPos.equals(pos))&&(this.teams.get(tampon).FullTeam.get(number-1).field==false)&&(this.teams.get(tampon).FullTeam.get(number-1).card!=2)){
                         this.teams.get(tampon).FullTeam.get(number-1).field=true;
                         this.teams.get(tampon).players.add(this.teams.get(tampon).FullTeam.get(number-1));
-                        
+                        this.teams.get(tampon).players.get(this.teams.get(tampon).players.size()-1).field=true;
+                        for(int t=0;t<this.teams.get(tampon).players.size();t++){
+                            System.out.println(this.teams.get(tampon).players.get(t).number +" "+ this.teams.get(tampon).players.get(t).field);
+                        }
+                        for(int t=0;t<this.teams.get(tampon).FullTeam.size();t++){
+                            System.out.println(this.teams.get(tampon).FullTeam.get(t).number +" "+ this.teams.get(tampon).FullTeam.get(t).field);
+                            this.teams.get(tampon).printTeamOnField();
+                        }
                     add=1;
                     }
-                    
                 }
-                
             }
             add=0;
             System.out.println("Player to get off the field:");
@@ -117,28 +112,16 @@ public class LockerRoom extends Match{
             numberPlayer = myObj.nextLine();
               for(int p=0;p<this.teams.get(tampon).players.size();p++){
                 System.out.println(this.teams.get(tampon).players.get(p).field);
-        
-            int added=0;
-            while(added==0){
-                boolean onField=false;
-                System.out.println("Player to get on the field:");
-                myObj = new Scanner(System.in);
-                numberPlayer = myObj.nextLine(); //on rajoute un nouveau joueur 
-                for(int i=0;i<11;i++){
-                    if(team.players.get(i).number==Integer.parseInt(numberPlayer)){
-                        System.out.println("Already on field");
-                        onField=true;
-                    }
-
-                }
-                if (onField==false){
-                    team.players.add(team.FullTeam.get(Integer.parseInt(numberPlayer)));
-                    added=1;
-                }
-            }
-        }
             this.teams.get(tampon).printTeamOnField();
             
         }
+    }
+     /**
+     * Ici, nous avons la fonction qui permet de changer ses joueurs
+     * on demande a l'utilisateur de rentrer un numero de joueur qu'il veut 
+     * faire sortir du terrain puis un autre numero du joueur qu'il veut faire 
+     * rentrer
+     * @param team
+     */
     }
 }

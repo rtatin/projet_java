@@ -55,7 +55,7 @@ public class Championship {
         Scanner myObj = new Scanner(System.in);
         String num = myObj.nextLine();
         int numberChoice=Integer.parseInt(num);
-        this.teams.get(numberChoice-1).isPlayer=false;//a changer en true ou false;
+        this.teams.get(numberChoice-1).isPlayer=true;//a changer en true ou false;
         
     }
     
