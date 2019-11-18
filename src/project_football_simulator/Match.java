@@ -73,6 +73,7 @@ public class Match {
      * @param defTeam1
      */
     public void increaseScore(float atkTeam0, float atkTeam1, float defTeam0, float defTeam1){ 
+        if ((defTeam0 == 0)||(defTeam1==0)) throw new ArithmeticException("Def == 0");
         float ratioAtkDef0=atkTeam0/defTeam1; 
         float ratioAtkDef1=atkTeam1/defTeam0;
         float scoreTeam0=(float)((float)Math.random()* (0.5 - 0.25)*ratioAtkDef0);

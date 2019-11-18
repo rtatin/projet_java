@@ -37,11 +37,22 @@ public class Championship {
      * championnat (qui lui est a elimination directe)
      * Il peut aussi selectionner l'equipe avec laquelle il veut jouer
      */
-    public void createChampionship(){ 
-        System.out.println("Number of teams in competition? Type 4,8 or 16\n");
+public void createChampionship(){ 
+        System.out.println("Number of teams in competition? Type 2, 4, 8 or 16\n");
         Scanner obj = new Scanner(System.in);
         String numT = obj.nextLine();
-        int numberTeams=Integer.parseInt(numT);
+        int numberTeams=0;
+        try{
+            numberTeams=Integer.parseInt(numT);
+            if (numberTeams!=2 && numberTeams!=4 && numberTeams!=8 && numberTeams!=16){
+                throw new Exception("Size of competition impossible, 4 by default");
+                }
+            }
+        catch(Exception b){
+                System.err.println(b.getMessage());
+                numberTeams=4;
+            }
+            
         for(int i=0;i<numberTeams;i++){
             Team team = new Team();
             team.createFullTeam();
@@ -52,9 +63,20 @@ public class Championship {
         for(int i=0;i<teams.size();i++){
             System.out.println("Number "+(i+1)+":"+teams.get(i).name+"\n");
         }
-        Scanner myObj = new Scanner(System.in);
+       Scanner myObj = new Scanner(System.in);
         String num = myObj.nextLine();
-        int numberChoice=Integer.parseInt(num);
+        int numberChoice=0;
+        try{
+            numberChoice=Integer.parseInt(num);
+            if (numberChoice<1 || numberChoice>teams.size()){
+                throw new Exception("Number not available, 1 by default");
+                }
+            }
+        catch(Exception b){
+            System.err.println(b.getMessage());
+            numberChoice=1;
+        }
+        
         this.teams.get(numberChoice-1).isPlayer=true;//a changer en true ou false;
         
     }

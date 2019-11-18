@@ -191,24 +191,39 @@ public class Team {
             
             while (count>0){ 
                 myObj = new Scanner(System.in); 
-                String numberPlayer = myObj.nextLine(); 
-                int numPlayer = Integer.parseInt(numberPlayer); 
-                boolean alreadyInPlayer=false; 
-                for(int i=0;i<newPlayer.size();i++){
-                    if(newPlayer.get(i).number==numPlayer-1){//si on le trouve dans players, passe le bool en true
-                        alreadyInPlayer=true;
+                String numberPlayer = myObj.nextLine();                 
+                try{
+                    int numPlayer = Integer.parseInt(numberPlayer); 
+                    if (numPlayer<1 || numPlayer>15){
+                        throw new Exception("No player with this number");
                     }
+                    else{
+                        boolean alreadyInPlayer=false; 
+                        for(int i=0;i<newPlayer.size();i++){
+                            if(newPlayer.get(i).number==numPlayer){
+                                alreadyInPlayer=true;
+                            }
+                        }
+                        if((alreadyInPlayer==false)&&(this.FullTeam.get(numPlayer-1).favPos==pos)){ 
+                            newPlayer.add(FullTeam.get(numPlayer-1)); 
+                            FullTeam.get(numPlayer-1).field=true; 
+                            count--; 
+                        }
+                        try{
+                            if ((alreadyInPlayer==true)&&(this.FullTeam.get(numPlayer-1).favPos==pos)){
+                                throw new Exception("This player is already on field");
+                            }
+                        }
+                        catch(Exception b){
+                            System.err.println(b.getMessage());
+                        }
+                        System.out.println(newPlayer);
+                        }
+                    }
+                catch(Exception e){
+                    System.err.println(e.getMessage());
                 }
-                if((alreadyInPlayer==false)&&(this.FullTeam.get(numPlayer-1).favPos==pos)){ //si le joueur n'est pas sur le terrain et on choisit un joueur avec la bonne position
-                    newPlayer.add(FullTeam.get(numPlayer-1)); //on l'ajoute dans l'arraylist de joueurs
-                    FullTeam.get(numPlayer-1).field=true; //sa caracteristique onField passe alors en true
-                    count--; //on decremente le compteur
-                    
-                }
-                System.out.println(newPlayer);
-                
-            }
-            
+            }          
         }
         this.players=newPlayer;
     }
