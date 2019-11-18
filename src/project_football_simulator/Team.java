@@ -195,7 +195,7 @@ public class Team {
                 int numPlayer = Integer.parseInt(numberPlayer); 
                 boolean alreadyInPlayer=false; 
                 for(int i=0;i<newPlayer.size();i++){
-                    if(newPlayer.get(i).number==numPlayer){
+                    if(newPlayer.get(i).number==numPlayer-1){//si on le trouve dans players, passe le bool en true
                         alreadyInPlayer=true;
                     }
                 }
@@ -246,30 +246,35 @@ public class Team {
      * Fonction qui affiche seulement les joueurs presents sur le terrain
      */
     public void printTeamOnField(){ //permet d'afficher seulement les joueurs sur le terrain
+        String atk="atk";
+        String def="def";
+        String mid="mid";
+        
         System.out.println("Players on field:");
         System.out.println("goalie:"+this.goalie.name+" "+this.goalie.surname);  
         System.out.println("attack:");
         for (int g=0;g<players.size();g++){
-            if((this.players.get(g).favPos=="atk") && (this.players.get(g).card!=2)){ //affiche le joueur seulement si la position est la bonne et qu'il n'a pas de carton rouge
-            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos+"nationality :"+this.FullTeam.get(g).nationality+"\n attack stat: "+this.FullTeam.get(g).boostAttack+" defense stat: "+this.FullTeam.get(g).boostDefense+" stamina :"+this.FullTeam.get(g).stamina+"\n"  );
+            if((this.players.get(g).favPos.equals(atk)) && (this.players.get(g).card!=2)){ //affiche le joueur seulement si la position est la bonne et qu'il n'a pas de carton rouge
+            System.out.println(this.players.get(g).name+" "+this.players.get(g).surname+" "+this.players.get(g).number+" "+this.players.get(g).favPos+"nationality :"+this.players.get(g).nationality+"\n attack stat: "+this.players.get(g).boostAttack+" defense stat: "+this.players.get(g).boostDefense+" stamina :"+this.players.get(g).stamina+"\n"  );
             }
         }
         System.out.println("middle:");
         for (int g=0;g<players.size();g++){
             if((this.players.get(g).favPos=="mid") && (this.players.get(g).card!=2)){
-            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos+"nationality :"+this.FullTeam.get(g).nationality+"\n attack stat: "+this.FullTeam.get(g).boostAttack+" defense stat: "+this.FullTeam.get(g).boostDefense+" stamina :"+this.FullTeam.get(g).stamina+"\n"  );
+            System.out.println(this.players.get(g).name+" "+this.players.get(g).surname+" "+this.players.get(g).number+" "+this.players.get(g).favPos+"nationality :"+this.players.get(g).nationality+"\n attack stat: "+this.players.get(g).boostAttack+" defense stat: "+this.players.get(g).boostDefense+" stamina :"+this.players.get(g).stamina+"\n"  );
             }
         }
         System.out.println("defense:");
         for (int g=0;g<players.size();g++){
             if((this.players.get(g).favPos=="def") && (this.players.get(g).card!=2)){
-            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos+"nationality :"+this.FullTeam.get(g).nationality+"\n attack stat: "+this.FullTeam.get(g).boostAttack+" defense stat: "+this.FullTeam.get(g).boostDefense+" stamina :"+this.FullTeam.get(g).stamina+"\n"  );
+            System.out.println(this.players.get(g).name+" "+this.players.get(g).surname+" "+this.players.get(g).number+" "+this.players.get(g).favPos+"nationality :"+this.players.get(g).nationality+"\n attack stat: "+this.players.get(g).boostAttack+" defense stat: "+this.players.get(g).boostDefense+" stamina :"+this.players.get(g).stamina+"\n"  );
             }
         }
         System.out.println("Players not playing");
         for (int g=0;g<FullTeam.size();g++){
             if(this.FullTeam.get(g).field==false){
-            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number );
+            System.out.println(this.FullTeam.get(g).name+" "+this.FullTeam.get(g).surname+" "+this.FullTeam.get(g).number+" "+this.FullTeam.get(g).favPos+"nationality :"+this.FullTeam.get(g).nationality+"\n attack stat: "+this.FullTeam.get(g).attack+" defense stat: "+this.FullTeam.get(g).defense+" stamina :"+this.FullTeam.get(g).stamina+"\n"  );
+            
             }
         }
     }

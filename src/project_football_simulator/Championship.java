@@ -119,6 +119,8 @@ public class Championship {
             }
         
         } 
+        
+      
         System.out.println("victoire de "+ this.teamsInCompetition.get(0).name);
     }
     
