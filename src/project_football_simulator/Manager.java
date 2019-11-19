@@ -25,12 +25,18 @@ public class Manager extends Character {
         System.out.println("select the boost: \n enter 1 to boost attack\n enter 2 to boost middle\n enter 3 to boost defense");
         Scanner choice=new Scanner(System.in);
         String obj = choice.nextLine();
-        int choosenBoost=(Integer.parseInt(obj));
-        while ((choosenBoost>3)||(choosenBoost<1)){
-            System.out.println("select the boost: \n enter 1 to boost attack\n enter 2 to boost middle\n enter 3 to boost defense");
-             obj = choice.nextLine();  
-        }
-        choosenBoost=(Integer.parseInt(obj));
+        int choosenBoost=2;
+        try{
+            choosenBoost=Integer.parseInt(obj);
+            if ((choosenBoost>3)||(choosenBoost<1)){
+                throw new Exception("Wrong input, mid boost by default");
+                }
+            }
+        catch(Exception b){
+            System.err.println(b.getMessage());
+            choosenBoost=2;
+            }
+        System.out.println("zob"+choosenBoost);
         return (choosenBoost); 
         }
          

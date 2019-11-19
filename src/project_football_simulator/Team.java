@@ -126,7 +126,18 @@ public class Team {
         System.out.println("Choose the disposition:\n -> 1 for 4-4-2\n -> 2 for 4-3-3\n -> 3 for 5-3-2");
         Scanner myObj = new Scanner(System.in);
         String num = myObj.nextLine();
-        int numberChoice=Integer.parseInt(num);
+        int numberChoice;
+        try{
+            numberChoice=Integer.parseInt(num);
+            if (numberChoice>3 && numberChoice<1){
+                throw new Exception("Choice out of range, 4-4-2 by default");
+                }
+            }
+        catch(Exception b){
+                System.err.println(b.getMessage());
+                numberChoice=1;
+            }
+        
         int defCount=4;
         int midCount=4;
         int atkCount=2;

@@ -37,7 +37,18 @@ public class LockerRoom extends Match{
             System.out.println("What do you want to do?\n-> Type 1 to change your players\n-> Type 2 to change the boost of the coach\n-> Type 3 to get back on field");
             Scanner obj = new Scanner(System.in);
             String num = obj.nextLine();
-            int choice=Integer.parseInt(num);
+            int choice;
+            try{
+                choice=Integer.parseInt(num);
+                if (1>choice || choice>3){
+                    throw new Exception("Choice not in range, please select a number between 1 and 3");
+                }
+            }
+            catch(Exception b){
+                System.err.println(b.getMessage());
+                choice=0;
+            }
+            
             switch (choice) {
                 case 1:
                     for(int i=0;i<2;i++){
@@ -47,7 +58,7 @@ public class LockerRoom extends Match{
                     }   break;
                 case 2:
                     for(int i=0;i<2;i++){
-                        if(teams.get(i).isPlayer==false){
+                        if(teams.get(i).isPlayer==true){
                             teams.get(i).boostTeam();
                         }
                     }   break;
