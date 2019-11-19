@@ -10,7 +10,7 @@ import java.util.Random;
  * @author rtwam
  */
 public class Referee extends OnField implements Fatigue {
-    int severity;
+    private int severity;
     
     
     @Override

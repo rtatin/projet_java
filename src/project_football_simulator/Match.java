@@ -15,11 +15,11 @@ import java.util.Scanner;
  * @author rtwam
  */
 public class Match {
-    ArrayList <Team> teams;
-    int time=0;
-    int[] score={0,0};
-    int[] scorePenalties={0,0};
-    Referee ref;
+    protected ArrayList <Team> teams;
+    protected int time=0;
+    protected int[] score={0,0};
+    protected int[] scorePenalties={0,0};
+    protected Referee ref;
     
     /**
      *
@@ -39,9 +39,9 @@ public class Match {
      */
     public float AtkTeam(int numberTeam){ 
         float totalAtk=0;   
-        for(int i=0; i<teams.get(numberTeam).players.size();i++){
-            Player play=teams.get(numberTeam).players.get(i);       
-                totalAtk+=play.boostAttackCoach;        
+        for(int i=0; i<teams.get(numberTeam).getPlayers().size();i++){
+            Player play=teams.get(numberTeam).getPlayers().get(i);       
+                totalAtk+=play.getBoostAttackCoach();        
         }
         return totalAtk;
     }
@@ -54,9 +54,9 @@ public class Match {
     public float DefTeam(int numberTeam){ 
         float totalDef=0;
         for(int i=0; i<10;i++){
-            Player play=teams.get(numberTeam).players.get(i);
+            Player play=teams.get(numberTeam).getPlayers().get(i);
             if (play.field==true){
-                totalDef+=play.boostDefenseCoach;
+                totalDef+=play.getBoostDefenseCoach();
             }
         }
         return totalDef;
@@ -101,8 +101,8 @@ public class Match {
         increaseScore(atkTeam0, atkTeam1, defTeam0, defTeam1); 
         for (int i=0;i<2;i++){
             for (int j=0;j<10;j++){
-                ref.YellowCard(teams.get(i).players.get(j));
-                teams.get(i).players.get(j).fatigue();
+                ref.YellowCard(teams.get(i).getPlayers().get(j));
+                teams.get(i).getPlayers().get(j).fatigue();
             }
         }
         System.out.println(this.score[0]+" "+this.score[1]);
@@ -118,13 +118,13 @@ public class Match {
     public void FullMatch(){
         //this.teams.get(0).printFullTeam();
         //this.teams.get(0).printFullTeam();
-        System.out.println("Beginning of the match between "+this.teams.get(0).name+" and "+this.teams.get(1).name);
+        System.out.println("Beginning of the match between "+this.teams.get(0).getName()+" and "+this.teams.get(1).getName());
         this.teams.get(0).boostTeam();
         this.teams.get(1).boostTeam();
         
         while(this.time!=45){
             for (int i=0;i<2;i++){
-                if(this.teams.get(i).isPlayer==true){
+                if(this.teams.get(i).getIsPlayer()==true){
                     System.out.println("Click enter to continue");
                     char c;
                     try{
@@ -140,17 +140,17 @@ public class Match {
             PlayingMatch();
             System.out.println(this.time+"min de match");
         }
-        System.out.println("End of first half-time between "+this.teams.get(0).name+" and "+this.teams.get(1).name);
+        System.out.println("End of first half-time between "+this.teams.get(0).getName()+" and "+this.teams.get(1).getName());
         for (int i=0;i<2;i++){
-            if(teams.get(i).isPlayer==true ){
+            if(teams.get(i).getIsPlayer()==true ){
             LockerRoom halfTime=new LockerRoom(this.teams,this.time,this.ref,true);
             halfTime.choiceUser();
             }
         }
-        System.out.println("End of half-time between "+this.teams.get(0).name+" and "+this.teams.get(1).name);
+        System.out.println("End of half-time between "+this.teams.get(0).getName()+" and "+this.teams.get(1).getName());
         while(this.time!=90){
             for (int i=0;i<2;i++){
-                if(this.teams.get(i).isPlayer==true){
+                if(this.teams.get(i).getIsPlayer()==true){
                     System.out.println("Click enter to continue");
                     char c;
                     try{
@@ -176,14 +176,14 @@ public class Match {
      */
     public int checkWin(){
         if(this.score[0]>this.score[1]) {
-            System.out.println("victoire de "+this.teams.get(0).name+"score"+this.score[0]+":"+this.score[1] );
-            this.teams.get(1).loose=true;
-            return (this.teams.get(0).idTeam);
+            System.out.println("victoire de "+this.teams.get(0).getName()+"score"+this.score[0]+":"+this.score[1] );
+            this.teams.get(1).SetLoose(true);
+            return (this.teams.get(0).getIdTeam());
         }
         else if(this.score[0]<this.score[1]) {
-            System.out.println("victoire de "+this.teams.get(1).name+"score"+this.score[0]+":"+this.score[1] );
-            this.teams.get(0).loose=true;
-            return (this.teams.get(1).idTeam);
+            System.out.println("victoire de "+this.teams.get(1).getName()+"score"+this.score[0]+":"+this.score[1] );
+            this.teams.get(0).SetLoose(true);
+            return (this.teams.get(1).getIdTeam());
         }
         else if(this.score[0]==this.score[1]) {System.out.println("draw "+"score"+this.score[0]+":"+this.score[1] );
         System.out.println("prolongation");
@@ -192,23 +192,23 @@ public class Match {
                 System.out.println(this.time+"min de match");
             }
             if(this.score[0]>this.score[1]) {
-                System.out.println("victoire de "+this.teams.get(0).name+" score "+this.score[0]+":"+this.score[1] );
-                this.teams.get(1).loose=true;
-            return (this.teams.get(0).idTeam);}
+                System.out.println("victoire de "+this.teams.get(0).getName()+" score "+this.score[0]+":"+this.score[1] );
+                this.teams.get(1).SetLoose(true);
+            return (this.teams.get(0).getIdTeam());}
             if(this.score[1]>this.score[0]){
-                System.out.println("victoire de "+this.teams.get(1).name+" score "+this.score[0]+":"+this.score[1] );
-                this.teams.get(0).loose=true;
-            return (this.teams.get(1).idTeam);}
+                System.out.println("victoire de "+this.teams.get(1).getName()+" score "+this.score[0]+":"+this.score[1] );
+                this.teams.get(0).SetLoose(true);
+            return (this.teams.get(1).getIdTeam());}
             if(this.score[0]==this.score[1]) {
                 penalties();
                 if(this.scorePenalties[0]>this.scorePenalties[1]) {
-                System.out.println("victoire de "+this.teams.get(0).name+" score penalty"+this.scorePenalties[0]+":"+this.scorePenalties[1] );
-                this.teams.get(1).loose=true;
-                return (this.teams.get(0).idTeam);}
+                System.out.println("victoire de "+this.teams.get(0).getName()+" score penalty"+this.scorePenalties[0]+":"+this.scorePenalties[1] );
+                this.teams.get(1).SetLoose(true);
+                return (this.teams.get(0).getIdTeam());}
                 if(this.scorePenalties[1]>this.scorePenalties[0]){
-                    System.out.println("victoire de "+this.teams.get(1).name+" score penalty"+this.scorePenalties[0]+":"+this.scorePenalties[1] );
-                    this.teams.get(0).loose=true;
-                return (this.teams.get(1).idTeam);}
+                    System.out.println("victoire de "+this.teams.get(1).getName()+" score penalty"+this.scorePenalties[0]+":"+this.scorePenalties[1] );
+                    this.teams.get(0).SetLoose(true);
+                return (this.teams.get(1).getIdTeam());}
             }
         }
         return(100);
@@ -225,12 +225,12 @@ public class Match {
         float atck2;
         float deff1;
         float deff2;
-        int i=this.teams.get(0).players.size()-1;
+        int i=this.teams.get(0).getPlayers().size()-1;
         while((this.scorePenalties[0]<5 && this.scorePenalties[1]<5)||(this.scorePenalties[0]==this.scorePenalties[1])){
-                atck1=this.teams.get(0).players.get(i).boostAttackCoach;
-                atck2=this.teams.get(1).players.get(i).boostAttackCoach;
-                deff1=this.teams.get(0).goalie.skill;
-                deff2=this.teams.get(1).goalie.skill;
+                atck1=this.teams.get(0).getPlayers().get(i).getBoostAttackCoach();
+                atck2=this.teams.get(1).getPlayers().get(i).getBoostAttackCoach();
+                deff1=this.teams.get(0).getGoalie().getSkill();
+                deff2=this.teams.get(1).getGoalie().getSkill();
                 float scoreTeam0=(float)((float)Math.random()* (0.75)*(atck1/deff2));
                 float scoreTeam1=(float)((float)Math.random()* (0.75)*(atck2/deff1));
                 float rand=(float) ((float)Math.random()* (0.1)); //on cree un random
@@ -244,7 +244,7 @@ public class Match {
                 }
             i--;
             if(i<0){
-                i=this.teams.get(0).players.size()-1;
+                i=this.teams.get(0).getPlayers().size()-1;
             }
             System.out.println(this.scorePenalties[0]+" "+this.scorePenalties[1]);
         }

@@ -19,6 +19,25 @@ public abstract class Character {
     protected String nationality;
     protected String equipe;
     
+    public String getName() { 
+            return this.name;
+    }
+    public String getSurname() { 
+            return this.surname;
+    }
+    public int getAge() { 
+            return this.age;
+    }
+    public String getNationality() { 
+            return this.nationality;
+    }
+    public String getEquipe() { 
+            return this.equipe;
+    }
+    
+    
+    
+    
     public static String getRandomName() {
 		 ArrayList<String> nameArray=new ArrayList<String>(){{
         add("Martin");

@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author rtwam
  */
 public class Manager extends Character {
-    int boost;
+    private int boost;
     public Manager(int boost,String name,String surname, int age, String nationality,String equipe){
         this.boost=boost;
         super.name=name;
@@ -21,6 +21,13 @@ public class Manager extends Character {
         super.nationality=nationality;
         super.equipe=equipe;
     }
+     public int getBoost() { 
+            return this.boost;
+    }
+    public void printManager(){
+    System.out.println("Manager: nom: "+this.getName()+" "+this.getSurname() +" age: "+this.getAge()+" nationality :"+getNationality()+" boost :"+getBoost()+"\n");  
+    }
+    
     public int teamManagement(){
         System.out.println("select the boost: \n enter 1 to boost attack\n enter 2 to boost middle\n enter 3 to boost defense");
         Scanner choice=new Scanner(System.in);
@@ -36,7 +43,6 @@ public class Manager extends Character {
             System.err.println(b.getMessage());
             choosenBoost=2;
             }
-        System.out.println("zob"+choosenBoost);
         return (choosenBoost); 
         }
          

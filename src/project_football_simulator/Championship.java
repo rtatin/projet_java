@@ -14,10 +14,10 @@ import java.util.Scanner;
  * @author rtwam
  */
 public class Championship {
-    ArrayList<Team> teams;
-    ArrayList<Team> teamsInCompetition;
-    ArrayList<Team> teamsEliminated;
-    Match[] matchs;
+    protected ArrayList<Team> teams;
+    protected ArrayList<Team> teamsInCompetition;
+    protected ArrayList<Team> teamsEliminated;
+    protected Match[] matchs;
     
     /**
      *
@@ -57,11 +57,11 @@ public void createChampionship(){
             Team team = new Team();
             team.createFullTeam();
             this.teams.add(team);
-            this.teams.get(i).idTeam=i; 
+            this.teams.get(i).SetIdTeam(i); 
         }
         System.out.println("Type the number of the team you want to play with:\n");
         for(int i=0;i<teams.size();i++){
-            System.out.println("Number "+(i+1)+":"+teams.get(i).name+"\n");
+            System.out.println("Number "+(i+1)+":"+teams.get(i).getName()+"\n");
         }
        Scanner myObj = new Scanner(System.in);
         String num = myObj.nextLine();
@@ -77,7 +77,7 @@ public void createChampionship(){
             numberChoice=1;
         }
         
-        this.teams.get(numberChoice-1).isPlayer=true;//a changer en true ou false;
+        this.teams.get(numberChoice-1).SetIsPlayer(true);//a changer en true ou false;
         
     }
     
@@ -93,7 +93,7 @@ public void createChampionship(){
         int g=0;
         for(int i=0;i<this.teams.size();i++){
             this.teamsInCompetition.add(this.teams.get(i));
-            if(this.teams.get(i).isPlayer==false){
+            if(this.teams.get(i).getIsPlayer()==false){
             this.teams.get(i).createPlayingTeamBot();
             }
         }
@@ -114,7 +114,7 @@ public void createChampionship(){
             Referee arbitre=new Referee();
             Match match1 = new Match(equipes,arbitre);
                 for (int i=0;i<2;i++){
-                if(match1.teams.get(i).isPlayer==true ){
+                if(match1.teams.get(i).getIsPlayer()==true ){
                 match1.teams.get(i).createPlayingTeam();
                 
                 }
@@ -126,15 +126,15 @@ public void createChampionship(){
             int id;
             for(int i=0;i<tampon;i++)
             {
-                if(this.teamsInCompetition.get(i).loose==true){
+                if(this.teamsInCompetition.get(i).getIsLoose()==true){
                     this.teamsEliminated.add(this.teamsInCompetition.get(i));
                 }
             }
             for(int k=0;k<this.teamsEliminated.size();k++){
-                id=this.teamsEliminated.get(k).idTeam;
+                id=this.teamsEliminated.get(k).getIdTeam();
                 for(int p=0;p<this.teamsInCompetition.size();p++)
                     {
-                        if(this.teamsInCompetition.get(p).idTeam==id){
+                        if(this.teamsInCompetition.get(p).getIdTeam()==id){
                             this.teamsInCompetition.remove(p);
                        
                         }
@@ -144,7 +144,7 @@ public void createChampionship(){
         } 
         
       
-        System.out.println("victoire de "+ this.teamsInCompetition.get(0).name);
+        System.out.println("victoire de "+ this.teamsInCompetition.get(0).getName());
     }
     
 }

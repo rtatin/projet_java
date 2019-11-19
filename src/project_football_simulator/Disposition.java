@@ -10,9 +10,9 @@ package project_football_simulator;
  * @author rtwam
  */
 public class Disposition {
-    int fieldDisposition;
-    Player[] substitute;
-    Player[] playersAttack;
-    Player[] playersDefense;
-    Player[] playersMidfielder;
+    protected int fieldDisposition;
+    protected Player[] substitute;
+    protected Player[] playersAttack;
+    protected Player[] playersDefense;
+    protected Player[] playersMidfielder;
 }

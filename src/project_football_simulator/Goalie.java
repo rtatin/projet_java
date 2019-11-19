@@ -10,8 +10,8 @@ package project_football_simulator;
  * @author rtwam
  */
 public class Goalie extends OnField implements Fatigue{
-    int skill;
-    int number;
+    private int skill;
+    private int number;
     
     public Goalie(boolean field,int number,int stamina,String name,String surname, int age, String nationality,int skill,String equipe){
        this.number=number;
@@ -24,9 +24,20 @@ public class Goalie extends OnField implements Fatigue{
        super.equipe=equipe;
     
     }
+    public int getSkill() { 
+            return this.skill;
+    }
+    
+    public int getNumber() { 
+            return this.number;
+    }
 
     @Override
     public void fatigue(){
         this.stamina=this.stamina-(2*super.age/20);
+    }
+    
+    public void printGoalie(){
+    System.out.println("goalie: nom: "+this.getName()+" "+this.getSurname()+" number "+this.getNumber() +" age: "+this.getAge()+" nationality :"+getNationality()+" skill :"+getSkill()+"\n");  
     }
 }

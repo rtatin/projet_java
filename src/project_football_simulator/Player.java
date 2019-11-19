@@ -15,15 +15,73 @@ import java.util.Random;
  * @author rtwam
  */
 public class Player extends OnField implements Fatigue{
-    int number;
-    float attack;
-    float defense;
-    float boostAttack=0;
-    float boostDefense=0;
-     float boostAttackCoach=0;
-    float boostDefenseCoach=0;
-    String favPos;
-    int card;
+    private int number;
+    private float attack;
+    private float defense;
+    private float boostAttack=0;
+    private float boostDefense=0;
+    private float boostAttackCoach=0;
+    private float boostDefenseCoach=0;
+    private String favPos;
+    public int card;
+    
+    public int getNumber() { 
+            return this.number;
+    }
+    public float getAttack() { 
+            return this.attack;
+    }
+     public float getDefense() { 
+            return this.defense;
+    }
+    public float getBoostAttack() { 
+            return this.boostAttack;
+    }
+    public float getBoostDefense() { 
+            return this.boostDefense;
+    }
+    public float getBoostAttackCoach() { 
+            return this.boostAttackCoach;
+    }
+    public float getBoostDefenseCoach() { 
+            return this.boostDefenseCoach;
+    }
+    public String getFavPos() { 
+            return this.favPos;
+    }
+    public int getCard() { 
+            return this.card;
+    }
+    
+    public void setNumber(int number) { 
+             this.number=number;
+    }
+    public void setAttack(float atck) { 
+             this.attack=atck;
+    }
+     public void setDefense(float def) { 
+             this.defense=def;
+    }
+    public void setBoostAttack(float atck) { 
+             this.boostAttack=atck;
+    }
+    public void setBoostDefense(float def) { 
+             this.boostDefense=def;
+    }
+    public void setBoostAttackCoach(float atck) { 
+             this.boostAttackCoach=atck;
+    }
+    public void setBoostDefenseCoach(float def) { 
+             this.boostDefenseCoach=def;
+    }
+    public void setFavPos(String pos) { 
+             this.favPos=pos;
+    }
+    public void setCard(int card) { 
+             this.card=card;
+    }
+    
+    
     
     /**
      *
@@ -55,13 +113,9 @@ public class Player extends OnField implements Fatigue{
     /**
      * Affiche les stats d'un joueur
      */
+            
     public void printPlayer(){ 
-        System.out.println("nom: "+this.name+" "+this.surname);
-        System.out.println("age: "+this.age);
-        System.out.println("position: "+this.favPos);
-        System.out.println("stat: ");
-        System.out.println("attack: "+this.attack);
-        System.out.println("defence: "+this.defense);
+        System.out.println(" nom: "+this.getName()+" "+this.getSurname()+"number"+this.getNumber() +" age: "+this.getAge()+" nationality :"+getNationality() +" position: "+this.getFavPos()+"\n stat: "+"attack: "+this.getAttack()+"defence: "+this.getDefense()+" stamina :"+this.getStamina()+"\n" );
     }
         
     /**
