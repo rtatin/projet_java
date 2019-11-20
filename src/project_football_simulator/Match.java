@@ -21,6 +21,13 @@ public class Match {
     protected int[] scorePenalties={0,0};
     protected Referee ref;
     
+    private boolean getPlayerInGame(){
+        return this.playerInGame;
+    }
+    private void setPlayerInGame(boolean player){
+        this.playerInGame=player;
+    }
+    
     /**
      *
      * @param teams
@@ -105,7 +112,9 @@ public class Match {
                 teams.get(i).getPlayers().get(j).fatigue();
             }
         }
-        System.out.println(this.score[0]+" "+this.score[1]);
+        if(getPlayerInGame()==true){
+            System.out.println("Score: "+this.score[0]+" "+this.score[1]);
+        }
     }
     
     /**
@@ -119,9 +128,16 @@ public class Match {
         //this.teams.get(0).printFullTeam();
         //this.teams.get(0).printFullTeam();
         System.out.println("Beginning of the match between "+this.teams.get(0).getName()+" and "+this.teams.get(1).getName());
+        boolean playerInGame=false;
+        System.out.println("Beginning of the match between "+this.teams.get(0).name+" and "+this.teams.get(1).name);
         this.teams.get(0).boostTeam();
         this.teams.get(1).boostTeam();
-        
+        for(int i=0;i<2;i++){
+            if (this.teams.get(i).isPlayer==true){
+                playerInGame=true;               
+            }
+        }
+        setPlayerInGame(playerInGame);
         while(this.time!=45){
             for (int i=0;i<2;i++){
                 if(this.teams.get(i).getIsPlayer()==true){
@@ -135,12 +151,30 @@ public class Match {
                        return;
                     }
                 }      
+                if(getPlayerInGame()==true){
+                    if(this.teams.get(i).isPlayer==true){
+                        System.out.println("Click enter to continue");
+                        char c;
+                        try{
+                            c = (char)System.in.read();
+                        }
+                         catch(IOException ioe){
+                           System.out.println("Error, click on enter to continue");
+                           return;
+                        }
+                    } 
+                }
             }
           
             PlayingMatch();
-            System.out.println(this.time+"min de match");
+            if(getPlayerInGame()==true){
+                System.out.println(this.time+"min de match");
+            }
         }
         System.out.println("End of first half-time between "+this.teams.get(0).getName()+" and "+this.teams.get(1).getName());
+        if(getPlayerInGame()==true){
+            System.out.println("End of first half-time between "+this.teams.get(0).name+" and "+this.teams.get(1).name);
+        }
         for (int i=0;i<2;i++){
             if(teams.get(i).getIsPlayer()==true ){
             LockerRoom halfTime=new LockerRoom(this.teams,this.time,this.ref,true);
@@ -148,6 +182,9 @@ public class Match {
             }
         }
         System.out.println("End of half-time between "+this.teams.get(0).getName()+" and "+this.teams.get(1).getName());
+        if(getPlayerInGame()==true){
+            System.out.println("End of half-time between "+this.teams.get(0).name+" and "+this.teams.get(1).name);
+        }
         while(this.time!=90){
             for (int i=0;i<2;i++){
                 if(this.teams.get(i).getIsPlayer()==true){
@@ -163,7 +200,9 @@ public class Match {
                 }      
             }
             PlayingMatch();
-            System.out.println(this.time+"min de match");
+            if(getPlayerInGame()==true){
+                System.out.println(this.time+"min de match");
+            }
         }
         this.checkWin();
     }
@@ -179,14 +218,20 @@ public class Match {
             System.out.println("victoire de "+this.teams.get(0).getName()+"score"+this.score[0]+":"+this.score[1] );
             this.teams.get(1).SetLoose(true);
             return (this.teams.get(0).getIdTeam());
+            System.out.println("Winning team is "+this.teams.get(0).name+"Score: "+this.score[0]+":"+this.score[1] );
+            this.teams.get(1).loose=true;
+            return (this.teams.get(0).idTeam);
         }
         else if(this.score[0]<this.score[1]) {
             System.out.println("victoire de "+this.teams.get(1).getName()+"score"+this.score[0]+":"+this.score[1] );
             this.teams.get(0).SetLoose(true);
             return (this.teams.get(1).getIdTeam());
+            System.out.println("Winning team is "+this.teams.get(1).name+"\nScore: "+this.score[0]+":"+this.score[1] );
+            this.teams.get(0).loose=true;
+            return (this.teams.get(1).idTeam);
         }
-        else if(this.score[0]==this.score[1]) {System.out.println("draw "+"score"+this.score[0]+":"+this.score[1] );
-        System.out.println("prolongation");
+        else if(this.score[0]==this.score[1]) {System.out.println("Draw "+"\nScore: "+this.score[0]+":"+this.score[1] );
+        System.out.println("Overtime");
             while((this.score[0]==this.score[1])&&(this.time!=120)){
                 PlayingMatch();
                 System.out.println(this.time+"min de match");
@@ -195,20 +240,32 @@ public class Match {
                 System.out.println("victoire de "+this.teams.get(0).getName()+" score "+this.score[0]+":"+this.score[1] );
                 this.teams.get(1).SetLoose(true);
             return (this.teams.get(0).getIdTeam());}
+                System.out.println("Winning team is "+this.teams.get(0).name+"\nScore: "+this.score[0]+":"+this.score[1] );
+                this.teams.get(1).loose=true;
+            return (this.teams.get(0).idTeam);}
             if(this.score[1]>this.score[0]){
                 System.out.println("victoire de "+this.teams.get(1).getName()+" score "+this.score[0]+":"+this.score[1] );
                 this.teams.get(0).SetLoose(true);
             return (this.teams.get(1).getIdTeam());}
+                System.out.println("Winning team is "+this.teams.get(1).name+"\nScore: "+this.score[0]+":"+this.score[1] );
+                this.teams.get(0).loose=true;
+            return (this.teams.get(1).idTeam);}
             if(this.score[0]==this.score[1]) {
                 penalties();
                 if(this.scorePenalties[0]>this.scorePenalties[1]) {
                 System.out.println("victoire de "+this.teams.get(0).getName()+" score penalty"+this.scorePenalties[0]+":"+this.scorePenalties[1] );
                 this.teams.get(1).SetLoose(true);
                 return (this.teams.get(0).getIdTeam());}
+                System.out.println("Winning team is "+this.teams.get(0).name+"\nScore penalty "+this.scorePenalties[0]+":"+this.scorePenalties[1] );
+                this.teams.get(1).loose=true;
+                return (this.teams.get(0).idTeam);}
                 if(this.scorePenalties[1]>this.scorePenalties[0]){
                     System.out.println("victoire de "+this.teams.get(1).getName()+" score penalty"+this.scorePenalties[0]+":"+this.scorePenalties[1] );
                     this.teams.get(0).SetLoose(true);
                 return (this.teams.get(1).getIdTeam());}
+                    System.out.println("Winning team is "+this.teams.get(1).name+" Score penalty "+this.scorePenalties[0]+":"+this.scorePenalties[1] );
+                    this.teams.get(0).loose=true;
+                return (this.teams.get(1).idTeam);}
             }
         }
         return(100);
@@ -220,7 +277,7 @@ public class Match {
      * On compare alors le skill du gardien
      */
     public void penalties(){
-        System.out.println("begin of penalty");
+        System.out.println("Beginning of penalties");
         float atck1;
         float atck2;
         float deff1;
@@ -246,7 +303,9 @@ public class Match {
             if(i<0){
                 i=this.teams.get(0).getPlayers().size()-1;
             }
-            System.out.println(this.scorePenalties[0]+" "+this.scorePenalties[1]);
+            if(getPlayerInGame()==true){
+                System.out.println(this.scorePenalties[0]+" "+this.scorePenalties[1]);
+            }
         }
     }
 }
