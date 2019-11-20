@@ -93,7 +93,7 @@ public class LockerRoom extends Match{
             for(int i=0;i<this.teams.get(tampon).getPlayers().size();i++){
                 if(this.teams.get(tampon).getPlayers().get(i).getNumber()==Integer.parseInt(numberPlayer)){
                     pos=this.teams.get(tampon).getPlayers().get(i).getFavPos();
-                    this.teams.get(tampon).getPlayers().get(i).field=false;
+                    this.teams.get(tampon).getPlayers().get(i).setField(false);
                     this.teams.get(tampon).getPlayers().remove(this.teams.get(tampon).getPlayers().get(i)); //si le joueur est dans players on l'enleve
                 }
             }
@@ -103,10 +103,10 @@ public class LockerRoom extends Match{
                     numberPlayer = myObj.nextLine(); //on rajoute un nouveau joueur
                     int number=Integer.parseInt(numberPlayer);
                     
-                    if((this.teams.get(tampon).getFullTeam().get(number-1).getFavPos().equals(pos))&&(this.teams.get(tampon).getFullTeam().get(number-1).field==false)&&(this.teams.get(tampon).getFullTeam().get(number-1).card!=2)){
-                        this.teams.get(tampon).getFullTeam().get(number-1).field=true;
+                    if((this.teams.get(tampon).getFullTeam().get(number-1).getFavPos().equals(pos))&&(this.teams.get(tampon).getFullTeam().get(number-1).getField()==false)&&(this.teams.get(tampon).getFullTeam().get(number-1).card!=2)){
+                        this.teams.get(tampon).getFullTeam().get(number-1).setField(true);
                         this.teams.get(tampon).getPlayers().add(this.teams.get(tampon).getFullTeam().get(number-1));
-                        this.teams.get(tampon).getPlayers().get(this.teams.get(tampon).getPlayers().size()-1).field=true;
+                        this.teams.get(tampon).getPlayers().get(this.teams.get(tampon).getPlayers().size()-1).setField(true);
 //                        for(int t=0;t<this.teams.get(tampon).players.size();t++){
 //                            System.out.println(this.teams.get(tampon).players.get(t).number +" "+ this.teams.get(tampon).players.get(t).field);
 //                        }
@@ -117,6 +117,9 @@ public class LockerRoom extends Match{
 //                        }
                     
                 }
+                    for(int t=0;t<this.teams.get(tampon).getPlayers().size();t++){
+                            System.out.println(this.teams.get(tampon).getPlayers().get(t).getNumber() +" "+ this.teams.get(tampon).getPlayers().get(t).getField());
+                        }
                 System.out.println("Player to get off the field:");
                 System.out.println("Write stop if you don't want or you're done");
                 numberPlayer = myObj.nextLine();

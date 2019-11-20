@@ -15,17 +15,17 @@ public class Referee extends OnField implements Fatigue {
     
     @Override
     public void fatigue(){
-        this.stamina=this.stamina-(8*super.age/20);
+        this.setStamina(this.getStamina()-(8*super.age/20));
     }
     
     public void Severite(){
-        this.severity=this.severity+((100-this.stamina)/100);
+        this.severity=this.severity+((100-this.getStamina())/100);
     }
     
     public void generateReferee(){
         this.severity=(int) (Math.random() * (100 - 0));
-        this.field=true;
-        super.stamina=100;
+        this.setField(true);
+        super.setStamina(100);
         super.name=Character.getRandomName();
         super.surname=Character.getRandomSurname();
         super.age=(int) (20 + Math.random() * 30);
@@ -48,6 +48,6 @@ public class Referee extends OnField implements Fatigue {
     }
     
     public void RedCard(Player player){
-        player.field=false;            
+        player.setField(false);            
         }   
 }

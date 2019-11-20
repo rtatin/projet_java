@@ -148,16 +148,16 @@ public void SetLoose(boolean perte){
         
         for (int j=0;j<atkCount;j++){
             newPlayer.add(FullTeam.get(j));
-            FullTeam.get(j).field=true;
+            FullTeam.get(j).setField(true);
         }
         for (int j=5;j<midCount+5;j++){
             newPlayer.add(FullTeam.get(j));
-            FullTeam.get(j).field=true;
+            FullTeam.get(j).setField(true);
 
         }
         for (int j=10;j<defCount+10;j++){
             newPlayer.add(FullTeam.get(j));
-            FullTeam.get(j).field=true;
+            FullTeam.get(j).setField(true);
 
         }
         SetPlayer(newPlayer);
@@ -266,7 +266,7 @@ public void SetLoose(boolean perte){
                         }
                         if((alreadyInPlayer==false)&&(this.FullTeam.get(numPlayer-1).getFavPos()==pos)){ 
                             newPlayer.add(FullTeam.get(numPlayer-1)); 
-                            FullTeam.get(numPlayer-1).field=true; 
+                            FullTeam.get(numPlayer-1).setField(true); 
                             count--; 
                         }
                         try{
@@ -350,7 +350,7 @@ public void SetLoose(boolean perte){
         }
         System.out.println("Players not playing");
         for (int g=0;g<FullTeam.size();g++){
-            if(this.FullTeam.get(g).field==false){
+            if(this.FullTeam.get(g).getField()==false){
                 this.FullTeam.get(g).printPlayer();
             }
         }
@@ -368,7 +368,7 @@ public void SetLoose(boolean perte){
             Player play=this.players.get(i);
             for (int g=0;g<this.players.size();g++){
             
-                if((play.nationality==this.players.get(g).nationality)&&(play.getNumber()!=this.players.get(g).getNumber())&&(play.field==true)){
+                if((play.nationality==this.players.get(g).nationality)&&(play.getNumber()!=this.players.get(g).getNumber())&&(play.getField()==true)){
                     cont=cont+1;
                 }
                 if(cont>1){

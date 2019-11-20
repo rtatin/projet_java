@@ -16,7 +16,7 @@ public class Goalie extends OnField implements Fatigue{
     public Goalie(boolean field,int number,int stamina,String name,String surname, int age, String nationality,int skill,String equipe){
        this.number=number;
        this.skill=skill;
-       super.stamina=stamina;
+       super.setStamina(stamina);
        super.name=name;
        super.surname=surname;
        super.age=age;
@@ -34,7 +34,7 @@ public class Goalie extends OnField implements Fatigue{
 
     @Override
     public void fatigue(){
-        this.stamina=this.stamina-(2*super.age/20);
+        this.setStamina(this.getStamina()-(8*super.age/20));
     }
     
     public void printGoalie(){

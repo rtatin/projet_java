@@ -123,8 +123,6 @@ public class Player extends OnField implements Fatigue{
      */
     @Override
     public void fatigue(){
-        this.stamina=this.stamina-(10*super.age/20);
+        this.setStamina(this.getStamina()-(10*super.age/20));
     }
-    
-    
 }

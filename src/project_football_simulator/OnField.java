@@ -11,10 +11,20 @@ package project_football_simulator;
  */
 public class OnField extends Character{
     
-    protected boolean field;
-    protected int stamina=100;
+    private boolean field;
+    private int stamina=100;
     
-    public float getStamina(){
+    
+    public int getStamina(){
         return this.stamina;
+    }
+   public boolean getField(){
+       return this.field;
+   } 
+   public void setField(boolean onfield){
+        this.field=onfield;
+    }
+   public void setStamina(int stamina){
+        this.stamina=stamina;
     }
 }

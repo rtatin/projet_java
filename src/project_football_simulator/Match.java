@@ -53,9 +53,9 @@ public class Match {
      */
     public float DefTeam(int numberTeam){ 
         float totalDef=0;
-        for(int i=0; i<10;i++){
+        for(int i=0; i<teams.get(numberTeam).getPlayers().size();i++){
             Player play=teams.get(numberTeam).getPlayers().get(i);
-            if (play.field==true){
+            if (play.getField()==true){
                 totalDef+=play.getBoostDefenseCoach();
             }
         }
