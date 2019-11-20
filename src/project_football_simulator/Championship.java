@@ -99,13 +99,7 @@ public void createChampionship(){
         }
         while(this.teamsInCompetition.size()>1){
             
-            while(g<this.teamsInCompetition.size()-1){
-//                    System.out.println("equipe encore en competition");
-//                    for(int j=0;j<this.teamsInCompetition.size();j++){
-//                    System.out.println(teamsInCompetition.get(j).name);
-//                    System.out.println(teamsInCompetition.get(j).loose);
-//                    //System.out.println("j="+j);
-//                    }
+            while(g<this.teamsInCompetition.size()-1){               
             ArrayList <Team> equipes=new <Team> ArrayList();
             equipes.add(this.teamsInCompetition.get(g));
             g++;
@@ -140,11 +134,16 @@ public void createChampionship(){
                         }
                     }
             }
+            System.out.println("Teams still in competition:\n");
+                for(int j=0;j<this.teamsInCompetition.size();j++){
+                    System.out.println("- "+teamsInCompetition.get(j).getName()+"\n");
+                //System.out.println("j="+j);
+                }
         
         } 
         
       
-        System.out.println("victoire de "+ this.teamsInCompetition.get(0).getName());
+        System.out.println("Winner of the championship is "+ this.teamsInCompetition.get(0).getName());
     }
     
 }

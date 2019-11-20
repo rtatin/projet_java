@@ -135,7 +135,7 @@ public class Match {
                 playerPlaying=true;
             }
         }
-        setPlayerInGame(playerInGame);
+        setPlayerInGame(playerPlaying);
         if(getPlayerInGame()==true){
             System.out.println("Beginning of the match between "+this.teams.get(0).getName()+" and "+this.teams.get(1).getName());
         }
