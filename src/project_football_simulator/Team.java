@@ -99,7 +99,7 @@ public void SetLoose(boolean perte){
             newTeam.add(newPlayer);
         }
         for(int i=11;i<16;i++){ 
-            Player newPlayer=new Player(i, (int) (20 + Math.random() * (40 - 0)), (int) (60 + Math.random() * (100 - 60)),"def",false,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (40 - 16)),Character.getRandomNationality(),this.name);
+            Player newPlayer=new Player(i, (int) (20 + Math.random() * (40 - 0)), (int) (60 + Math.random() * (100 - 60)),"def",false,Character.getRandomName(),Character.getRandomSurname(), (int) ((int) 16+ (Math.random() * 24)),Character.getRandomNationality(),this.name);
             newTeam.add(newPlayer);
         }
         SetFullTeam(newTeam); 
@@ -365,33 +365,33 @@ public void SetLoose(boolean perte){
     public void nationality(){
         int cont=0; 
         for (int i=0;i<this.players.size();i++){
-            Player play=this.players.get(i);
+            Player play=this.getPlayers().get(i);
             for (int g=0;g<this.players.size();g++){
             
-                if((play.nationality==this.players.get(g).nationality)&&(play.getNumber()!=this.players.get(g).getNumber())&&(play.getField()==true)){
+                if((play.getNationality()==this.getPlayers().get(g).getNationality())&&(play.getNumber()!=this.players.get(g).getNumber())&&(play.getField()==true)){
                     cont=cont+1;
                 }
-                if(cont>1){
+                
                     switch(play.getFavPos()) {
                     case "atk":
-                        play.setBoostAttack(play.getAttack()+play.getAttack()*(cont/10));
+                        play.setBoostAttack(play.getAttack()+play.getAttack()*(cont/10)+play.getAttack()*(play.getStamina()/200));
+                        play.setBoostDefense(play.getDefense());
                         break;
                     case "mid":
-                        play.setBoostAttack(play.getAttack()+play.getAttack()*(cont/20));
-                        play.setBoostDefense(play.getDefense()+play.getDefense()*(cont/20));
+                        play.setBoostAttack(play.getAttack()+play.getAttack()*(cont/20)+play.getAttack()*(play.getStamina()/200));
+                        play.setBoostDefense(play.getDefense()+play.getDefense()*(cont/20)+play.getDefense()*(play.getStamina()/200));
                         break;
                     case "def":
-                        play.setBoostDefense(play.getDefense()+play.getDefense()*(cont/10));
+                        play.setBoostDefense(play.getDefense()+play.getDefense()*(cont/10)+play.getDefense()*(play.getStamina()/200));
+                        play.setBoostAttack(play.getAttack());
                         break;
                     default:
                         break;
                     }  
-                }
-                else{
-                    play.setBoostAttack(play.getAttack());
-                    play.setBoostDefense(play.getDefense());
-                }
+                
+                
             }
+            this.getPlayers().get(i).resetPlayerBoostAtck(play);
         }  
     }
 

@@ -103,15 +103,19 @@ public class Match {
      */
     public void PlayingMatch(){ 
         this.time+=15; 
+        
+        teams.get(0).getPlayers().get(2).printPlayer();
         float atkTeam0=AtkTeam(0);
         float atkTeam1=AtkTeam(1);
         float defTeam0=DefTeam(0);
         float defTeam1=DefTeam(1);
         increaseScore(atkTeam0, atkTeam1, defTeam0, defTeam1); 
         for (int i=0;i<2;i++){
+            teams.get(i).nationality();
             for (int j=0;j<10;j++){
                 ref.YellowCard(teams.get(i).getPlayers().get(j));
                 teams.get(i).getPlayers().get(j).fatigue();
+                
             }
         }
         this.ref.RecalulateSeverite();

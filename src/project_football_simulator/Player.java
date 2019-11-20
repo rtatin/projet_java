@@ -107,15 +107,18 @@ public class Player extends OnField implements Fatigue{
         this.defense=defense;
         this.favPos=favPos;
         
-
     }
 
+    public void resetPlayerBoostAtck(Player player){
+    this.setBoostAttack(player.getBoostAttack());
+    this.setBoostDefense(player.getBoostDefense());
+    }
     /**
      * Affiche les stats d'un joueur
      */
             
     public void printPlayer(){ 
-        System.out.println(" Name: "+this.getName()+" "+this.getSurname()+" Number: "+this.getNumber() +" Age: "+this.getAge()+" Nationality: "+getNationality() +" Position: "+this.getFavPos()+"\n Stats-> "+"Attack: "+this.getAttack()+" Defense: "+this.getDefense()+" Stamina: "+this.getStamina()+"\n" );
+        System.out.println(" Name: "+this.getName()+" "+this.getSurname()+" Number: "+this.getNumber() +" Age: "+this.getAge()+" Nationality: "+getNationality() +" Position: "+this.getFavPos()+"\n Stats-> "+"Attack: "+this.getAttack()+" Defense: "+this.getDefense()+" Stamina: "+this.getStamina()+" boostatack: "+this.getBoostAttack()+" boostdefence: "+this.getBoostDefense()+"\n" );
     }
         
     /**
@@ -123,6 +126,6 @@ public class Player extends OnField implements Fatigue{
      */
     @Override
     public void fatigue(){
-        this.setStamina(this.getStamina()-(10*super.age/20));
+        this.setStamina(this.getStamina()-(4*super.age/20));
     }
 }
