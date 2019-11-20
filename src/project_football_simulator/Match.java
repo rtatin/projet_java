@@ -114,6 +114,7 @@ public class Match {
                 teams.get(i).getPlayers().get(j).fatigue();
             }
         }
+        this.ref.RecalulateSeverite();
         if(getPlayerInGame()==true){
             System.out.println(this.score[0]+" "+this.score[1]);
         }

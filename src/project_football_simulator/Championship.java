@@ -106,6 +106,7 @@ public void createChampionship(){
             equipes.add(this.teamsInCompetition.get(g));
             g++;
             Referee arbitre=new Referee();
+            arbitre.generateReferee();
             Match match1 = new Match(equipes,arbitre);
                 for (int i=0;i<2;i++){
                 if(match1.teams.get(i).getIsPlayer()==true ){
