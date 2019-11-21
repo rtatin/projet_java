@@ -5,6 +5,10 @@
  */
 package project_football_simulator;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -35,78 +39,109 @@ public abstract class Character {
             return this.equipe;
     }
     
+    public static ArrayList<String> getNamePlayer() {
+        ArrayList<String> nameArray=new ArrayList<String>();
+     
+		try {
+			BufferedReader fluxEntree= new BufferedReader(new FileReader("noms_joueurs.txt"));
+			String ligne = "";
+			
+		while (!(ligne==null)) {
+		ligne = fluxEntree.readLine( );  
+	
+		if (!(ligne==null)) {
+			nameArray.add(ligne);
+		}
+		}
+                
+		}
+		catch(FileNotFoundException e)
+		{ System.out.println(" Fichier noms_equipes nexiste pas");
+		System.out.println("ou erreur ouverture");} 
+		catch(IOException e)
+		{ System.out.println("Erreur lecture noms_joueurs.txt.");}
+                return nameArray;
+    }
     
-    
-    
-    public static String getRandomName() {
-		 ArrayList<String> nameArray=new ArrayList<String>(){{
-        add("Martin");
-        add("Bernard");
-        add("Thomas");
-        add("Petit");
-        add("Robert");
-        add("Richard");
-        add("Durand");
-        add("Dubois");
-        add("Moreau");
-        add("Laurent");
-        add("Simon");
-        add("Michel");
-        add("Lefebvre");
-        add("Leroy");
-        add("Roux");
-        add("David");
-        add("Bertrand");
-        add("Morel");
-        add("Fournier");
-        add("Girard");
-        }}; 
- 
-		String name = nameArray.get(new Random().nextInt(nameArray.size()));
+    /**
+     * Meme fonction mais pour les noms des joueurs
+     * @param nameArray
+     * @return
+     */
+    public static String getRandomName(ArrayList<String> nameArray) {
+        
+        String name = nameArray.get(new Random().nextInt(nameArray.size()));
 		return name;
-	}
-        public static String getRandomSurname() {
-		 ArrayList<String> surnameArray=new ArrayList<String>(){{
-        add("louis");
-        add("gabriel");
-        add("léo");
-        add("maël");
-        add("paul");
-        add("hugo");
-        add("valentin");
-        add("gabin");
-        add("arthur");
-        add("théo");
-        add("jules");
-        add("lucas");
-        add("sacha");
-        add("ethan");
-        add("clement");
-        add("antoine");
-        add("nathan");
-        add("raphaël");
-        add("thomas");
-        add("tom");
-        }}; 
- 
-		String surname = surnameArray.get(new Random().nextInt(surnameArray.size()));
-		return surname;
-	}
-        public static String getRandomNationality() {
-        ArrayList<String> nationalityArray=new ArrayList<String>(){{
-        add("fra");
-        add("eng");
-        add("irl");
-        add("ita");
-        add("esp");
-        add("por");
-        add("sui");
-        add("all");
-        add("pol");
-        }}; 
- 
-
-        String nat = nationalityArray.get(new Random().nextInt(nationalityArray.size()));
-        return nat;
-	}
+    }
+    
+    public static ArrayList<String> getSurnamePlayer() {
+        ArrayList<String> nameArray=new ArrayList<String>();
+     
+		try {
+			BufferedReader fluxEntree= new BufferedReader(new FileReader("noms_joueurs.txt"));
+			String ligne = "";
+			
+		while (!(ligne==null)) {
+		ligne = fluxEntree.readLine( );  
+	
+		if (!(ligne==null)) {
+			nameArray.add(ligne);
+		}
+		}
+                
+		}
+		catch(FileNotFoundException e)
+		{ System.out.println(" Fichier noms_equipes nexiste pas");
+		System.out.println("ou erreur ouverture");} 
+		catch(IOException e)
+		{ System.out.println("Erreur lecture noms_joueurs.txt.");}
+                return nameArray;
+    }
+    
+    /**
+     * Meme fonction mais pour les noms des joueurs
+     * @param nameArray
+     * @return
+     */
+    public static String getRandomSurname(ArrayList<String> nameArray) {
+        
+        String name = nameArray.get(new Random().nextInt(nameArray.size()));
+		return name;
+    }
+      public static ArrayList<String> getNationalityPlayer() {
+        ArrayList<String> nameArray=new ArrayList<String>();
+     
+		try {
+			BufferedReader fluxEntree= new BufferedReader(new FileReader("nationaliter_joueurs.txt"));
+			String ligne = "";
+			
+		while (!(ligne==null)) {
+		ligne = fluxEntree.readLine( );  
+	
+		if (!(ligne==null)) {
+			nameArray.add(ligne);
+		}
+		}
+                
+		}
+		catch(FileNotFoundException e)
+		{ System.out.println(" Fichier noms_equipes nexiste pas");
+		System.out.println("ou erreur ouverture");} 
+		catch(IOException e)
+		{ System.out.println("Erreur lecture nationaliter_joueurs.txt.");}
+                return nameArray;
+    }
+    
+    /**
+     * Meme fonction mais pour les noms des joueurs
+     * @param nameArray
+     * @return
+     */
+    public static String getRandomNationality(ArrayList<String> nameArray) {
+        
+        String name = nameArray.get(new Random().nextInt(nameArray.size()));
+		return name;
+    }
 }
+
+       

@@ -33,10 +33,10 @@ public class Referee extends OnField implements Fatigue {
         this.setSeverite((int) ((int) 20+ (Math.random() * (5))));
         this.setField(true);
         super.setStamina(100);
-        super.name=Character.getRandomName();
-        super.surname=Character.getRandomSurname();
+        super.name=Character.getRandomName(Character.getNamePlayer());
+        super.surname=Character.getRandomSurname(Character.getSurnamePlayer());
         super.age=(int) (15 + Math.random() * 30);
-        super.nationality=Character.getRandomNationality();
+        super.nationality=Character.getRandomNationality(Character.getNationalityPlayer());
         
     }
     public void YellowCard(Player player){

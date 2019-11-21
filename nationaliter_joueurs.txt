@@ -1,0 +1,9 @@
+fra
+eng
+irl
+ita
+esp
+por
+sui
+all
+pol

@@ -91,21 +91,21 @@ public void SetLoose(boolean perte){
         this.name=this.getRandomNameTeam(getNameTeam());
         ArrayList <Player> newTeam= new <Player>ArrayList();  
         for(int i=1;i<6;i++){ 
-            Player newPlayer=new Player(i, (int) (60 + Math.random() * (100 - 60)), (int) (20 + Math.random() * (40 - 0)),"atk",false,Character.getRandomName(),Character.getRandomSurname(),  (int) ((int) 16+ (Math.random() * 24)),Character.getRandomNationality(),this.name);
+            Player newPlayer=new Player(i, (int) (60 + Math.random() * (100 - 60)), (int) (20 + Math.random() * (40 - 0)),"atk",false,Character.getRandomName(Character.getNamePlayer()),Character.getRandomSurname(Character.getSurnamePlayer()),  (int) ((int) 16+ (Math.random() * 24)),Character.getRandomNationality(Character.getNationalityPlayer()),this.name);
             newTeam.add(newPlayer);
         }
         for(int i=6;i<11;i++){ 
-            Player newPlayer=new Player(i, (int) (40 + Math.random() * (80 - 40)), (int) (40 + Math.random() * (80 - 40)),"mid",false,Character.getRandomName(),Character.getRandomSurname(),  (int) ((int) 16+ (Math.random() * 24)),Character.getRandomNationality(),this.name);
+            Player newPlayer=new Player(i, (int) (40 + Math.random() * (80 - 40)), (int) (40 + Math.random() * (80 - 40)),"mid",false,Character.getRandomName(Character.getNamePlayer()),Character.getRandomSurname(Character.getSurnamePlayer()),  (int) ((int) 16+ (Math.random() * 24)),Character.getRandomNationality(Character.getNationalityPlayer()),this.name);
             newTeam.add(newPlayer);
         }
         for(int i=11;i<16;i++){ 
-            Player newPlayer=new Player(i, (int) (20 + Math.random() * (40 - 0)), (int) (60 + Math.random() * (100 - 60)),"def",false,Character.getRandomName(),Character.getRandomSurname(), (int) ((int) 16+ (Math.random() * 24)),Character.getRandomNationality(),this.name);
+            Player newPlayer=new Player(i, (int) (20 + Math.random() * (40 - 0)), (int) (60 + Math.random() * (100 - 60)),"def",false,Character.getRandomName(Character.getNamePlayer()),Character.getRandomSurname(Character.getSurnamePlayer()), (int) ((int) 16+ (Math.random() * 24)),Character.getRandomNationality(Character.getNationalityPlayer()),this.name);
             newTeam.add(newPlayer);
         }
         SetFullTeam(newTeam); 
-        Manager man=new Manager((int) ((int) 1+ (Math.random() * 4)),Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (60 - 40)),Character.getRandomNationality(),this.name);
+        Manager man=new Manager((int) ((int) 1+ (Math.random() * 4)),Character.getRandomName(Character.getNamePlayer()),Character.getRandomSurname(Character.getSurnamePlayer()), (int) (Math.random() * (60 - 40)),Character.getRandomNationality(Character.getNationalityPlayer()),this.name);
         SetManager(man);
-        Goalie goal=new Goalie(true,0,100,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (40 - 16)),Character.getRandomNationality(), (int) (60 + Math.random() * (40 - 0)),this.name);
+        Goalie goal=new Goalie(true,0,100,Character.getRandomName(Character.getNamePlayer()),Character.getRandomSurname(Character.getSurnamePlayer()), (int) (Math.random() * (40 - 16)),Character.getRandomNationality(Character.getNationalityPlayer()), (int) (60 + Math.random() * (40 - 0)),this.name);
         SetGoalie(goal);
     }
     
