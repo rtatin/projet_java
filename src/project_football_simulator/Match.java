@@ -103,8 +103,6 @@ public class Match {
      */
     public void PlayingMatch(){ 
         this.time+=15; 
-        
-        teams.get(0).getPlayers().get(2).printPlayer();
         float atkTeam0=AtkTeam(0);
         float atkTeam1=AtkTeam(1);
         float defTeam0=DefTeam(0);

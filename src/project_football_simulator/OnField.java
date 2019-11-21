@@ -9,8 +9,7 @@ package project_football_simulator;
  *
  * @author rtwam
  */
-public class OnField extends Character{
-    
+public class OnField extends Character{ 
     private boolean field;
     private float stamina=100;
     

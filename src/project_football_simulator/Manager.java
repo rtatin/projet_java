@@ -13,6 +13,7 @@ import java.util.Scanner;
  */
 public class Manager extends Character {
     private int boost;
+    
     public Manager(int boost,String name,String surname, int age, String nationality,String equipe){
         this.boost=boost;
         super.name=name;

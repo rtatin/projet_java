@@ -118,7 +118,7 @@ public class Player extends OnField implements Fatigue{
      */
             
     public void printPlayer(){ 
-        System.out.println(" Name: "+this.getName()+" "+this.getSurname()+" Number: "+this.getNumber() +" Age: "+this.getAge()+" Nationality: "+getNationality() +" Position: "+this.getFavPos()+"\n Stats-> "+"Attack: "+this.getAttack()+" Defense: "+this.getDefense()+" Stamina: "+this.getStamina()+" boostatack: "+this.getBoostAttack()+" boostdefence: "+this.getBoostDefense()+"\n" );
+        System.out.println(" Name: "+this.getName()+" "+this.getSurname()+" Number: "+this.getNumber() +" Age: "+this.getAge()+" Nationality: "+getNationality() +" Position: "+this.getFavPos()+"\n Stats-> "+"Attack: "+this.getAttack()+" Defense: "+this.getDefense()+" Stamina: "+this.getStamina()+"\n" );
     }
         
     /**

@@ -91,11 +91,11 @@ public void SetLoose(boolean perte){
         this.name=this.getRandomNameTeam(getNameTeam());
         ArrayList <Player> newTeam= new <Player>ArrayList();  
         for(int i=1;i<6;i++){ 
-            Player newPlayer=new Player(i, (int) (60 + Math.random() * (100 - 60)), (int) (20 + Math.random() * (40 - 0)),"atk",false,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (40 - 16)),Character.getRandomNationality(),this.name);
+            Player newPlayer=new Player(i, (int) (60 + Math.random() * (100 - 60)), (int) (20 + Math.random() * (40 - 0)),"atk",false,Character.getRandomName(),Character.getRandomSurname(),  (int) ((int) 16+ (Math.random() * 24)),Character.getRandomNationality(),this.name);
             newTeam.add(newPlayer);
         }
         for(int i=6;i<11;i++){ 
-            Player newPlayer=new Player(i, (int) (40 + Math.random() * (80 - 40)), (int) (40 + Math.random() * (80 - 40)),"mid",false,Character.getRandomName(),Character.getRandomSurname(), (int) (Math.random() * (40 - 16)),Character.getRandomNationality(),this.name);
+            Player newPlayer=new Player(i, (int) (40 + Math.random() * (80 - 40)), (int) (40 + Math.random() * (80 - 40)),"mid",false,Character.getRandomName(),Character.getRandomSurname(),  (int) ((int) 16+ (Math.random() * 24)),Character.getRandomNationality(),this.name);
             newTeam.add(newPlayer);
         }
         for(int i=11;i<16;i++){ 
@@ -296,23 +296,23 @@ public void SetLoose(boolean perte){
      * a savoir son nom, ses joueurs et son manageur
      */
     public void printFullTeam(){ //permet d'afficher l'équipe au complet
-        System.out.println("teamname :"+this.name);
+        System.out.println("Name of your team: "+this.name);
         this.manager.printManager();
         this.goalie.printGoalie();
         
-        System.out.println("attack :");
+        System.out.println("Attack: ");
         for (int g=0;g<15;g++){
             if(this.FullTeam.get(g).getFavPos()=="atk"){
             this.FullTeam.get(g).printPlayer();
             }
         }
-        System.out.println("middle :");
+        System.out.println("Middle: ");
         for (int g=0;g<15;g++){
             if(this.FullTeam.get(g).getFavPos()=="mid"){
                 this.FullTeam.get(g).printPlayer();
             }
         }
-        System.out.println("defense :");
+        System.out.println("Defense: ");
         for (int g=0;g<15;g++){
             if(this.FullTeam.get(g).getFavPos()=="def"){
                 this.FullTeam.get(g).printPlayer();
@@ -330,19 +330,19 @@ public void SetLoose(boolean perte){
         
         System.out.println("Players on field:");
         this.goalie.printGoalie();
-        System.out.println("attack:");
+        System.out.println("Attack: ");
         for (int g=0;g<players.size();g++){
             if((this.players.get(g).getFavPos().equals(atk)) && (this.players.get(g).card!=2)){ //affiche le joueur seulement si la position est la bonne et qu'il n'a pas de carton rouge
             this.players.get(g).printPlayer();
             }
         }
-        System.out.println("middle:");
+        System.out.println("Middle: ");
         for (int g=0;g<players.size();g++){
             if((this.players.get(g).getFavPos()=="mid") && (this.players.get(g).card!=2)){
                 this.players.get(g).printPlayer();
             }
         }
-        System.out.println("defense:");
+        System.out.println("Defense: ");
         for (int g=0;g<players.size();g++){
             if((this.players.get(g).getFavPos()=="def") && (this.players.get(g).card!=2)){
                 this.players.get(g).printPlayer();
@@ -450,10 +450,10 @@ public void SetLoose(boolean perte){
                 
 		}
 		catch(FileNotFoundException e)
-		{ System.out.println(" Fichier noms_equipes nexiste pas");
+		{ System.out.println(" File noms_equipes doesn't exist");
 		System.out.println("ou erreur ouverture");} 
 		catch(IOException e)
-		{ System.out.println("Erreur lecture noms_equipes.txt.");}
+		{ System.out.println("Error reading noms_equipes.txt.");}
                 return nameArray;
     }
     
