@@ -118,7 +118,6 @@ public class LockerRoom extends Match{
                     
                 }
                     for(int t=0;t<this.teams.get(tampon).getPlayers().size();t++){
-                            System.out.println(this.teams.get(tampon).getPlayers().get(t).getNumber() +" "+ this.teams.get(tampon).getPlayers().get(t).getField());
                         }
                 System.out.println("Player to get off the field:");
                 System.out.println("Write stop if you don't want or you're done");
