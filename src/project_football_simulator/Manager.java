@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Raphael Tatin / Théophile Vonck
+ * Projet java 2019
+ * Football manager simulator
  */
 package project_football_simulator;
 
@@ -52,7 +52,7 @@ public class Manager extends Character {
      * @return
      */
     public int teamManagement(){
-        System.out.println("select the boost: \n enter 1 to boost attack\n enter 2 to boost middle\n enter 3 to boost defense");
+        System.out.println("Select the boost: \n enter 1 to boost attack\n enter 2 to boost middle\n enter 3 to boost defense");
         Scanner choice=new Scanner(System.in);
         String obj = choice.nextLine();
         int choosenBoost=2;
