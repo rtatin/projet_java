@@ -25,7 +25,7 @@ public class Referee extends OnField implements Fatigue {
     }
     
     
-    public void recalulateSeverite(){
+    public void RecalulateSeverite(){
         this.setSeverite(this.getSeverite()+((100-this.getStamina())/100));
     }
     
@@ -39,16 +39,16 @@ public class Referee extends OnField implements Fatigue {
         super.nationality=Character.getRandomNationality(Character.getNationalityPlayer());
         
     }
-    public void yellowCard(Player player){
+    public void YellowCard(Player player){
         float rand=(float) (20+ Math.random() * 300);
         if( rand < this.getSeverite() ) {  
             
             if(player.getCard()==1){
-            redCard(player);
+            RedCard(player);
                 player.setCard(2);
                 System.out.println("Referee "+this.name +" gave red card to ");
                 player.printPlayer();
-                redCard(player);
+                RedCard(player);
             }  
             else{
                 System.out.println("Referee "+this.name+" gave yellow card to ");
@@ -58,7 +58,7 @@ public class Referee extends OnField implements Fatigue {
         }      
     }
     
-    public void redCard(Player player){
+    public void RedCard(Player player){
         player.setField(false);            
         }   
 }

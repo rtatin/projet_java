@@ -114,7 +114,7 @@ public void createChampionship(){
                 
                 }
             }
-            match1.fullMatch();
+            match1.FullMatch();
             }
             g=0;
             int tampon=this.teamsInCompetition.size();
