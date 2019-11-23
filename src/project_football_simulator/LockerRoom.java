@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Raphael Tatin / Théophile Vonck
+ * Projet java 2019
+ * Football manager simulator
  */
 package project_football_simulator;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class LockerRoom extends Match{
     boolean halfTime;
 
     /**
-     *
+     * Constructeur de LockerRoom
      * @param teams
      * @param time
      * @param ref
@@ -30,6 +30,7 @@ public class LockerRoom extends Match{
     /**
      * Pendant la mi-temps, dans le vestiaire, l'utilisateur a le choix entre 
      * 2 possibilites: faire des remplacements et choisir son boost
+     * L'exception verifie si la reponse de l'utilsateur est valide
      */
     public void choiceUser(){
         boolean half=true;
@@ -43,6 +44,10 @@ public class LockerRoom extends Match{
                 if (1>choice || choice>3){
                     throw new Exception("Choice not in range, please select a number between 1 and 3");
                 }
+            }
+            catch(NumberFormatException b){
+                System.err.println("Please write a number between 1 and 3");
+                choice=0;
             }
             catch(Exception b){
                 System.err.println(b.getMessage());
@@ -69,7 +74,14 @@ public class LockerRoom extends Match{
         }
     }
     
-    public void changePlayers(){ //fonction qui permet a l'utilisateur de modifier la composition de son equipe pendant la mi temps
+    /**
+     * Ici, nous avons la fonction qui permet de changer ses joueurs
+     * on demande a l'utilisateur de rentrer un numero de joueur qu'il veut 
+     * faire sortir du terrain puis un autre numero du joueur qu'il veut faire 
+     * rentrer
+     * @param team
+     */
+    public void changePlayers(){ 
         int add=0;
         int tampon=0;
         String pos="";
@@ -88,50 +100,31 @@ public class LockerRoom extends Match{
             Scanner myObj = new Scanner(System.in);
             numberPlayer = myObj.nextLine(); 
             
-        while (!(numberPlayer.equals(stop))){ //tant que le joueur n'ecrit pas stop
-
+        while (!(numberPlayer.equals(stop))){ 
+            
             for(int i=0;i<this.teams.get(tampon).getPlayers().size();i++){
                 if(this.teams.get(tampon).getPlayers().get(i).getNumber()==Integer.parseInt(numberPlayer)){
                     pos=this.teams.get(tampon).getPlayers().get(i).getFavPos();
                     this.teams.get(tampon).getPlayers().get(i).setField(false);
-                    this.teams.get(tampon).getPlayers().remove(this.teams.get(tampon).getPlayers().get(i)); //si le joueur est dans players on l'enleve
+                    this.teams.get(tampon).getPlayers().remove(this.teams.get(tampon).getPlayers().get(i)); 
                 }
+            }    
+            System.out.println("Player to get on the field:");
+            myObj = new Scanner(System.in);
+            numberPlayer = myObj.nextLine();
+            int number=Integer.parseInt(numberPlayer);
+
+            if((this.teams.get(tampon).getFullTeam().get(number-1).getFavPos().equals(pos))&&(this.teams.get(tampon).getFullTeam().get(number-1).getField()==false)&&(this.teams.get(tampon).getFullTeam().get(number-1).card!=2)){
+                this.teams.get(tampon).getFullTeam().get(number-1).setField(true);
+                this.teams.get(tampon).getPlayers().add(this.teams.get(tampon).getFullTeam().get(number-1));
+                this.teams.get(tampon).getPlayers().get(this.teams.get(tampon).getPlayers().size()-1).setField(true);
             }
-                
-                    System.out.println("Player to get on the field:");
-                    myObj = new Scanner(System.in);
-                    numberPlayer = myObj.nextLine(); //on rajoute un nouveau joueur
-                    int number=Integer.parseInt(numberPlayer);
-                    
-                    if((this.teams.get(tampon).getFullTeam().get(number-1).getFavPos().equals(pos))&&(this.teams.get(tampon).getFullTeam().get(number-1).getField()==false)&&(this.teams.get(tampon).getFullTeam().get(number-1).card!=2)){
-                        this.teams.get(tampon).getFullTeam().get(number-1).setField(true);
-                        this.teams.get(tampon).getPlayers().add(this.teams.get(tampon).getFullTeam().get(number-1));
-                        this.teams.get(tampon).getPlayers().get(this.teams.get(tampon).getPlayers().size()-1).setField(true);
-//                        for(int t=0;t<this.teams.get(tampon).players.size();t++){
-//                            System.out.println(this.teams.get(tampon).players.get(t).number +" "+ this.teams.get(tampon).players.get(t).field);
-//                        }
-//                        for(int t=0;t<this.teams.get(tampon).FullTeam.size();t++){
-//                            System.out.println(this.teams.get(tampon).FullTeam.get(t).number +" "+ this.teams.get(tampon).FullTeam.get(t).field);
-//                            this.teams.get(tampon).printTeamOnField();
-//                            
-//                        }
-                    
-                }
-                    for(int t=0;t<this.teams.get(tampon).getPlayers().size();t++){
-                        }
-                System.out.println("Player to get off the field:");
-                System.out.println("Write stop if you don't want or you're done");
-                numberPlayer = myObj.nextLine();
-            }
-            
-            this.teams.get(tampon).printTeamOnField(); 
+            System.out.println("Player to get off the field:");
+            System.out.println("Write stop if you don't want or you're done");
+            numberPlayer = myObj.nextLine();
+        }
+
+    this.teams.get(tampon).printTeamOnField(); 
     }
-     /**
-     * Ici, nous avons la fonction qui permet de changer ses joueurs
-     * on demande a l'utilisateur de rentrer un numero de joueur qu'il veut 
-     * faire sortir du terrain puis un autre numero du joueur qu'il veut faire 
-     * rentrer
-     * @param team
-     */
-    }
+}
     

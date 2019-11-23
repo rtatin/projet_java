@@ -1,14 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Raphael Tatin / Théophile Vonck
+ * Projet java 2019
+ * Football manager simulator
  */
 package project_football_simulator;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Fonction qui cree un championnat et le deroule
+ * Constructeur qui cree un championnat et le deroule
  * Nous avons des equipes en general, celles qui sont encore en competition et
  * celles qui sont eliminees
  * @author rtwam
@@ -36,6 +36,7 @@ public class Championship {
      * L'utilisateur selectionne le nombre de joueurs qu'il veut voir dans son 
      * championnat (qui lui est a elimination directe)
      * Il peut aussi selectionner l'equipe avec laquelle il veut jouer
+     * Les exceptions verifient encore que le joueur rentre bien des chiffres
      */
 public void createChampionship(){ 
         System.out.println("Number of teams in competition? Type 2, 4, 8 or 16\n");
@@ -48,6 +49,10 @@ public void createChampionship(){
                 throw new Exception("Size of competition impossible, 4 by default");
                 }
             }
+        catch(NumberFormatException b){
+            System.err.println("Not a number, 4 by default");
+            numberTeams=4;
+        }
         catch(Exception b){
                 System.err.println(b.getMessage());
                 numberTeams=4;
@@ -69,9 +74,13 @@ public void createChampionship(){
         try{
             numberChoice=Integer.parseInt(num);
             if (numberChoice<1 || numberChoice>teams.size()){
-                throw new Exception("Number not available, 1 by default");
+                throw new Exception("Number out of range, 1 by default");
                 }
             }
+        catch(NumberFormatException b){
+            System.err.println("Not a number, 1 by default");
+            numberChoice=1;
+        }
         catch(Exception b){
             System.err.println(b.getMessage());
             numberChoice=1;

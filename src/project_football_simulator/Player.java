@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Raphael Tatin / Théophile Vonck
+ * Projet java 2019
+ * Football manager simulator
  */
 package project_football_simulator;
 
@@ -25,58 +25,119 @@ public class Player extends OnField implements Fatigue{
     private String favPos;
     public int card;
     
+    /**
+     * retourne numero du joueur
+     * @return
+     */
     public int getNumber() { 
             return this.number;
     }
+
+    /**
+     *Retourne l'attaque
+     * @return
+     */
     public float getAttack() { 
             return this.attack;
     }
-     public float getDefense() { 
+ 
+    /**
+     * Retourne la defense
+     * @return
+     */
+    public float getDefense() { 
             return this.defense;
     }
+
+    /**
+     * Retourne le boost atk
+     * @return
+     */
     public float getBoostAttack() { 
             return this.boostAttack;
     }
+
+    /**
+     * Boost def
+     * @return
+     */
     public float getBoostDefense() { 
             return this.boostDefense;
     }
+
+    /**
+     * Retourne boost attaque apres le boost du coach
+     * @return
+     */
     public float getBoostAttackCoach() { 
             return this.boostAttackCoach;
     }
+
+    /**
+     * Pareil mais pour defense
+     * @return
+     */
     public float getBoostDefenseCoach() { 
             return this.boostDefenseCoach;
     }
+
+    /**
+     *Recupere la position du joueur 
+     * @return
+     */
     public String getFavPos() { 
             return this.favPos;
     }
+
+    /**
+     * Retourne si le joueur a un carton
+     * @return
+     */
     public int getCard() { 
             return this.card;
     }
     
+
     public void setNumber(int number) { 
              this.number=number;
     }
+
+
     public void setAttack(float atck) { 
              this.attack=atck;
     }
-     public void setDefense(float def) { 
+ 
+
+    public void setDefense(float def) { 
              this.defense=def;
     }
+
+
     public void setBoostAttack(float atck) { 
              this.boostAttack=atck;
     }
+
+
     public void setBoostDefense(float def) { 
              this.boostDefense=def;
     }
+
+
     public void setBoostAttackCoach(float atck) { 
              this.boostAttackCoach=atck;
     }
+
+
     public void setBoostDefenseCoach(float def) { 
              this.boostDefenseCoach=def;
     }
+
+
     public void setFavPos(String pos) { 
              this.favPos=pos;
     }
+
+
     public void setCard(int card) { 
              this.card=card;
     }
@@ -84,7 +145,7 @@ public class Player extends OnField implements Fatigue{
     
     
     /**
-     *
+     * Constructeur du player
      * @param number
      * @param attack
      * @param defense
@@ -109,6 +170,11 @@ public class Player extends OnField implements Fatigue{
         
     }
 
+    /**
+     * Méthode qui change le boost en fonction des nouveaux joueurs qui sont places
+     * sur le terrain
+     * @param player
+     */
     public void resetPlayerBoostAtck(Player player){
     this.setBoostAttack(player.getBoostAttack());
     this.setBoostDefense(player.getBoostDefense());

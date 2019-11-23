@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Raphael Tatin / Théophile Vonck
+ * Projet java 2019
+ * Football manager simulator
  */
 package project_football_simulator;
 import java.util.Random;
@@ -12,23 +12,41 @@ import java.util.Random;
 public class Referee extends OnField implements Fatigue {
     private float severity;
     
-    
+    /**
+     * Modifie l'endurance de l'arbitre
+     */
     @Override
     public void fatigue(){
         this.setStamina(this.getStamina()-(3*super.age/20));
     }
+
+    /**
+     * Permet de set la severite
+     * @param severity
+     */
     public void setSeverite(float severity){
         this.severity=severity;
     }
+
+    /**
+     * Retourne la severite
+     * @return
+     */
     public float getSeverite(){
         return this.severity;
     }
     
-    
+    /**
+     * Calcule a nouveau la severite en fonction de la fatigue
+     */
     public void RecalulateSeverite(){
         this.setSeverite(this.getSeverite()+((100-this.getStamina())/100));
     }
     
+    /**
+     * Fonction qui genere un arbitre
+     * Avec des statistiques aleatoires
+     */
     public void generateReferee(){
         this.setSeverite((int) ((int) 20+ (Math.random() * (5))));
         this.setField(true);
@@ -39,12 +57,20 @@ public class Referee extends OnField implements Fatigue {
         super.nationality=Character.getRandomNationality(Character.getNationalityPlayer());
         
     }
+
+    /**
+     * Fonction qui donne des cartons jaunes aux joueurs
+     * Si le random passe une valeur seuille, un carton jaune est donne au joueur
+     * Le seuil varie en fonction de la severite de l'arbitre, et donc aussi de sa
+     * fatigue
+     * @param player
+     */
     public void YellowCard(Player player){
         float rand=(float) (20+ Math.random() * 300);
         if( rand < this.getSeverite() ) {  
             
             if(player.getCard()==1){
-            RedCard(player);
+                RedCard(player);
                 player.setCard(2);
                 System.out.println("Referee "+this.name +" gave red card to ");
                 player.printPlayer();
@@ -53,11 +79,15 @@ public class Referee extends OnField implements Fatigue {
             else{
                 System.out.println("Referee "+this.name+" gave yellow card to ");
                 player.printPlayer();
-            player.setCard(1);;
+                player.setCard(1);;
             }
         }      
     }
     
+    /**
+     * Si carton rouge, le joueur est renvoye du terrain
+     * @param player
+     */
     public void RedCard(Player player){
         player.setField(false);            
         }   

@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Raphael Tatin / Théophile Vonck
+ * Projet java 2019
+ * Football manager simulator
  */
 package project_football_simulator;
 import java.io.BufferedReader;
@@ -80,7 +80,7 @@ public void SetLoose(boolean perte){
     this.loose=perte;
 }
     /**
-     * Permet de generer une equipe complete de joueurs
+     * Genere une equipe complete de joueurs
      * Dans chaque equipe, on cree 5 joueurs en attaque, avec des stats 
      * aléatoires qu'on place dans l'arraylist.
      * On fait de meme pour les milieux de terrain et la defense
@@ -169,6 +169,8 @@ public void SetLoose(boolean perte){
      * L'utilisateur peut ensuite selectionner chacun des joueurs qu'il veut 
      * faire rentrer sur le terrain, en suivant la disposition choisie
      * precedemment
+     * L'exception regarde si l'utilisateur rentre bien un chiffre compris entre 1 et 3 au début
+     * La suivante permet de savoir si l'utilisateur rentre les bons numéros des joueurs
      */
     public void createPlayingTeam(){ 
         ArrayList <Player> newPlayer=new <Player>ArrayList(); 
@@ -182,6 +184,10 @@ public void SetLoose(boolean perte){
                 throw new Exception("Choice out of range, 4-4-2 by default");
                 }
             }
+        catch(NumberFormatException b){
+            System.err.println("Not a number, 4-4-2 by default");
+            numberChoice=1;
+        }
         catch(Exception b){
                 System.err.println(b.getMessage());
                 numberChoice=1;
@@ -277,7 +283,7 @@ public void SetLoose(boolean perte){
                         catch(Exception b){
                             System.err.println(b.getMessage());
                         }
-                        System.out.println("your team for now ");
+                        System.out.println("Your team for now: ");
                             for(int k=0;k<newPlayer.size();k++){
                             System.out.println(newPlayer.get(k).name+" "+newPlayer.get(k).surname+" "+newPlayer.get(k).getFavPos());
                             }
@@ -437,23 +443,22 @@ public void SetLoose(boolean perte){
         ArrayList<String> nameArray=new ArrayList<String>();
      
 		try {
-			BufferedReader fluxEntree= new BufferedReader(new FileReader("noms_equipes.txt"));
-			String ligne = "";
+                    BufferedReader fluxEntree= new BufferedReader(new FileReader("noms_equipes.txt"));
+                    String ligne = "";
 			
-		while (!(ligne==null)) {
-		ligne = fluxEntree.readLine( );  
+                    while (!(ligne==null)) {
+                        ligne = fluxEntree.readLine( );  
 	
-		if (!(ligne==null)) {
-			nameArray.add(ligne);
+                        if (!(ligne==null)) {
+                            nameArray.add(ligne);
+                        }
+                    }
 		}
-		}
-                
-		}
-		catch(FileNotFoundException e)
-		{ System.out.println(" File noms_equipes doesn't exist");
-		System.out.println("ou erreur ouverture");} 
-		catch(IOException e)
-		{ System.out.println("Error reading noms_equipes.txt.");}
+		catch(FileNotFoundException e){ 
+                    System.out.println(" File noms_equipes doesn't exist");
+                    System.out.println("ou erreur ouverture");} 
+		catch(IOException e){ 
+                    System.out.println("Error reading noms_equipes.txt.");}
                 return nameArray;
     }
     

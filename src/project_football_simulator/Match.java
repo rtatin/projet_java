@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Raphael Tatin / Théophile Vonck
+ * Projet java 2019
+ * Football manager simulator
  */
 package project_football_simulator;
 
@@ -23,7 +23,8 @@ public class Match {
     protected boolean playerInGame;
     
     /**
-     *
+     * Constructeur de match
+     * les équipes et l'arbitre en parametres
      * @param teams
      * @param ref
      */
@@ -32,6 +33,10 @@ public class Match {
         this.ref=ref;
     }
     
+    /**
+     * Permet de savoir si l'utilisateur est en train de jouer le match
+     * @return
+     */
     protected boolean getPlayerInGame(){
         return this.playerInGame;
     }
@@ -128,6 +133,7 @@ public class Match {
      * Les matchs non joués par l'utilisateur sont joués directement avec cette fonction, sans afficher les lignes de texte
      * Au bout de 45min, les équipes sont envoyées dans les vestiaires
      * A la fin du match, nous appelons la méthode checkWin pour déterminer le gagnant 
+     * L'exception veille à ce que l'utilisateur appuie bien sur la touche espace
      */
     public void FullMatch(){
         //this.teams.get(0).printFullTeam();

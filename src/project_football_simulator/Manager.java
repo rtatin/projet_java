@@ -14,6 +14,15 @@ import java.util.Scanner;
 public class Manager extends Character {
     private int boost;
     
+    /**
+     * Constructeur d'un manager
+     * @param boost
+     * @param name
+     * @param surname
+     * @param age
+     * @param nationality
+     * @param equipe
+     */
     public Manager(int boost,String name,String surname, int age, String nationality,String equipe){
         this.boost=boost;
         super.name=name;
@@ -22,13 +31,26 @@ public class Manager extends Character {
         super.nationality=nationality;
         super.equipe=equipe;
     }
-     public int getBoost() { 
+ 
+    /**
+     * Retourne le boost choisi par l'utilisateur
+     * @return
+     */
+    public int getBoost() { 
             return this.boost;
     }
+
+    /**
+     * Affiche le manager
+     */
     public void printManager(){
     System.out.println("Manager: nom: "+this.getName()+" "+this.getSurname() +" age: "+this.getAge()+" nationality :"+getNationality()+" boost :"+getBoost()+"\n");  
     }
     
+    /**
+     * Methode permettant a l'utilisateur de selectionner son boost
+     * @return
+     */
     public int teamManagement(){
         System.out.println("select the boost: \n enter 1 to boost attack\n enter 2 to boost middle\n enter 3 to boost defense");
         Scanner choice=new Scanner(System.in);
@@ -40,6 +62,10 @@ public class Manager extends Character {
                 throw new Exception("Wrong input, mid boost by default");
                 }
             }
+        catch(NumberFormatException b){
+            System.err.println("Not a number, mid boost by default");
+            choosenBoost=2;
+        }
         catch(Exception b){
             System.err.println(b.getMessage());
             choosenBoost=2;
