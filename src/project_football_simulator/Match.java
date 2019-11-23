@@ -51,7 +51,7 @@ public class Match {
      * @param numberTeam
      * @return
      */
-    public float AtkTeam(int numberTeam){ 
+    public float atkTeam(int numberTeam){ 
         float totalAtk=0;   
         for(int i=0; i<teams.get(numberTeam).getPlayers().size();i++){
             Player play=teams.get(numberTeam).getPlayers().get(i);       
@@ -65,7 +65,7 @@ public class Match {
      * @param numberTeam
      * @return
      */
-    public float DefTeam(int numberTeam){ 
+    public float defTeam(int numberTeam){ 
         float totalDef=0;
         for(int i=0; i<teams.get(numberTeam).getPlayers().size();i++){
             Player play=teams.get(numberTeam).getPlayers().get(i);
@@ -106,17 +106,17 @@ public class Match {
      * On appelle la fonction précédente qui permet d'incrémenter le score
      * De plus, chaque joueur peut potentiellement prendre un carton jaune 
      */
-    public void PlayingMatch(){ 
+    public void playingMatch(){ 
         this.time+=15; 
-        float atkTeam0=AtkTeam(0);
-        float atkTeam1=AtkTeam(1);
-        float defTeam0=DefTeam(0);
-        float defTeam1=DefTeam(1);
+        float atkTeam0=atkTeam(0);
+        float atkTeam1=atkTeam(1);
+        float defTeam0=defTeam(0);
+        float defTeam1=defTeam(1);
         increaseScore(atkTeam0, atkTeam1, defTeam0, defTeam1); 
         for (int i=0;i<2;i++){
             teams.get(i).nationality();
             for (int j=0;j<10;j++){
-                ref.YellowCard(teams.get(i).getPlayers().get(j));
+                ref.yellowCard(teams.get(i).getPlayers().get(j));
                 teams.get(i).getPlayers().get(j).fatigue();
                 
             }
@@ -135,7 +135,7 @@ public class Match {
      * A la fin du match, nous appelons la méthode checkWin pour déterminer le gagnant 
      * L'exception veille à ce que l'utilisateur appuie bien sur la touche espace
      */
-    public void FullMatch(){
+    public void fullMatch(){
         //this.teams.get(0).printFullTeam();
         //this.teams.get(0).printFullTeam();
         boolean playerPlaying=false;
@@ -168,7 +168,7 @@ public class Match {
                 }
             }
           
-            PlayingMatch();
+            playingMatch();
             if(getPlayerInGame()==true){
                 System.out.println(this.time+"min de match");
             }
@@ -201,7 +201,7 @@ public class Match {
                     }   
                 }
             }
-            PlayingMatch();
+            playingMatch();
             if(getPlayerInGame()==true){
                 System.out.println(this.time+"min de match");
             }
@@ -232,7 +232,7 @@ public class Match {
                 System.out.println("Overtime");
             }
             while((this.score[0]==this.score[1])&&(this.time!=120)){
-                PlayingMatch();
+                playingMatch();
                 if(getPlayerInGame()==true){
                     System.out.println(this.time+"min de match");
                 }

@@ -65,16 +65,16 @@ public class Referee extends OnField implements Fatigue {
      * fatigue
      * @param player
      */
-    public void YellowCard(Player player){
+    public void yellowCard(Player player){
         float rand=(float) (20+ Math.random() * 300);
         if( rand < this.getSeverite() ) {  
             
             if(player.getCard()==1){
-                RedCard(player);
+                redCard(player);
                 player.setCard(2);
                 System.out.println("Referee "+this.name +" gave red card to ");
                 player.printPlayer();
-                RedCard(player);
+                redCard(player);
             }  
             else{
                 System.out.println("Referee "+this.name+" gave yellow card to ");
@@ -88,7 +88,7 @@ public class Referee extends OnField implements Fatigue {
      * Si carton rouge, le joueur est renvoye du terrain
      * @param player
      */
-    public void RedCard(Player player){
+    public void redCard(Player player){
         player.setField(false);            
         }   
 }
