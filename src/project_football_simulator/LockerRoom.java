@@ -98,8 +98,14 @@ public class LockerRoom extends Match{
 
         System.out.println("Player to get off the field:");
             Scanner myObj = new Scanner(System.in);
-            numberPlayer = myObj.nextLine(); 
-            
+            numberPlayer = myObj.nextLine();     
+            try{
+                int number=Integer.parseInt(numberPlayer);
+            }
+            catch(NumberFormatException b){
+                numberPlayer="stop";
+                System.err.println("Not a player, stop replacing players");
+            }
         while (!(numberPlayer.equals(stop))){ 
             
             for(int i=0;i<this.teams.get(tampon).getPlayers().size();i++){
@@ -122,6 +128,13 @@ public class LockerRoom extends Match{
             System.out.println("Player to get off the field:");
             System.out.println("Write stop if you don't want or you're done");
             numberPlayer = myObj.nextLine();
+            try{
+                number=Integer.parseInt(numberPlayer);
+            }
+            catch(NumberFormatException b){
+                numberPlayer="stop";
+                System.err.println("Not a player, stop replacing players");
+            }
         }
 
     this.teams.get(tampon).printTeamOnField(); 

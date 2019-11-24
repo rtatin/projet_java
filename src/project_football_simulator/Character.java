@@ -150,7 +150,7 @@ public abstract class Character {
         ArrayList<String> nameArray=new ArrayList<String>();
      
 		try {
-			BufferedReader fluxEntree= new BufferedReader(new FileReader("nationaliter_joueurs.txt"));
+			BufferedReader fluxEntree= new BufferedReader(new FileReader("nationalite_joueurs.txt"));
 			String ligne = "";
 			
 		while (!(ligne==null)) {
