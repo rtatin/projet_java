@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- *
+ * Classe abstraite character, qui définit les etres humains
  * @author rtwam
  */
 public abstract class Character {

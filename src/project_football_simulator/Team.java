@@ -231,7 +231,7 @@ public void SetLoose(boolean perte){
             switch (j) {
                 case 0: 
                     {
-                        System.out.println("Choose your "+defCount+" players in defense:");
+                        System.out.println("Choose your "+defCount+" players in defense, please type the number:");
                         count=defCount;
                         pos="def";
                         
@@ -239,14 +239,14 @@ public void SetLoose(boolean perte){
                     }
                 case 1: 
                     {
-                        System.out.println("Choose your "+midCount+" players in mid:");
+                        System.out.println("Choose your "+midCount+" players in mid, please type the number:");
                         count=midCount;
                         pos="mid";
                         break;
                     }
                 case 2: 
                     {
-                        System.out.println("Choose your "+atkCount+" players in atk:");
+                        System.out.println("Choose your "+atkCount+" players in atk, please type the number:");
                         count=atkCount;
                         pos="atk";
                         break;
