@@ -115,7 +115,7 @@ public class Match {
         increaseScore(atkTeam0, atkTeam1, defTeam0, defTeam1); 
         for (int i=0;i<2;i++){
             teams.get(i).nationality();
-            for (int j=0;j<10;j++){
+            for (int j=0;j<teams.size();j++){
                 ref.yellowCard(teams.get(i).getPlayers().get(j));
                 teams.get(i).getPlayers().get(j).fatigue();
                 
